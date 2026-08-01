@@ -1,0 +1,10 @@
+{
+  "carpet.rule.bedrockCauldronTippedArrows.desc": "Pour potions into empty cauldrons and dip arrows to create tipped arrows, just like in Bedrock Edition. One potion bottle = 16 arrows.",
+  "carpet.rule.bedrockCauldronTippedArrows.name": "Bedrock Cauldron Tipped Arrows",
+  "carpet.rule.craftableBell.desc": "Adds a crafting recipe for the bell.",
+  "carpet.rule.craftableBell.name": "Craftable Bell",
+  "carpet.rule.craftableNameTag.desc": "Adds a crafting recipe for the name tag.",
+  "carpet.rule.craftableNameTag.name": "Craftable Name Tag",
+  "carpet.rule.craftableSaddle.desc": "Adds a crafting recipe for the saddle.",
+  "carpet.rule.craftableSaddle.name": "Craftable Saddle"
+}

@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.namelessgod2008.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"CraftingMenuMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

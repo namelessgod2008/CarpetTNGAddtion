@@ -1,0 +1,10 @@
+{
+  "carpet.rule.bedrockCauldronTippedArrows.desc": "将药水倒入空的炼药锅，用箭蘸取获得药箭，类似基岩版机制。一瓶药水 = 16 支箭。",
+  "carpet.rule.bedrockCauldronTippedArrows.name": "基岩版炼药锅制箭",
+  "carpet.rule.craftableBell.desc": "添加钟的合成配方。",
+  "carpet.rule.craftableBell.name": "钟合成",
+  "carpet.rule.craftableNameTag.desc": "添加命名牌的合成配方。",
+  "carpet.rule.craftableNameTag.name": "命名牌合成",
+  "carpet.rule.craftableSaddle.desc": "添加马鞍的合成配方。",
+  "carpet.rule.craftableSaddle.name": "马鞍合成"
+}
