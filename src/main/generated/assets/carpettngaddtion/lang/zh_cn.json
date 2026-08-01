@@ -6,5 +6,7 @@
   "carpet.rule.craftableNameTag.desc": "添加命名牌的合成配方。",
   "carpet.rule.craftableNameTag.name": "命名牌合成",
   "carpet.rule.craftableSaddle.desc": "添加马鞍的合成配方。",
-  "carpet.rule.craftableSaddle.name": "马鞍合成"
+  "carpet.rule.craftableSaddle.name": "马鞍合成",
+  "carpet.rule.dispenserPlanting.desc": "发射器喷出种子沿直线飞行，碰到耕地时变为作物幼苗。",
+  "carpet.rule.dispenserPlanting.name": "发射器种植"
 }

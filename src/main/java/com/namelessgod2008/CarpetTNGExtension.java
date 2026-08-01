@@ -19,7 +19,9 @@ public class CarpetTNGExtension implements CarpetExtension {
                     "carpet.rule.craftableNameTag.name", "Craftable Name Tag",
                     "carpet.rule.craftableNameTag.desc", "Adds a crafting recipe for the name tag.",
                     "carpet.rule.craftableBell.name", "Craftable Bell",
-                    "carpet.rule.craftableBell.desc", "Adds a crafting recipe for the bell."
+                    "carpet.rule.craftableBell.desc", "Adds a crafting recipe for the bell.",
+                    "carpet.rule.dispenserPlanting.name", "Dispenser Planting",
+                    "carpet.rule.dispenserPlanting.desc", "Dispensers shoot seeds in a straight line; seeds turn into crop sprouts when hitting farmland."
             ),
             "zh_cn", Map.of(
                     "carpet.rule.bedrockCauldronTippedArrows.name", "基岩版炼药锅制箭",
@@ -30,7 +32,9 @@ public class CarpetTNGExtension implements CarpetExtension {
                     "carpet.rule.craftableNameTag.name", "命名牌合成",
                     "carpet.rule.craftableNameTag.desc", "添加命名牌的合成配方。",
                     "carpet.rule.craftableBell.name", "钟合成",
-                    "carpet.rule.craftableBell.desc", "添加钟的合成配方。"
+                    "carpet.rule.craftableBell.desc", "添加钟的合成配方。",
+                    "carpet.rule.dispenserPlanting.name", "发射器种植",
+                    "carpet.rule.dispenserPlanting.desc", "发射器喷出种子沿直线飞行，碰到耕地时变为作物幼苗。"
             )
     );
 

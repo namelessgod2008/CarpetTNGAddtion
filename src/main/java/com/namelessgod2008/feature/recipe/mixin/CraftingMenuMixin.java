@@ -1,4 +1,4 @@
-package com.namelessgod2008.mixin;
+package com.namelessgod2008.feature.recipe.mixin;
 
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.server.level.ServerLevel;

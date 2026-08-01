@@ -27,6 +27,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.craftableNameTag.desc", "Adds a crafting recipe for the name tag.");
             builder.add("carpet.rule.craftableBell.name", "Craftable Bell");
             builder.add("carpet.rule.craftableBell.desc", "Adds a crafting recipe for the bell.");
+            builder.add("carpet.rule.dispenserPlanting.name", "Dispenser Planting");
+            builder.add("carpet.rule.dispenserPlanting.desc",
+                    "Dispensers shoot seeds in a straight line; seeds turn into crop sprouts when hitting farmland.");
         }
     }
 
@@ -46,6 +49,8 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.craftableNameTag.desc", "添加命名牌的合成配方。");
             builder.add("carpet.rule.craftableBell.name", "钟合成");
             builder.add("carpet.rule.craftableBell.desc", "添加钟的合成配方。");
+            builder.add("carpet.rule.dispenserPlanting.name", "发射器种植");
+            builder.add("carpet.rule.dispenserPlanting.desc", "发射器喷出种子沿直线飞行，碰到耕地时变为作物幼苗。");
         }
     }
 }

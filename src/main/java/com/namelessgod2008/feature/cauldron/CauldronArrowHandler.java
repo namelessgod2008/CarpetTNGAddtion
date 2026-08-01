@@ -1,4 +1,4 @@
-package com.namelessgod2008.feature;
+package com.namelessgod2008.feature.cauldron;
 
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;

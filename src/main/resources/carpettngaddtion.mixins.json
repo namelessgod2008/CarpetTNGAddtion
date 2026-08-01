@@ -1,9 +1,10 @@
 {
 	"required": true,
-	"package": "com.namelessgod2008.mixin",
+	"package": "com.namelessgod2008",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"CraftingMenuMixin"
+		"feature.recipe.mixin.CraftingMenuMixin",
+		"feature.dispenser.mixin.ItemEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -1,4 +1,4 @@
-package com.namelessgod2008.feature;
+package com.namelessgod2008.feature.cauldron;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;

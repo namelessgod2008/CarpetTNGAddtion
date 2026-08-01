@@ -2,7 +2,8 @@ package com.namelessgod2008;
 
 import carpet.CarpetServer;
 import carpet.api.settings.SettingsManager;
-import com.namelessgod2008.feature.CauldronArrowHandler;
+import com.namelessgod2008.feature.cauldron.CauldronArrowHandler;
+import com.namelessgod2008.feature.dispenser.DispenserPlantingHandler;
 import com.namelessgod2008.setting.RuleEnabledCondition;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.ResourceLocation;
@@ -46,6 +47,7 @@ public class CarpetTNGAddtion implements ModInitializer {
 
 		CarpetServer.manageExtension(new CarpetTNGExtension());
 		CauldronArrowHandler.register();
+		DispenserPlantingHandler.register();
 	}
 
 	public static ResourceLocation id(String path) {

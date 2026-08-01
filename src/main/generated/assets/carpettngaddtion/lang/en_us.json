@@ -6,5 +6,7 @@
   "carpet.rule.craftableNameTag.desc": "Adds a crafting recipe for the name tag.",
   "carpet.rule.craftableNameTag.name": "Craftable Name Tag",
   "carpet.rule.craftableSaddle.desc": "Adds a crafting recipe for the saddle.",
-  "carpet.rule.craftableSaddle.name": "Craftable Saddle"
+  "carpet.rule.craftableSaddle.name": "Craftable Saddle",
+  "carpet.rule.dispenserPlanting.desc": "Dispensers shoot seeds in a straight line; seeds turn into crop sprouts when hitting farmland.",
+  "carpet.rule.dispenserPlanting.name": "Dispenser Planting"
 }

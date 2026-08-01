@@ -4,7 +4,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 ## 功能
 
-所有规则默认关闭，通过 `/carpet` 指令统一开关，分类为 `porting`：
+所有规则默认关闭，通过 `/carpet` 指令统一开关。所有规则都带 `TNG` 分类；合成类规则另带 `survival`，炼药锅制箭另带 `porting`：
 
 | 规则 | 功能 | 开启指令 |
 |------|------|----------|
