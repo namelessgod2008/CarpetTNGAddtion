@@ -1,10 +1,9 @@
 {
 	"required": true,
-	"package": "com.namelessgod2008",
+	"package": "com.namelessgod2008.feature.amethyst.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"feature.recipe.mixin.CraftingMenuMixin",
-		"feature.dispenser.mixin.ItemEntityMixin"
+		"BuddingAmethystMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

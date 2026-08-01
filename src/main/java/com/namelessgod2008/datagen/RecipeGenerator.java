@@ -6,12 +6,13 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.core.registries.Registries;
 import com.namelessgod2008.setting.RuleEnabledCondition;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -22,11 +23,12 @@ public final class RecipeGenerator extends FabricRecipeProvider {
     }
 
     @Override
-    protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+    protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
         // Each recipe is gated by its rule so it disappears from REI when disabled
         RecipeOutput saddleOut = withConditions(output, new RuleEnabledCondition("craftableSaddle"));
         RecipeOutput nameTagOut = withConditions(output, new RuleEnabledCondition("craftableNameTag"));
         RecipeOutput bellOut = withConditions(output, new RuleEnabledCondition("craftableBell"));
+        RecipeOutput stringOut = withConditions(output, new RuleEnabledCondition("craftableStringFromWool"));
 
         return new RecipeProvider(registries, output) {
             @Override
@@ -59,12 +61,18 @@ public final class RecipeGenerator extends FabricRecipeProvider {
                         .define('B', Items.SMOOTH_STONE_SLAB)
                         .unlockedBy("has_gold", has(Items.GOLD_INGOT))
                         .save(bellOut);
+
+                // String from wool: 1 wool (any color) -> 4 string, shapeless
+                ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, Items.STRING, 4)
+                        .requires(ItemTags.WOOL)
+                        .unlockedBy("has_wool", has(ItemTags.WOOL))
+                        .save(stringOut);
             }
         };
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "TNG Recipes";
     }
 }

@@ -46,6 +46,7 @@ public record RuleEnabledCondition(String rule) implements ResourceCondition {
             case "craftableSaddle" -> CarpetTNGSetting.craftableSaddle;
             case "craftableNameTag" -> CarpetTNGSetting.craftableNameTag;
             case "craftableBell" -> CarpetTNGSetting.craftableBell;
+            case "craftableStringFromWool" -> CarpetTNGSetting.craftableStringFromWool;
             default -> false;
         };
     }

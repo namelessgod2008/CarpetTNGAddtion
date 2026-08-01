@@ -32,5 +32,8 @@ public class CraftingMenuMixin {
         if (result.is(Items.BELL) && !CarpetTNGSetting.craftableBell) {
             resultContainer.setItem(0, ItemStack.EMPTY);
         }
+        if (result.is(Items.STRING) && !CarpetTNGSetting.craftableStringFromWool) {
+            resultContainer.setItem(0, ItemStack.EMPTY);
+        }
     }
 }

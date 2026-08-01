@@ -26,7 +26,13 @@
 		]
 	},
 	"mixins": [
-		"carpettngaddtion.mixins.json"
+		"carpettngaddtion.recipe.mixins.json",
+		"carpettngaddtion.dispenser.mixins.json",
+		"carpettngaddtion.apple.mixins.json",
+		"carpettngaddtion.amethyst.mixins.json",
+		"carpettngaddtion.suspicious.mixins.json",
+		"carpettngaddtion.trialspawner.mixins.json",
+		"carpettngaddtion.potion.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.3",

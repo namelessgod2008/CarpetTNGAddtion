@@ -1,0 +1,17 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "carpettngaddtion:rule_enabled",
+      "rule": "craftableStringFromWool"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#minecraft:wool"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:string"
+  }
+}

@@ -1,12 +1,24 @@
 {
   "carpet.rule.bedrockCauldronTippedArrows.desc": "Pour potions into empty cauldrons and dip arrows to create tipped arrows, just like in Bedrock Edition. One potion bottle = 16 arrows.",
   "carpet.rule.bedrockCauldronTippedArrows.name": "Bedrock Cauldron Tipped Arrows",
+  "carpet.rule.brewableOminousPotion.desc": "Brew awkward potion with a totem of undying for Ominous Potion I; upgrade with glowstone dust up to level V. Duration stays 1h40m (Bad Omen), same as vanilla.",
+  "carpet.rule.brewableOminousPotion.name": "Brewable Ominous Potion",
   "carpet.rule.craftableBell.desc": "Adds a crafting recipe for the bell.",
   "carpet.rule.craftableBell.name": "Craftable Bell",
   "carpet.rule.craftableNameTag.desc": "Adds a crafting recipe for the name tag.",
   "carpet.rule.craftableNameTag.name": "Craftable Name Tag",
   "carpet.rule.craftableSaddle.desc": "Adds a crafting recipe for the saddle.",
   "carpet.rule.craftableSaddle.name": "Craftable Saddle",
+  "carpet.rule.craftableStringFromWool.desc": "Adds a crafting recipe to convert wool back into string (1 wool = 4 string).",
+  "carpet.rule.craftableStringFromWool.name": "Craftable String From Wool",
   "carpet.rule.dispenserPlanting.desc": "Dispensers shoot seeds in a straight line; seeds turn into crop sprouts when hitting farmland.",
-  "carpet.rule.dispenserPlanting.name": "Dispenser Planting"
+  "carpet.rule.dispenserPlanting.name": "Dispenser Planting",
+  "carpet.rule.legacyEnchantedGoldenApple.desc": "Restores the pre-1.9 enchanted golden apple Regeneration V (30s) effect, replacing Regeneration II (20s). Other effects stay as in the new version.",
+  "carpet.rule.legacyEnchantedGoldenApple.name": "Legacy Enchanted Golden Apple",
+  "carpet.rule.shortenedTrialSpawnerCooldown.desc": "Shortens the trial spawner cooldown to 5 minutes (instead of the vanilla 30 minutes).",
+  "carpet.rule.shortenedTrialSpawnerCooldown.name": "Shortened Trial Spawner Cooldown",
+  "carpet.rule.silkTouchBuddingAmethyst.desc": "Allows collecting budding amethyst blocks with a Silk Touch tool.",
+  "carpet.rule.silkTouchBuddingAmethyst.name": "Silk Touch Budding Amethyst",
+  "carpet.rule.silkTouchSuspiciousBlocks.desc": "Allows collecting suspicious sand and gravel with a Silk Touch tool.",
+  "carpet.rule.silkTouchSuspiciousBlocks.name": "Silk Touch Suspicious Blocks"
 }

@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.namelessgod2008.feature.potion.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"BrewingStandMixin",
+		"BrewingStandMenuMixin",
+		"PotionBrewingMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
