@@ -95,4 +95,15 @@ public class CarpetTNGSetting {
 
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean constantHighEnderDragonXp = false;
+
+    // ==================== 铁砧 ====================
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean removeAnvilTooExpensive = false;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean cheapAnvilRename = false;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean durableAnvil = false;
 }

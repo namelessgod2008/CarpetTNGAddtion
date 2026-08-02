@@ -22,6 +22,9 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `shortenedPiglinBarterCooldown` | 缩短猪灵交易冷却（119/89/59/29/0 tick） | feature, TNG, survival |
 | `neutralPiglins` | 完全中立猪灵（不主动攻击无金甲玩家） | feature, TNG, survival |
 | `constantHighEnderDragonXp` | 持续高经验打龙（重复击杀也掉 12000 经验） | feature, TNG, survival |
+| `removeAnvilTooExpensive` | 移除铁砧过于昂贵（费用 ≥40 级仍可操作） | feature, TNG, survival |
+| `cheapAnvilRename` | 铁砧低价改名（改名恒 1 级，免疫过于昂贵） | feature, TNG, survival |
+| `durableAnvil` | 耐用的铁砧（使用操作不损坏铁砧） | feature, TNG, survival |
 | `legacyEnchantedGoldenApple` | 旧版附魔金苹果再生 V（30 秒） | porting, TNG |
 | `silkTouchBuddingAmethyst` | 精准采集紫水晶母岩 | TNG, survival |
 | `silkTouchSuspiciousBlocks` | 精准采集可疑沙/砂砾 | TNG, survival |
@@ -84,6 +87,21 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `shortenedPiglinBarterCooldown`：设置猪灵交易前欣赏金锭的时长，原版 119 tick（约 6 秒）→ 89/59/29 tick，0 为立即交易
 - 被玩家攻击的 20 秒禁交易（ADMIRING_DISABLED）不受影响
+
+### 移除铁砧过于昂贵
+
+- `removeAnvilTooExpensive`：铁砧修复/附魔/重命名费用达到 40 级后不再显示"过于昂贵"，操作仍可进行
+- 机制：原版 `AnvilMenu.createResult` 在 `cost >= 40` 时清空结果，规则开启时跳过该判定；仅重命名的费用 cap（39 级）保持原版
+
+### 铁砧低价改名
+
+- `cheapAnvilRename`：在铁砧中修改物品名称始终只消耗 1 级经验，且不会被"过于昂贵"拦截（费用恒 1 < 40）
+- 仅纯改名操作生效（不涉及修复/附魔时改名）
+
+### 耐用的铁砧
+
+- `durableAnvil`：使用铁砧（修复、附魔、改名）不再使其损坏（原版 12% 概率降一级）
+- 铁砧仍可被物理破坏（挖掘掉落、重力砸落等原版行为不变）
 
 ### 持续高经验打龙
 

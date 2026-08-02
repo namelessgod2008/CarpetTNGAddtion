@@ -54,6 +54,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.constantHighEnderDragonXp.name", "Constant High Ender Dragon XP");
             builder.add("carpet.rule.constantHighEnderDragonXp.desc",
                     "Killing the ender dragon always drops the first-kill experience amount (12000) instead of the reduced 500 on repeat kills.");
+            builder.add("carpet.rule.removeAnvilTooExpensive.name", "Remove Anvil Too Expensive");
+            builder.add("carpet.rule.removeAnvilTooExpensive.desc",
+                    "Anvil operations (repair, enchant, rename) no longer become 'Too Expensive' when the cost reaches 40 levels; they remain available.");
+            builder.add("carpet.rule.cheapAnvilRename.name", "Cheap Anvil Rename");
+            builder.add("carpet.rule.cheapAnvilRename.desc",
+                    "Renaming an item in the anvil always costs only 1 experience level, and cannot be blocked by 'Too Expensive'.");
+            builder.add("carpet.rule.durableAnvil.name", "Durable Anvil");
+            builder.add("carpet.rule.durableAnvil.desc",
+                    "Using the anvil (repair, enchant, rename) no longer damages it; the anvil can still be broken physically.");
             builder.add("carpet.rule.craftableStringFromWool.name", "Craftable String From Wool");
             builder.add("carpet.rule.craftableStringFromWool.desc",
                     "Adds a crafting recipe to convert wool back into string (1 wool = 4 string).");
@@ -121,6 +130,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.constantHighEnderDragonXp.name", "持续高经验打龙");
             builder.add("carpet.rule.constantHighEnderDragonXp.desc",
                     "击杀末影龙始终掉落首次击杀的经验量（12000），而非重复击杀的 500。");
+            builder.add("carpet.rule.removeAnvilTooExpensive.name", "移除铁砧过于昂贵");
+            builder.add("carpet.rule.removeAnvilTooExpensive.desc",
+                    "铁砧的修复、附魔、重命名费用达到 40 级后不再显示'过于昂贵'，仍可进行操作。");
+            builder.add("carpet.rule.cheapAnvilRename.name", "铁砧低价改名");
+            builder.add("carpet.rule.cheapAnvilRename.desc",
+                    "在铁砧中修改物品名称始终只消耗 1 级经验，且不会被'过于昂贵'拦截。");
+            builder.add("carpet.rule.durableAnvil.name", "耐用的铁砧");
+            builder.add("carpet.rule.durableAnvil.desc",
+                    "使用铁砧进行修复、附魔、改名等操作不再使铁砧损坏；铁砧仍可被物理破坏。");
             builder.add("carpet.rule.craftableStringFromWool.name", "羊毛合成线");
             builder.add("carpet.rule.craftableStringFromWool.desc", "添加羊毛合成线的配方（1 羊毛 = 4 线）。");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.name", "旧版附魔金苹果生命恢复");
