@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * 让发射器喷出的种子沿直线轨道飞行，碰到耕地时种植作物。
+ * 让发射器喷出的种子沿直线轨道飞行，碰到目标方块（耕地/灵魂沙）时种植作物。
  * <p>
  * 关键：原版 {@code ItemEntity.tick} 服务端会检查实体与方块重叠并
  * {@code moveTowardsClosestSpace} 把实体推开（悬停在耕地层内的种子会被
@@ -111,22 +111,24 @@ public abstract class ItemEntityMixin implements PlantingSeedAccessor {
         }
     }
 
-    /** 种子所在格为空气/可替换，其下方是耕地 → 种在种子所在格。 */
+    /** 种子所在格为空气/可替换，其下方是目标方块（耕地/灵魂沙）→ 种在种子所在格。 */
     private static boolean tryPlant(Level level, BlockPos pos, ItemEntity seed, CompoundTag data) {
         BlockState state = level.getBlockState(pos);
         BlockState below = level.getBlockState(pos.below());
-        if (below.is(Blocks.FARMLAND) && state.canBeReplaced()) {
+        if (below.is(DispenserPlantingHandler.getBlock(data.getString(DispenserPlantingHandler.KEY_TARGET)))
+                && state.canBeReplaced()) {
             plant(level, pos, seed, data);
             return true;
         }
         return false;
     }
 
-    /** 种子所在格本身是耕地 → 种在其上方一格。 */
+    /** 种子所在格本身是目标方块（耕地/灵魂沙）→ 种在其上方一格。 */
     private static boolean tryPlantBelow(Level level, BlockPos pos, ItemEntity seed, CompoundTag data) {
         BlockState state = level.getBlockState(pos);
         BlockState above = level.getBlockState(pos.above());
-        if (state.is(Blocks.FARMLAND) && above.canBeReplaced()) {
+        if (state.is(DispenserPlantingHandler.getBlock(data.getString(DispenserPlantingHandler.KEY_TARGET)))
+                && above.canBeReplaced()) {
             plant(level, pos.above(), seed, data);
             return true;
         }
@@ -134,7 +136,7 @@ public abstract class ItemEntityMixin implements PlantingSeedAccessor {
     }
 
     private static void plant(Level level, BlockPos pos, ItemEntity seed, CompoundTag data) {
-        Block crop = DispenserPlantingHandler.getCrop(data.getString(DispenserPlantingHandler.KEY_CROP));
+        Block crop = DispenserPlantingHandler.getBlock(data.getString(DispenserPlantingHandler.KEY_CROP));
         if (crop != null) {
             level.setBlock(pos, crop.defaultBlockState(), 3);
             level.playSound(null, pos, SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1.0f, 1.0f);

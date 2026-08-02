@@ -4,6 +4,8 @@ import carpet.CarpetServer;
 import carpet.api.settings.SettingsManager;
 import com.namelessgod2008.feature.cauldron.CauldronArrowHandler;
 import com.namelessgod2008.feature.dispenser.DispenserPlantingHandler;
+import com.namelessgod2008.feature.gourd.BonemealGourdHandler;
+import com.namelessgod2008.feature.wart.NetherWartBlazeHandler;
 import com.namelessgod2008.setting.RuleEnabledCondition;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.ResourceLocation;
@@ -31,11 +33,14 @@ public class CarpetTNGAddtion implements ModInitializer {
 
 		// When a recipe rule changes, reload data packs so the conditional
 		// recipes are (de)registered and synced to clients (REI included).
+		// Skip during server startup: config-driven rule changes fire while
+		// data packs / Carpet's script server are not ready yet (reloadResources
+		// would NPE and is pointless anyway — recipes read rule states when loaded).
 		SettingsManager.registerGlobalRuleObserver((source, rule, userInput) -> {
 			String name = rule.name();
 			if (name.equals("craftableSaddle") || name.equals("craftableNameTag") || name.equals("craftableBell")) {
 				MinecraftServer server = source != null ? source.getServer() : null;
-				if (server != null) {
+				if (server != null && server.getTickCount() > 0) {
 					server.reloadResources(server.getPackRepository().getSelectedIds())
 							.exceptionally(e -> {
 								LOGGER.error("Failed to reload resources after rule change: {}", name, e);
@@ -48,6 +53,8 @@ public class CarpetTNGAddtion implements ModInitializer {
 		CarpetServer.manageExtension(new CarpetTNGExtension());
 		CauldronArrowHandler.register();
 		DispenserPlantingHandler.register();
+		NetherWartBlazeHandler.register();
+		BonemealGourdHandler.register();
 	}
 
 	public static ResourceLocation id(String path) {

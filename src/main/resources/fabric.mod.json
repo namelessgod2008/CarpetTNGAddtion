@@ -3,13 +3,13 @@
 	"id": "carpettngaddtion",
 	"version": "${version}",
 	"name": "CarpetTNGAddtion",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Carpet addon for Minecraft 1.21.4,add features about dispenser planting, trial cooldown, ominous potion. All rules default off, /carpet toggles.",
 	"authors": [
-		"Me!"
+		"namelessgod2008"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/namelessgod2008/CarpetTNGAddtion",
+		"sources": "https://github.com/namelessgod2008/CarpetTNGAddtion"
 	},
 	"license": "MIT",
 	"icon": "assets/carpettngaddtion/icon.png",

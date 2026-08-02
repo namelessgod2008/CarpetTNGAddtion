@@ -18,25 +18,35 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.entity.item.ItemEntity;
 
 import java.util.Map;
+import java.util.function.BooleanSupplier;
 
 /**
  * 发射器种植：红石激活发射器时，种子以实体形式沿直线轨道飞行，
- * 碰到耕地变为作物幼苗；未碰到耕地则落地成为可拾取的普通掉落物。
+ * 碰到目标方块（耕地/灵魂沙）变为对应作物；未碰到则落地成为可拾取的普通掉落物。
  * <p>
+ * 三种规则共用同一飞行机制，按种子查表决定所属规则、目标方块与作物：
+ * <ul>
+ *   <li>dispenserPlanting：小麦、甜菜、胡萝卜、马铃薯 → 耕地</li>
+ *   <li>dispenserPlantingGourds：西瓜、南瓜 → 耕地</li>
+ *   <li>dispenserPlantingNetherWart：地狱疣 → 灵魂沙</li>
+ * </ul>
  * 规则开启时始终走本功能路径（不回退原版喷出）。
  * 飞行数据存于实体（见 {@link PlantingSeedAccessor}），物品本身无 NBT。
  */
 public class DispenserPlantingHandler {
 
-    /** 种子 -> 作物幼苗映射。 */
-    private static final Map<Item, Block> SEED_TO_CROP = Map.of(
-            Items.WHEAT_SEEDS, Blocks.WHEAT,
-            Items.CARROT, Blocks.CARROTS,
-            Items.POTATO, Blocks.POTATOES,
-            Items.BEETROOT_SEEDS, Blocks.BEETROOTS,
-            Items.MELON_SEEDS, Blocks.MELON_STEM,
-            Items.PUMPKIN_SEEDS, Blocks.PUMPKIN_STEM
+    /** 种子 -> 种植信息（所属规则开关、目标方块、作物）。 */
+    private static final Map<Item, PlantingEntry> SEED_TO_PLANTING = Map.of(
+            Items.WHEAT_SEEDS, new PlantingEntry(() -> CarpetTNGSetting.dispenserPlanting, Blocks.FARMLAND, Blocks.WHEAT),
+            Items.CARROT, new PlantingEntry(() -> CarpetTNGSetting.dispenserPlanting, Blocks.FARMLAND, Blocks.CARROTS),
+            Items.POTATO, new PlantingEntry(() -> CarpetTNGSetting.dispenserPlanting, Blocks.FARMLAND, Blocks.POTATOES),
+            Items.BEETROOT_SEEDS, new PlantingEntry(() -> CarpetTNGSetting.dispenserPlanting, Blocks.FARMLAND, Blocks.BEETROOTS),
+            Items.MELON_SEEDS, new PlantingEntry(() -> CarpetTNGSetting.dispenserPlantingGourds, Blocks.FARMLAND, Blocks.MELON_STEM),
+            Items.PUMPKIN_SEEDS, new PlantingEntry(() -> CarpetTNGSetting.dispenserPlantingGourds, Blocks.FARMLAND, Blocks.PUMPKIN_STEM),
+            Items.NETHER_WART, new PlantingEntry(() -> CarpetTNGSetting.dispenserPlantingNetherWart, Blocks.SOUL_SAND, Blocks.NETHER_WART)
     );
+
+    private record PlantingEntry(BooleanSupplier rule, Block target, Block crop) {}
 
     /** 直线飞行速度（格/tick）。 */
     public static final double SPEED = 0.6;
@@ -48,22 +58,24 @@ public class DispenserPlantingHandler {
     public static final String KEY_DZ = "plant_dz";
     public static final String KEY_TICKS = "plant_ticks";
     public static final String KEY_CROP = "plant_crop";
+    public static final String KEY_TARGET = "plant_target";
 
     public static void register() {
         DispenseItemBehavior behavior = new SeedPlantingDispenseBehavior();
-        for (Item seed : SEED_TO_CROP.keySet()) {
+        for (Item seed : SEED_TO_PLANTING.keySet()) {
             DispenserBlock.registerBehavior(seed, behavior);
         }
     }
 
-    public static Block getCrop(String id) {
+    public static Block getBlock(String id) {
         return BuiltInRegistries.BLOCK.getValue(net.minecraft.resources.ResourceLocation.parse(id));
     }
 
     private static class SeedPlantingDispenseBehavior extends OptionalDispenseItemBehavior {
         @Override
         protected ItemStack execute(BlockSource pointer, ItemStack stack) {
-            if (!CarpetTNGSetting.dispenserPlanting) {
+            PlantingEntry entry = SEED_TO_PLANTING.get(stack.getItem());
+            if (entry == null || !entry.rule().getAsBoolean()) {
                 return super.execute(pointer, stack);
             }
 
@@ -88,7 +100,8 @@ public class DispenserPlantingHandler {
             flight.putDouble(KEY_DY, facing.getStepY() * SPEED);
             flight.putDouble(KEY_DZ, facing.getStepZ() * SPEED);
             flight.putInt(KEY_TICKS, 0);
-            flight.putString(KEY_CROP, BuiltInRegistries.BLOCK.getKey(SEED_TO_CROP.get(seed.getItem())).toString());
+            flight.putString(KEY_CROP, BuiltInRegistries.BLOCK.getKey(entry.crop()).toString());
+            flight.putString(KEY_TARGET, BuiltInRegistries.BLOCK.getKey(entry.target()).toString());
             ((PlantingSeedAccessor) entity).carpettng$setPlantingData(flight);
 
             level.addFreshEntity(entity);
