@@ -51,6 +51,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.neutralPiglins.name", "Neutral Piglins");
             builder.add("carpet.rule.neutralPiglins.desc",
                     "Piglins no longer proactively attack players who are not wearing gold armor, but the pack-aggression mechanic (e.g. after you attack a piglin or a piglin brute) still works as vanilla.");
+            builder.add("carpet.rule.constantHighEnderDragonXp.name", "Constant High Ender Dragon XP");
+            builder.add("carpet.rule.constantHighEnderDragonXp.desc",
+                    "Killing the ender dragon always drops the first-kill experience amount (12000) instead of the reduced 500 on repeat kills.");
             builder.add("carpet.rule.craftableStringFromWool.name", "Craftable String From Wool");
             builder.add("carpet.rule.craftableStringFromWool.desc",
                     "Adds a crafting recipe to convert wool back into string (1 wool = 4 string).");
@@ -115,6 +118,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.neutralPiglins.name", "完全中立猪灵");
             builder.add("carpet.rule.neutralPiglins.desc",
                     "猪灵不再主动攻击未穿金护甲的玩家；但群起而攻之的仇恨机制（如攻击猪灵或猪灵蛮兵后）保持原版。");
+            builder.add("carpet.rule.constantHighEnderDragonXp.name", "持续高经验打龙");
+            builder.add("carpet.rule.constantHighEnderDragonXp.desc",
+                    "击杀末影龙始终掉落首次击杀的经验量（12000），而非重复击杀的 500。");
             builder.add("carpet.rule.craftableStringFromWool.name", "羊毛合成线");
             builder.add("carpet.rule.craftableStringFromWool.desc", "添加羊毛合成线的配方（1 羊毛 = 4 线）。");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.name", "旧版附魔金苹果生命恢复");

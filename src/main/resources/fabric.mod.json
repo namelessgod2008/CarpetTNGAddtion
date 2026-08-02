@@ -34,7 +34,8 @@
 		"carpettngaddtion.trialspawner.mixins.json",
 		"carpettngaddtion.potion.mixins.json",
 		"carpettngaddtion.obsidian.mixins.json",
-		"carpettngaddtion.piglin.mixins.json"
+		"carpettngaddtion.piglin.mixins.json",
+		"carpettngaddtion.enderdragon.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.3",

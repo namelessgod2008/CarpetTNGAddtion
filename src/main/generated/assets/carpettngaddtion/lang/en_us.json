@@ -7,6 +7,8 @@
   "carpet.rule.bonemealGourdFruit.name": "Bonemeal Gourd Fruit",
   "carpet.rule.brewableOminousPotion.desc": "Brew awkward potion with a totem of undying for Ominous Potion I; upgrade with glowstone dust up to level V. Duration stays 1h40m (Bad Omen), same as vanilla.",
   "carpet.rule.brewableOminousPotion.name": "Brewable Ominous Potion",
+  "carpet.rule.constantHighEnderDragonXp.desc": "Killing the ender dragon always drops the first-kill experience amount (12000) instead of the reduced 500 on repeat kills.",
+  "carpet.rule.constantHighEnderDragonXp.name": "Constant High Ender Dragon XP",
   "carpet.rule.craftableBell.desc": "Adds a crafting recipe for the bell.",
   "carpet.rule.craftableBell.name": "Craftable Bell",
   "carpet.rule.craftableNameTag.desc": "Adds a crafting recipe for the name tag.",

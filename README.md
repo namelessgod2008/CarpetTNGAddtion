@@ -18,12 +18,13 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `dispenserPlantingNetherWart` | 发射器种植地狱疣（命中灵魂沙种下） | feature, TNG, dispenser |
 | `bonemealGourdFruit` | 骨粉产瓜（成熟瓜苗按概率结瓜，0 禁用~1 必结） | feature, TNG, survival |
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
-| `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG, survival |
+| `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
 | `shortenedPiglinBarterCooldown` | 缩短猪灵交易冷却（119/89/59/29/0 tick） | feature, TNG, survival |
 | `neutralPiglins` | 完全中立猪灵（不主动攻击无金甲玩家） | feature, TNG, survival |
+| `constantHighEnderDragonXp` | 持续高经验打龙（重复击杀也掉 12000 经验） | feature, TNG, survival |
 | `legacyEnchantedGoldenApple` | 旧版附魔金苹果再生 V（30 秒） | porting, TNG |
-| `silkTouchBuddingAmethyst` | 精准采集紫水晶母岩 | feature, TNG, survival |
-| `silkTouchSuspiciousBlocks` | 精准采集可疑沙/砂砾 | feature, TNG, survival |
+| `silkTouchBuddingAmethyst` | 精准采集紫水晶母岩 | TNG, survival |
+| `silkTouchSuspiciousBlocks` | 精准采集可疑沙/砂砾 | TNG, survival |
 | `shortenedTrialSpawnerCooldown` | 试炼刷怪笼冷却缩短为 5 分钟 | feature, TNG, survival |
 | `brewableOminousPotion` | 灾厄药水酿造（图腾 + 萤石，I–V 级） | feature, TNG, survival |
 | `blazePowderNetherWartGrowth` | 烈焰粉催熟地狱疣（右键 +1 级） | feature, TNG, survival |
@@ -83,6 +84,11 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `shortenedPiglinBarterCooldown`：设置猪灵交易前欣赏金锭的时长，原版 119 tick（约 6 秒）→ 89/59/29 tick，0 为立即交易
 - 被玩家攻击的 20 秒禁交易（ADMIRING_DISABLED）不受影响
+
+### 持续高经验打龙
+
+- `constantHighEnderDragonXp`：击杀末影龙始终掉落首次击杀的经验量（12000），而非重复击杀的 500
+- 机制：原版 `EnderDragon.tickDeath` 按 `dragonFight.hasPreviouslyKilledDragon()` 判定经验量，规则开启时恒按首次击杀计算
 
 ### 完全中立猪灵
 

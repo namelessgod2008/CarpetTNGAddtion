@@ -7,6 +7,8 @@
   "carpet.rule.bonemealGourdFruit.name": "骨粉产瓜",
   "carpet.rule.brewableOminousPotion.desc": "用不死图腾酿造粗制的药水获得 1 级灾厄药水，用萤石粉继续酿造可提升等级（最多 5 级），持续时间始终为 1 小时 40 分钟（不祥之兆），与原版一致。",
   "carpet.rule.brewableOminousPotion.name": "灾厄药水酿造",
+  "carpet.rule.constantHighEnderDragonXp.desc": "击杀末影龙始终掉落首次击杀的经验量（12000），而非重复击杀的 500。",
+  "carpet.rule.constantHighEnderDragonXp.name": "持续高经验打龙",
   "carpet.rule.craftableBell.desc": "添加钟的合成配方。",
   "carpet.rule.craftableBell.name": "钟合成",
   "carpet.rule.craftableNameTag.desc": "添加命名牌的合成配方。",
