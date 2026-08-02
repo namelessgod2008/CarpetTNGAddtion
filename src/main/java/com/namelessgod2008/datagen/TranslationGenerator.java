@@ -42,6 +42,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dispenserGourdFruit.name", "Dispenser Gourd Fruit");
             builder.add("carpet.rule.dispenserGourdFruit.desc",
                     "Dispensers facing a mature melon or pumpkin stem use bone meal on it, growing a fruit with the Bonemeal Gourd Fruit chance. Requires the Bonemeal Gourd Fruit rule.");
+            builder.add("carpet.rule.reinforcedObsidian.name", "Reinforced Obsidian");
+            builder.add("carpet.rule.reinforcedObsidian.desc",
+                    "Obsidian becomes immune to the Wither's block-breaking burst (the one it emits after taking damage); the Wither can no longer destroy obsidian. Regular explosions already cannot break obsidian.");
+            builder.add("carpet.rule.shortenedPiglinBarterCooldown.name", "Shortened Piglin Barter Cooldown");
+            builder.add("carpet.rule.shortenedPiglinBarterCooldown.desc",
+                    "Sets how many ticks a piglin admires a gold ingot before bartering. Vanilla is 119 ticks; 0 makes bartering instant. Options: 119, 89, 59, 29, 0.");
+            builder.add("carpet.rule.neutralPiglins.name", "Neutral Piglins");
+            builder.add("carpet.rule.neutralPiglins.desc",
+                    "Piglins no longer proactively attack players who are not wearing gold armor, but the pack-aggression mechanic (e.g. after you attack a piglin or a piglin brute) still works as vanilla.");
             builder.add("carpet.rule.craftableStringFromWool.name", "Craftable String From Wool");
             builder.add("carpet.rule.craftableStringFromWool.desc",
                     "Adds a crafting recipe to convert wool back into string (1 wool = 4 string).");
@@ -97,6 +106,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dispenserGourdFruit.name", "发射器骨粉催瓜产果");
             builder.add("carpet.rule.dispenserGourdFruit.desc",
                     "发射器正对成熟的西瓜/南瓜瓜苗喷射骨粉，按骨粉产瓜规则的概率结出果实。需先开启骨粉产瓜规则。");
+            builder.add("carpet.rule.reinforcedObsidian.name", "坚固黑曜石");
+            builder.add("carpet.rule.reinforcedObsidian.desc",
+                    "黑曜石免疫凋零的主动方块破坏（凋零受击后的破坏冲击），凋零不再能破坏黑曜石。普通爆炸本就无法破坏黑曜石。");
+            builder.add("carpet.rule.shortenedPiglinBarterCooldown.name", "缩短猪灵交易冷却");
+            builder.add("carpet.rule.shortenedPiglinBarterCooldown.desc",
+                    "设置猪灵交易前欣赏金锭的时长（tick）。原版为 119 tick，0 为立即交易。可选：119、89、59、29、0。");
+            builder.add("carpet.rule.neutralPiglins.name", "完全中立猪灵");
+            builder.add("carpet.rule.neutralPiglins.desc",
+                    "猪灵不再主动攻击未穿金护甲的玩家；但群起而攻之的仇恨机制（如攻击猪灵或猪灵蛮兵后）保持原版。");
             builder.add("carpet.rule.craftableStringFromWool.name", "羊毛合成线");
             builder.add("carpet.rule.craftableStringFromWool.desc", "添加羊毛合成线的配方（1 羊毛 = 4 线）。");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.name", "旧版附魔金苹果生命恢复");

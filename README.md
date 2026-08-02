@@ -18,6 +18,9 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `dispenserPlantingNetherWart` | 发射器种植地狱疣（命中灵魂沙种下） | feature, TNG, dispenser |
 | `bonemealGourdFruit` | 骨粉产瓜（成熟瓜苗按概率结瓜，0 禁用~1 必结） | feature, TNG, survival |
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
+| `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG, survival |
+| `shortenedPiglinBarterCooldown` | 缩短猪灵交易冷却（119/89/59/29/0 tick） | feature, TNG, survival |
+| `neutralPiglins` | 完全中立猪灵（不主动攻击无金甲玩家） | feature, TNG, survival |
 | `legacyEnchantedGoldenApple` | 旧版附魔金苹果再生 V（30 秒） | porting, TNG |
 | `silkTouchBuddingAmethyst` | 精准采集紫水晶母岩 | feature, TNG, survival |
 | `silkTouchSuspiciousBlocks` | 精准采集可疑沙/砂砾 | feature, TNG, survival |
@@ -75,6 +78,21 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `blazePowderNetherWartGrowth`：手持烈焰粉右键地狱疣推进一个生长阶段（原版骨粉对地狱疣无效）
 - `dispenserNetherWartGrowth`：发射器正对地狱疣喷射烈焰粉推进一个生长阶段，可与发射器种植联动做自动化农场；需先开启 `blazePowderNetherWartGrowth` 才生效
+
+### 缩短猪灵交易冷却
+
+- `shortenedPiglinBarterCooldown`：设置猪灵交易前欣赏金锭的时长，原版 119 tick（约 6 秒）→ 89/59/29 tick，0 为立即交易
+- 被玩家攻击的 20 秒禁交易（ADMIRING_DISABLED）不受影响
+
+### 完全中立猪灵
+
+- `neutralPiglins`：猪灵不再主动攻击未穿金护甲的玩家
+- 群起而攻之的仇恨机制保留原版：攻击猪灵/猪灵蛮兵后（ANGRY_AT、猪灵蛮兵目标）仍会遭群体反击
+
+### 坚固黑曜石
+
+- `reinforcedObsidian`：黑曜石免疫凋零的主动方块破坏（凋零受击后的破坏冲击），凋零不再能破坏黑曜石
+- 机制说明：原版爆炸（强度 7）本就破不了黑曜石（抗性 1200），破坏来自凋零每 20 tick 的主动清方块（`canDestroy` 只看 `WITHER_IMMUNE` tag）
 
 ### 骨粉产瓜
 

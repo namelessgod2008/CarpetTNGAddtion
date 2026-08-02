@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -123,13 +124,13 @@ public class BonemealGourdHandler {
         }
     }
 
-    /** 发射器行为：对正前方成熟瓜苗喷骨粉，按骨粉产瓜概率结瓜；目标不匹配时回退原版弹出。 */
+    /** 发射器行为：对正前方成熟瓜苗喷骨粉，按骨粉产瓜概率结瓜；否则回退原版骨粉行为。 */
     private static class DispenserGourdBehavior extends OptionalDispenseItemBehavior {
         @Override
         protected ItemStack execute(BlockSource pointer, ItemStack stack) {
             // 发射器产瓜依赖：发射器规则开启 且 骨粉产瓜概率 > 0
             if (!CarpetTNGSetting.dispenserGourdFruit || CarpetTNGSetting.bonemealGourdFruit <= 0.0) {
-                return super.execute(pointer, stack);
+                return vanillaBonemealBehavior(pointer, stack);
             }
 
             Level world = pointer.level();
@@ -143,8 +144,28 @@ public class BonemealGourdHandler {
                 setSuccess(true);
                 return stack;
             }
-            // 目标不是可催熟成熟瓜苗（或四方向卡死）：回退原版弹出骨粉
-            return super.execute(pointer, stack);
+            // 目标不是可催熟成熟瓜苗（或四方向卡死）：回退原版骨粉行为
+            return vanillaBonemealBehavior(pointer, stack);
+        }
+
+        /**
+         * 复刻原版发射器骨粉行为（DispenseItemBehavior.java:264）：骨粉不弹出，
+         * 对前方方块尝试催熟/催水草；失败则失败音效且不消耗（留在发射器）。
+         * 不能用 super.execute（会弹出骨粉），也不能缓存原版 behavior 引用
+         * （DispenseItemBehavior 接口静态块加载时机不可控）。
+         */
+        private ItemStack vanillaBonemealBehavior(BlockSource pointer, ItemStack stack) {
+            Level level = pointer.level();
+            BlockPos target = pointer.pos().relative(pointer.state().getValue(DispenserBlock.FACING));
+            if (BoneMealItem.growCrop(stack, level, target) || BoneMealItem.growWaterPlant(stack, level, target, null)) {
+                if (!level.isClientSide) {
+                    level.levelEvent(1505, target, 15);
+                }
+                setSuccess(true);
+            } else {
+                setSuccess(false);
+            }
+            return stack;
         }
     }
 }

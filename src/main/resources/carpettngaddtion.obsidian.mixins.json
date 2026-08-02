@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.namelessgod2008.feature.obsidian.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"WitherBossMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

@@ -32,7 +32,9 @@
 		"carpettngaddtion.amethyst.mixins.json",
 		"carpettngaddtion.suspicious.mixins.json",
 		"carpettngaddtion.trialspawner.mixins.json",
-		"carpettngaddtion.potion.mixins.json"
+		"carpettngaddtion.potion.mixins.json",
+		"carpettngaddtion.obsidian.mixins.json",
+		"carpettngaddtion.piglin.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.3",
