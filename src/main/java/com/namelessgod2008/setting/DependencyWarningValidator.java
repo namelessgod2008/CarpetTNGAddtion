@@ -35,6 +35,12 @@ public class DependencyWarningValidator extends Validator<Boolean> {
                     : "发射器催熟地狱疣需要先启用烈焰粉催熟地狱疣规则（blazePowderNetherWartGrowth）才能生效";
             case "dispenserGourdFruit" -> CarpetTNGSetting.bonemealGourdFruit > 0.0 ? null
                     : "发射器骨粉催瓜产果需要先启用骨粉产瓜规则（bonemealGourdFruit）才能生效";
+            case "blazeStickFurnaceXp" -> CarpetTNGSetting.blazeStickDebug ? null
+                    : "烈焰棒掏炉渣需要先启用烈焰棒调试规则（blazeStickDebug）才能生效";
+            case "blazeStickSmokerXp" -> CarpetTNGSetting.blazeStickDebug ? null
+                    : "烈焰棒掏烟熏炉渣需要先启用烈焰棒调试规则（blazeStickDebug）才能生效";
+            case "blazeStickBlastFurnaceXp" -> CarpetTNGSetting.blazeStickDebug ? null
+                    : "烈焰棒掏高炉渣需要先启用烈焰棒调试规则（blazeStickDebug）才能生效";
             default -> null;
         };
     }

@@ -41,8 +41,9 @@ public abstract class AnvilMenuMixin {
         return CarpetTNGSetting.removeAnvilTooExpensive ? Math.min(cost, 39) : cost;
     }
 
+    // ordinal 1 = line 242 纯改名分支的 onlyRenaming = true（ordinal 0 是 createResult 开头的重置 = false，注入在那会被后续真实费用覆盖）
     @Inject(method = "createResult",
-            at = @At(value = "FIELD", target = "Lnet/minecraft/world/inventory/AnvilMenu;onlyRenaming:Z", ordinal = 0))
+            at = @At(value = "FIELD", target = "Lnet/minecraft/world/inventory/AnvilMenu;onlyRenaming:Z", ordinal = 1))
     private void cheapRename(CallbackInfo ci) {
         if (CarpetTNGSetting.cheapAnvilRename) {
             this.cost.set(1); // 纯改名分支内：费用恒 1 级，不受物品累计惩罚影响

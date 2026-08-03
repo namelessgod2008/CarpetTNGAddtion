@@ -45,9 +45,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.reinforcedObsidian.name", "Reinforced Obsidian");
             builder.add("carpet.rule.reinforcedObsidian.desc",
                     "Obsidian becomes immune to the Wither's block-breaking burst (the one it emits after taking damage); the Wither can no longer destroy obsidian. Regular explosions already cannot break obsidian.");
-            builder.add("carpet.rule.shortenedPiglinBarterCooldown.name", "Shortened Piglin Barter Cooldown");
-            builder.add("carpet.rule.shortenedPiglinBarterCooldown.desc",
-                    "Sets how many ticks a piglin admires a gold ingot before bartering. Vanilla is 119 ticks; 0 makes bartering instant. Options: 119, 89, 59, 29, 0.");
+            builder.add("carpet.rule.piglinBarterDisabledTime.name", "Custom Piglin Trade Disabled Time");
+            builder.add("carpet.rule.piglinBarterDisabledTime.desc",
+                    "Sets how long (in ticks) a piglin refuses to barter after being hit by a player. Vanilla is 400 ticks (20 seconds); 0 disables the refusal.");
             builder.add("carpet.rule.neutralPiglins.name", "Neutral Piglins");
             builder.add("carpet.rule.neutralPiglins.desc",
                     "Piglins no longer proactively attack players who are not wearing gold armor, but the pack-aggression mechanic (e.g. after you attack a piglin or a piglin brute) still works as vanilla.");
@@ -63,6 +63,21 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.durableAnvil.name", "Durable Anvil");
             builder.add("carpet.rule.durableAnvil.desc",
                     "Using the anvil (repair, enchant, rename) no longer damages it; the anvil can still be broken physically.");
+            builder.add("carpet.rule.durableFallingAnvil.name", "Durable Falling Anvil");
+            builder.add("carpet.rule.durableFallingAnvil.desc",
+                    "Falling anvils no longer get damaged when they hit the ground; they can still be broken physically.");
+            builder.add("carpet.rule.blazeStickDebug.name", "Blaze Stick Debug");
+            builder.add("carpet.rule.blazeStickDebug.desc",
+                    "Activates the special functions of the blaze rod; related blaze stick rules require this rule to be enabled.");
+            builder.add("carpet.rule.blazeStickFurnaceXp.name", "Blaze Stick Furnace XP");
+            builder.add("carpet.rule.blazeStickFurnaceXp.desc",
+                    "While holding a blaze rod, right-clicking a furnace does not open its GUI; instead it clears all accumulated furnace experience and spawns the XP orbs at the player's position. Requires the Blaze Stick Debug rule.");
+            builder.add("carpet.rule.blazeStickSmokerXp.name", "Blaze Stick Smoker XP");
+            builder.add("carpet.rule.blazeStickSmokerXp.desc",
+                    "While holding a blaze rod, right-clicking a smoker does not open its GUI; instead it clears all accumulated smoker experience and spawns the XP orbs at the player's position. Requires the Blaze Stick Debug rule.");
+            builder.add("carpet.rule.blazeStickBlastFurnaceXp.name", "Blaze Stick Blast Furnace XP");
+            builder.add("carpet.rule.blazeStickBlastFurnaceXp.desc",
+                    "While holding a blaze rod, right-clicking a blast furnace does not open its GUI; instead it clears all accumulated blast furnace experience and spawns the XP orbs at the player's position. Requires the Blaze Stick Debug rule.");
             builder.add("carpet.rule.craftableStringFromWool.name", "Craftable String From Wool");
             builder.add("carpet.rule.craftableStringFromWool.desc",
                     "Adds a crafting recipe to convert wool back into string (1 wool = 4 string).");
@@ -121,9 +136,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.reinforcedObsidian.name", "坚固黑曜石");
             builder.add("carpet.rule.reinforcedObsidian.desc",
                     "黑曜石免疫凋零的主动方块破坏（凋零受击后的破坏冲击），凋零不再能破坏黑曜石。普通爆炸本就无法破坏黑曜石。");
-            builder.add("carpet.rule.shortenedPiglinBarterCooldown.name", "缩短猪灵交易冷却");
-            builder.add("carpet.rule.shortenedPiglinBarterCooldown.desc",
-                    "设置猪灵交易前欣赏金锭的时长（tick）。原版为 119 tick，0 为立即交易。可选：119、89、59、29、0。");
+            builder.add("carpet.rule.piglinBarterDisabledTime.name", "自定义猪灵受击拒绝交易时间");
+            builder.add("carpet.rule.piglinBarterDisabledTime.desc",
+                    "设置猪灵被玩家攻击后拒绝交易的时间（tick）。原版为 400 tick（20 秒），0 为不拒绝。");
             builder.add("carpet.rule.neutralPiglins.name", "完全中立猪灵");
             builder.add("carpet.rule.neutralPiglins.desc",
                     "猪灵不再主动攻击未穿金护甲的玩家；但群起而攻之的仇恨机制（如攻击猪灵或猪灵蛮兵后）保持原版。");
@@ -139,6 +154,21 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.durableAnvil.name", "耐用的铁砧");
             builder.add("carpet.rule.durableAnvil.desc",
                     "使用铁砧进行修复、附魔、改名等操作不再使铁砧损坏；铁砧仍可被物理破坏。");
+            builder.add("carpet.rule.durableFallingAnvil.name", "耐摔的铁砧");
+            builder.add("carpet.rule.durableFallingAnvil.desc",
+                    "铁砧方块从高处掉落落地时不再因摔落而损坏；铁砧仍可被物理破坏。");
+            builder.add("carpet.rule.blazeStickDebug.name", "烈焰棒调试");
+            builder.add("carpet.rule.blazeStickDebug.desc",
+                    "激活烈焰棒的特殊功能；烈焰棒调试相关的规则都需要先开启本规则。");
+            builder.add("carpet.rule.blazeStickFurnaceXp.name", "烈焰棒掏炉渣");
+            builder.add("carpet.rule.blazeStickFurnaceXp.desc",
+                    "手持烈焰棒右键熔炉不会打开熔炉界面，而是清空熔炉积累的所有经验，经验球出现在玩家所在坐标。需先开启烈焰棒调试规则。");
+            builder.add("carpet.rule.blazeStickSmokerXp.name", "烈焰棒掏烟熏炉渣");
+            builder.add("carpet.rule.blazeStickSmokerXp.desc",
+                    "手持烈焰棒右键烟熏炉不会打开烟熏炉界面，而是清空烟熏炉积累的所有经验，经验球出现在玩家所在坐标。需先开启烈焰棒调试规则。");
+            builder.add("carpet.rule.blazeStickBlastFurnaceXp.name", "烈焰棒掏高炉渣");
+            builder.add("carpet.rule.blazeStickBlastFurnaceXp.desc",
+                    "手持烈焰棒右键高炉不会打开高炉界面，而是清空高炉积累的所有经验，经验球出现在玩家所在坐标。需先开启烈焰棒调试规则。");
             builder.add("carpet.rule.craftableStringFromWool.name", "羊毛合成线");
             builder.add("carpet.rule.craftableStringFromWool.desc", "添加羊毛合成线的配方（1 羊毛 = 4 线）。");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.name", "旧版附魔金苹果生命恢复");

@@ -19,12 +19,17 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `bonemealGourdFruit` | 骨粉产瓜（成熟瓜苗按概率结瓜，0 禁用~1 必结） | feature, TNG, survival |
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
-| `shortenedPiglinBarterCooldown` | 缩短猪灵交易冷却（119/89/59/29/0 tick） | feature, TNG, survival |
+| `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
 | `neutralPiglins` | 完全中立猪灵（不主动攻击无金甲玩家） | feature, TNG, survival |
 | `constantHighEnderDragonXp` | 持续高经验打龙（重复击杀也掉 12000 经验） | feature, TNG, survival |
 | `removeAnvilTooExpensive` | 移除铁砧过于昂贵（费用 ≥40 级仍可操作） | feature, TNG, survival |
 | `cheapAnvilRename` | 铁砧低价改名（改名恒 1 级，免疫过于昂贵） | feature, TNG, survival |
 | `durableAnvil` | 耐用的铁砧（使用操作不损坏铁砧） | feature, TNG, survival |
+| `durableFallingAnvil` | 耐摔的铁砧（掉落不损坏铁砧） | feature, TNG, survival |
+| `blazeStickDebug` | 烈焰棒调试（烈焰棒特殊功能总开关） | feature, TNG, survival |
+| `blazeStickFurnaceXp` | 烈焰棒掏炉渣（右键熔炉清经验，不掉 GUI） | feature, TNG, survival |
+| `blazeStickSmokerXp` | 烈焰棒掏烟熏炉渣（右键烟熏炉清经验） | feature, TNG, survival |
+| `blazeStickBlastFurnaceXp` | 烈焰棒掏高炉渣（右键高炉清经验） | feature, TNG, survival |
 | `legacyEnchantedGoldenApple` | 旧版附魔金苹果再生 V（30 秒） | porting, TNG |
 | `silkTouchBuddingAmethyst` | 精准采集紫水晶母岩 | TNG, survival |
 | `silkTouchSuspiciousBlocks` | 精准采集可疑沙/砂砾 | TNG, survival |
@@ -83,10 +88,10 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - `blazePowderNetherWartGrowth`：手持烈焰粉右键地狱疣推进一个生长阶段（原版骨粉对地狱疣无效）
 - `dispenserNetherWartGrowth`：发射器正对地狱疣喷射烈焰粉推进一个生长阶段，可与发射器种植联动做自动化农场；需先开启 `blazePowderNetherWartGrowth` 才生效
 
-### 缩短猪灵交易冷却
+### 自定义猪灵受击拒绝交易时间
 
-- `shortenedPiglinBarterCooldown`：设置猪灵交易前欣赏金锭的时长，原版 119 tick（约 6 秒）→ 89/59/29 tick，0 为立即交易
-- 被玩家攻击的 20 秒禁交易（ADMIRING_DISABLED）不受影响
+- `piglinBarterDisabledTime`：设置猪灵被玩家攻击后拒绝交易的时间（tick，自由数值），原版 400 tick（20 秒），0 为不拒绝
+- 模仿 ORG `customPiglinBarteringTime` 的自由数值实现方式
 
 ### 移除铁砧过于昂贵
 
@@ -98,10 +103,17 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - `cheapAnvilRename`：在铁砧中修改物品名称始终只消耗 1 级经验，且不会被"过于昂贵"拦截（费用恒 1 < 40）
 - 仅纯改名操作生效（不涉及修复/附魔时改名）
 
+### 烈焰棒调试
+
+- `blazeStickDebug`：烈焰棒特殊功能的总开关，相关规则（如 `blazeStickFurnaceXp`）需先开启本规则
+- `blazeStickFurnaceXp`（熔炉）/ `blazeStickSmokerXp`（烟熏炉）/ `blazeStickBlastFurnaceXp`（高炉）：手持烈焰棒右键对应方块不打开 GUI，清空积累的全部经验并作为经验球出现在玩家所在坐标（1.21.4 熔炉经验按配方计数存储，调用原版 `getRecipesToAwardAndPopExperience` + 手动清空计数）
+- **随时可掏**：方块持续烧炼会重新积累经验，每次右键都掏当前积累；每次掏出后计数清空，不会重复掉落
+
 ### 耐用的铁砧
 
 - `durableAnvil`：使用铁砧（修复、附魔、改名）不再使其损坏（原版 12% 概率降一级）
-- 铁砧仍可被物理破坏（挖掘掉落、重力砸落等原版行为不变）
+- `durableFallingAnvil`：铁砧方块从高处掉落落地时不再因摔落损坏（原版 5% + 每格 5%）
+- 铁砧仍可被物理破坏（挖掘掉落等原版行为不变）
 
 ### 持续高经验打龙
 

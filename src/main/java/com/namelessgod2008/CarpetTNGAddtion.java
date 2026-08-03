@@ -2,6 +2,7 @@ package com.namelessgod2008;
 
 import carpet.CarpetServer;
 import carpet.api.settings.SettingsManager;
+import com.namelessgod2008.feature.blazestick.BlazeStickFurnaceXpHandler;
 import com.namelessgod2008.feature.cauldron.CauldronArrowHandler;
 import com.namelessgod2008.feature.dispenser.DispenserPlantingHandler;
 import com.namelessgod2008.feature.gourd.BonemealGourdHandler;
@@ -55,6 +56,7 @@ public class CarpetTNGAddtion implements ModInitializer {
 		DispenserPlantingHandler.register();
 		NetherWartBlazeHandler.register();
 		BonemealGourdHandler.register();
+		BlazeStickFurnaceXpHandler.register();
 	}
 
 	public static ResourceLocation id(String path) {

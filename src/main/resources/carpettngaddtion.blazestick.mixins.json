@@ -1,10 +1,9 @@
 {
 	"required": true,
-	"package": "com.namelessgod2008.feature.anvil.mixin",
+	"package": "com.namelessgod2008.feature.blazestick.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"AnvilMenuMixin",
-		"FallingBlockEntityMixin"
+		"AbstractFurnaceBlockEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

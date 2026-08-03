@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
@@ -18,8 +18,8 @@ import java.util.Optional;
 /**
  * 猪灵相关规则（feature/piglin）：
  * <ul>
- *   <li>shortenedPiglinBarterCooldown：修改 {@code admireGoldItem} 的 ADMIRING_ITEM 记忆时长
- *       （原版 119 tick，挡位 119/89/59/29/0，0=立即交易；被玩家攻击的 400 tick 禁用不受影响）</li>
+ *   <li>piglinBarterDisabledTime：修改 {@code wasHurtBy} 的 ADMIRING_DISABLED 记忆时长
+ *       （原版 400 tick，被玩家攻击后拒绝交易的时间，自由数值）</li>
  *   <li>neutralPiglins：禁用 {@code findNearestValidAttackTarget} 的"无金甲玩家"分支——
  *       猪灵不再主动攻击未穿金护甲的玩家；ANGRY_AT/UNIVERSAL_ANGER/猪灵蛮兵分支保留（群起而攻之照旧）</li>
  * </ul>
@@ -27,10 +27,13 @@ import java.util.Optional;
 @Mixin(PiglinAi.class)
 public abstract class PiglinAiMixin {
 
-    @Inject(method = "admireGoldItem", at = @At("HEAD"), cancellable = true)
-    private static void shortenAdmireDuration(LivingEntity piglin, CallbackInfo ci) {
-        piglin.getBrain().setMemoryWithExpiry(MemoryModuleType.ADMIRING_ITEM, true, CarpetTNGSetting.shortenedPiglinBarterCooldown);
-        ci.cancel();
+    @ModifyArg(method = "wasHurtBy",
+               at = @At(value = "INVOKE",
+                        target = "Lnet/minecraft/world/entity/ai/Brain;setMemoryWithExpiry(Lnet/minecraft/world/entity/ai/memory/MemoryModuleType;Ljava/lang/Object;J)V",
+                        ordinal = 0), // ordinal 0 = ADMIRING_DISABLED（400L），ordinal 1 = AVOID_TARGET
+               index = 2)
+    private static long customTradeDisabledTime(long expiry) {
+        return CarpetTNGSetting.piglinBarterDisabledTime;
     }
 
     @Inject(method = "findNearestValidAttackTarget", at = @At("RETURN"), cancellable = true)

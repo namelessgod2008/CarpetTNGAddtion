@@ -85,8 +85,9 @@ public class CarpetTNGSetting {
 
     // ==================== 猪灵 ====================
 
-    @Rule(categories = {"feature", "TNG", "survival"}, options = {"119", "89", "59", "29", "0"}, strict = false, validators = PiglinBarterValidator.class)
-    public static int shortenedPiglinBarterCooldown = 119;
+    // 自定义猪灵受击拒绝交易时间（模仿 ORG customPiglinBarteringTime 的自由数值方式，无 options 限制）
+    @Rule(categories = {"feature", "TNG", "survival"})
+    public static int piglinBarterDisabledTime = 400;
 
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean neutralPiglins = false;
@@ -98,12 +99,29 @@ public class CarpetTNGSetting {
 
     // ==================== 铁砧 ====================
 
-    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"}, validators = OrgCompatWarningValidator.class)
     public static boolean removeAnvilTooExpensive = false;
 
-    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"}, validators = OrgCompatWarningValidator.class)
     public static boolean cheapAnvilRename = false;
 
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean durableAnvil = false;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean durableFallingAnvil = false;
+
+    // ==================== 烈焰棒调试 ====================
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean blazeStickDebug = false;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"}, validators = {DependencyWarningValidator.class, OrgCompatWarningValidator.class})
+    public static boolean blazeStickFurnaceXp = false;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"}, validators = DependencyWarningValidator.class)
+    public static boolean blazeStickSmokerXp = false;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"}, validators = DependencyWarningValidator.class)
+    public static boolean blazeStickBlastFurnaceXp = false;
 }
