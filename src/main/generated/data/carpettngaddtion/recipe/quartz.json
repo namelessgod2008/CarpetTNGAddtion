@@ -1,0 +1,17 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "carpettngaddtion:rule_enabled",
+      "rule": "quartzBlockToQuartz"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:quartz_block"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:quartz"
+  }
+}

@@ -48,12 +48,18 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.basaltToBlackstoneConversion.name", "Basalt to Blackstone Conversion");
             builder.add("carpet.rule.basaltToBlackstoneConversion.desc",
                     "Basalt that touches both lava and water at the same time converts to blackstone.");
+            builder.add("carpet.rule.stopCreeperGriefing.name", "Stop Creeper Griefing");
+            builder.add("carpet.rule.stopCreeperGriefing.desc",
+                    "Creeper explosions no longer destroy blocks; they still deal damage and knockback.");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "Blast Furnace Glazed Terracotta");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "Blast furnaces can smelt all 16 colors of terracotta into the glazed terracotta of the same color. Vanilla only allows smelting these in a furnace.");
             builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.name", "Copper Underwater Oxidation Multiplier");
             builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.desc",
                     "Multiplier for copper oxidation speed when a copper block is in contact with water (a water source, flowing water, or a waterlogged block on any adjacent face). 1.0 is the vanilla rate; values above 1 speed it up, below 1 slow it down. Vanilla oxidation is not affected by water.");
+            builder.add("carpet.rule.splashOxidizeCopper.name", "Splash Oxidize Copper");
+            builder.add("carpet.rule.splashOxidizeCopper.desc",
+                    "Throwing a splash water bottle at a copper block instantly oxidizes it to the next stage.");
             builder.add("carpet.rule.piglinBarterDisabledTime.name", "Custom Piglin Trade Disabled Time");
             builder.add("carpet.rule.piglinBarterDisabledTime.desc",
                     "Sets how long (in ticks) a piglin refuses to barter after being hit by a player. Vanilla is 400 ticks (20 seconds); 0 disables the refusal.");
@@ -108,9 +114,18 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dropperAndBowToDispenser.name", "Dropper and Bow to Dispenser");
             builder.add("carpet.rule.dropperAndBowToDispenser.desc",
                     "Adds a crafting recipe for a dispenser from 1 dropper and 1 bow (shapeless). Vanilla requires 7 cobblestone, 1 bow and 1 redstone.");
-            builder.add("carpet.rule.woodToStick.name", "Wood to Stick");
-            builder.add("carpet.rule.woodToStick.desc",
-                    "Adds a crafting recipe for sticks from any log (shapeless, 1 log = 8 sticks), skipping the planks step.");
+            builder.add("carpet.rule.shapelessCraftingBread.name", "Shapeless Bread");
+            builder.add("carpet.rule.shapelessCraftingBread.desc",
+                    "Allows crafting bread from 3 wheat in any arrangement, instead of the vanilla horizontal row.");
+            builder.add("carpet.rule.shapelessCraftingPaper.name", "Shapeless Paper");
+            builder.add("carpet.rule.shapelessCraftingPaper.desc",
+                    "Allows crafting 3 paper from 3 sugar cane in any arrangement, instead of the vanilla vertical column.");
+            builder.add("carpet.rule.shapelessCraftingShulkerBox.name", "Shapeless Shulker Box");
+            builder.add("carpet.rule.shapelessCraftingShulkerBox.desc",
+                    "Allows crafting a shulker box from 1 chest and 2 shulker shells in any arrangement, instead of the vanilla vertical column.");
+            builder.add("carpet.rule.quartzBlockToQuartz.name", "Quartz Block to Quartz");
+            builder.add("carpet.rule.quartzBlockToQuartz.desc",
+                    "Adds a crafting recipe to convert a quartz block back into 4 quartz, the reverse of the vanilla 2x2 recipe.");
             builder.add("carpet.rule.blastFurnaceGlass.name", "Blast Furnace Glass");
             builder.add("carpet.rule.blastFurnaceGlass.desc",
                     "Blast furnaces can smelt sand and red sand into glass. Vanilla only allows smelting these in a furnace.");
@@ -196,12 +211,18 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.basaltToBlackstoneConversion.name", "玄武岩转黑石");
             builder.add("carpet.rule.basaltToBlackstoneConversion.desc",
                     "同时接触到熔岩和水的玄武岩会转化为黑石。");
+            builder.add("carpet.rule.stopCreeperGriefing.name", "阻止苦力怕破坏地形");
+            builder.add("carpet.rule.stopCreeperGriefing.desc",
+                    "苦力怕爆炸不再破坏方块，但仍会造成伤害和击退。");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "高炉烧制带釉陶瓦");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "高炉可以将全部 16 种染色的陶瓦烧炼为对应颜色的带釉陶瓦。原版只能在熔炉中烧制。");
             builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.name", "铜水下氧化倍率");
             builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.desc",
                     "铜方块接触水时的氧化速度倍率（任一相邻面有水：水方块、流水、含水方块都算）。1.0 为原版速率；大于 1 加快，小于 1 减慢。原版氧化不受水影响。");
+            builder.add("carpet.rule.splashOxidizeCopper.name", "喷溅水瓶氧化铜");
+            builder.add("carpet.rule.splashOxidizeCopper.desc",
+                    "向铜方块投掷喷溅水瓶会使其立即氧化到下一阶段。");
             builder.add("carpet.rule.piglinBarterDisabledTime.name", "自定义猪灵受击拒绝交易时间");
             builder.add("carpet.rule.piglinBarterDisabledTime.desc",
                     "设置猪灵被玩家攻击后拒绝交易的时间（tick）。原版为 400 tick（20 秒），0 为不拒绝。");
@@ -254,9 +275,18 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dropperAndBowToDispenser.name", "投掷器加弓合成发射器");
             builder.add("carpet.rule.dropperAndBowToDispenser.desc",
                     "添加用 1 个投掷器和 1 把弓（无序）合成发射器的配方。原版需要 7 个圆石、1 把弓和 1 个红石粉。");
-            builder.add("carpet.rule.woodToStick.name", "原木合成木棍");
-            builder.add("carpet.rule.woodToStick.desc",
-                    "添加用任意原木（无序，1 原木 = 8 木棍）合成木棍的配方，跳过木板步骤。");
+            builder.add("carpet.rule.shapelessCraftingBread.name", "面包无序合成");
+            builder.add("carpet.rule.shapelessCraftingBread.desc",
+                    "允许用 3 个小麦以任意排列合成面包，取代原版的横排图案。");
+            builder.add("carpet.rule.shapelessCraftingPaper.name", "纸无序合成");
+            builder.add("carpet.rule.shapelessCraftingPaper.desc",
+                    "允许用 3 个甘蔗以任意排列合成 3 张纸，取代原版的竖排图案。");
+            builder.add("carpet.rule.shapelessCraftingShulkerBox.name", "潜影盒无序合成");
+            builder.add("carpet.rule.shapelessCraftingShulkerBox.desc",
+                    "允许用 1 个箱子和 2 个潜影壳以任意排列合成潜影盒，取代原版的竖排图案。");
+            builder.add("carpet.rule.quartzBlockToQuartz.name", "石英块拆解");
+            builder.add("carpet.rule.quartzBlockToQuartz.desc",
+                    "添加将 1 个石英块拆解回 4 个下界石英的配方，是原版 2×2 合成石英块的逆向。");
             builder.add("carpet.rule.blastFurnaceGlass.name", "高炉烧沙成玻璃");
             builder.add("carpet.rule.blastFurnaceGlass.desc",
                     "高炉可以将沙子和红沙烧炼为玻璃。原版沙子/红沙只能由熔炉烧成玻璃。");

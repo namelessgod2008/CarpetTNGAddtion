@@ -39,7 +39,10 @@ public final class RecipeGenerator extends FabricRecipeProvider {
         RecipeOutput boneBlockOut = withConditions(output, new RuleEnabledCondition("boneToBoneBlock"));
         RecipeOutput chestOut = withConditions(output, new RuleEnabledCondition("woodToChest"));
         RecipeOutput dropperAndBowToDispenserOut = withConditions(output, new RuleEnabledCondition("dropperAndBowToDispenser"));
-        RecipeOutput woodToStickOut = withConditions(output, new RuleEnabledCondition("woodToStick"));
+        RecipeOutput shapelessBreadOut = withConditions(output, new RuleEnabledCondition("shapelessCraftingBread"));
+        RecipeOutput shapelessPaperOut = withConditions(output, new RuleEnabledCondition("shapelessCraftingPaper"));
+        RecipeOutput shapelessShulkerBoxOut = withConditions(output, new RuleEnabledCondition("shapelessCraftingShulkerBox"));
+        RecipeOutput quartzBlockToQuartzOut = withConditions(output, new RuleEnabledCondition("quartzBlockToQuartz"));
         RecipeOutput blastFurnaceGlassOut = withConditions(output, new RuleEnabledCondition("blastFurnaceGlass"));
         RecipeOutput blastFurnaceGlazedTerracottaOut = withConditions(output, new RuleEnabledCondition("blastFurnaceGlazedTerracotta"));
         RecipeOutput blastFurnaceNetherBrickOut = withConditions(output, new RuleEnabledCondition("blastFurnaceNetherBrick"));
@@ -161,13 +164,28 @@ public final class RecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_dropper", has(Items.DROPPER))
                         .save(dropperAndBowToDispenserOut);
 
-                // Sticks: 1 of any log (shapeless) -> 8 sticks, skipping the planks step.
-                // Equivalent to vanilla (1 log = 4 planks = 8 sticks); same group as vanilla sticks.
-                ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, Items.STICK, 8)
-                        .requires(this.tag(ItemTags.LOGS))
-                        .group("sticks")
-                        .unlockedBy("has_logs", has(ItemTags.LOGS))
-                        .save(woodToStickOut);
+                // Bread, paper, shulker box: shapeless variants of the vanilla shaped recipes.
+                ShapelessRecipeBuilder.shapeless(items, RecipeCategory.FOOD, Items.BREAD, 1)
+                        .requires(Items.WHEAT, 3)
+                        .unlockedBy("has_wheat", has(Items.WHEAT))
+                        .save(shapelessBreadOut);
+
+                ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, Items.PAPER, 3)
+                        .requires(Items.SUGAR_CANE, 3)
+                        .unlockedBy("has_sugar_cane", has(Items.SUGAR_CANE))
+                        .save(shapelessPaperOut);
+
+                ShapelessRecipeBuilder.shapeless(items, RecipeCategory.DECORATIONS, Items.SHULKER_BOX, 1)
+                        .requires(Items.CHEST)
+                        .requires(Items.SHULKER_SHELL, 2)
+                        .unlockedBy("has_shulker_shell", has(Items.SHULKER_SHELL))
+                        .save(shapelessShulkerBoxOut);
+
+                // Quartz block -> 4 quartz (reverse of the vanilla 2x2 quartz -> block recipe).
+                ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, Items.QUARTZ, 4)
+                        .requires(Items.QUARTZ_BLOCK)
+                        .unlockedBy("has_quartz_block", has(Items.QUARTZ_BLOCK))
+                        .save(quartzBlockToQuartzOut);
 
                 // Blast furnace: sand & red sand -> glass (vanilla only allows this in the furnace)
                 // Blasting speed is half the furnace's 200 ticks, same 0.1 experience.

@@ -19,7 +19,10 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `boneToBoneBlock` | 骨块合成（3 骨头无序） | survival, TNG |
 | `woodToChest` | 箱子合成（2 任意原木无序） | survival, TNG |
 | `dropperAndBowToDispenser` | 投掷器加弓合成发射器（1 投掷器 + 1 弓无序） | survival, TNG |
-| `woodToStick` | 原木合成木棍（1 任意原木 = 8 木棍） | survival, TNG |
+| `shapelessCraftingBread` | 面包无序合成（3 小麦任意排列） | survival, TNG |
+| `shapelessCraftingPaper` | 纸无序合成（3 甘蔗任意排列） | survival, TNG |
+| `shapelessCraftingShulkerBox` | 潜影盒无序合成（1 箱 + 2 潜影壳任意排列） | survival, TNG |
+| `quartzBlockToQuartz` | 石英块拆解（1 石英块 = 4 下界石英） | survival, TNG |
 | `blastFurnaceGlass` | 高炉烧沙成玻璃（沙子/红沙 → 玻璃） | feature, TNG, survival |
 | `blastFurnaceGlazedTerracotta` | 高炉烧制带釉陶瓦（16 种染色陶瓦 → 对应带釉陶瓦） | feature, TNG, survival |
 | `blastFurnaceNetherBrick` | 高炉烧制下界砖（下界岩 → 下界砖） | feature, TNG, survival |
@@ -34,7 +37,9 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
 | `basaltToBlackstoneConversion` | 玄武岩转黑石（同时接触熔岩和水） | feature, TNG |
+| `stopCreeperGriefing` | 阻止苦力怕破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
+| `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
 | `neutralPiglins` | 完全中立猪灵（不主动攻击无金甲玩家） | feature, TNG, survival |
 | `constantHighEnderDragonXp` | 持续高经验打龙（重复击杀也掉 12000 经验） | feature, TNG, survival |
@@ -115,6 +120,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - `copperUnderwaterOxidationMultiplier`：铜方块接触水（任一相邻面有水：水方块、流水、含水方块都算）时的氧化速度倍率，自由数值，默认 1.0 = 原版速率；大于 1 加快，小于 1 减慢
 - 原版氧化不受水影响（随机 tick 驱动，无水下判定），本功能新增"接触水加速/减速"机制
 - 实现：注入 7 种铜方块的 `randomTick`（接口 default 方法不可注入，改为逐类注入），接触水时把基础氧化概率 0.05688889F 乘以倍率；保留铜门下半格氧化判定
+- `splashOxidizeCopper`：向铜方块投掷喷溅水瓶使其立即氧化到下一阶段；注入 `ThrownPotion.onHitBlock`，仅普通水瓶（Potions.WATER）触发
 
 ### 自定义猪灵受击拒绝交易时间
 
@@ -165,6 +171,11 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - 接触判定：玄武岩 6 个方向的相邻方块中，至少一面流体为熔岩、至少一面为水（含水方块/含水状态的流体也计入）
 - 机制说明：Java 版玄武岩是普通方块（无自有逻辑），通过注入基类 `BlockBehaviour` 的 `onPlace`/`neighborChanged` 并过滤玄武岩实现
 
+### 阻止苦力怕破坏地形
+
+- `stopCreeperGriefing`：苦力怕爆炸不再破坏方块，但仍造成伤害和击退（"能炸但炸不坏"）
+- 机制：`Creeper.explodeCreeper` 用 `Level.ExplosionInteraction.MOB` 调 `Level.explode`，MOB 受 `mobGriefing` 规则控制（开启时破坏方块）；规则开启时 `@ModifyArg` 把该参数改为 `NONE`（映射到 `BlockInteraction.KEEP`），`ServerLevel.explode` 的 switch 直接保留伤害/击退/音效
+
 ### 骨粉产瓜
 
 - `bonemealGourdFruit`：对成熟的西瓜/南瓜瓜苗（AGE 7）使用骨粉时按概率在相邻格结瓜——原版骨粉对成熟瓜苗无效（只能靠随机刻约 1/26 概率/tick 结瓜）
@@ -183,7 +194,10 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - 骨块：3 骨头（无序）→ 1 骨块，原版需 9 骨粉（先烧 3 骨头）合成
 - 箱子：2 任意原木（无序）→ 1 箱子，原版需 8 木板合成
 - 发射器：1 投掷器 + 1 弓（无序）→ 1 发射器，原版需 7 圆石 + 1 弓 + 1 红石粉
-- 木棍：1 任意原木（无序）= 8 木棍，跳过木板步骤（与原版路径等价）
+- 面包：3 小麦任意排列 → 1 面包（原版需横排）
+- 纸：3 甘蔗任意排列 → 3 纸（原版需竖排）
+- 潜影盒：1 箱子 + 2 潜影壳任意排列 → 1 潜影盒（原版需竖排）
+- 石英块：1 石英块（无序）= 4 下界石英，原版 2×2 合成石英块的逆向
 
 配方通过 Fabric Datagen 生成，且带条件注册：**规则关闭时配方完全不存在**（REI/JEI、配方书、合成台全部不可见），开启时自动加载并同步客户端。
 

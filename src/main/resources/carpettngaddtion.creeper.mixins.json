@@ -1,9 +1,9 @@
 {
 	"required": true,
-	"package": "com.namelessgod2008.feature.recipe.mixin",
+	"package": "com.namelessgod2008.feature.creeper.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"CraftingMenuMixin"
+		"CreeperMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

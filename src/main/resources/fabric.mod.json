@@ -26,7 +26,6 @@
 		]
 	},
 	"mixins": [
-		"carpettngaddtion.recipe.mixins.json",
 		"carpettngaddtion.dispenser.mixins.json",
 		"carpettngaddtion.apple.mixins.json",
 		"carpettngaddtion.amethyst.mixins.json",
@@ -42,6 +41,7 @@
 		"carpettngaddtion.spawner.mixins.json",
 		"carpettngaddtion.silktouch.mixins.json",
 		"carpettngaddtion.copper.mixins.json",
+		"carpettngaddtion.creeper.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {

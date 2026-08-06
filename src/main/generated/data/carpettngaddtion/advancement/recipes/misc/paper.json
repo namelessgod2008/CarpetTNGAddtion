@@ -2,16 +2,16 @@
   "fabric:load_conditions": [
     {
       "condition": "carpettngaddtion:rule_enabled",
-      "rule": "woodToStick"
+      "rule": "shapelessCraftingPaper"
     }
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_logs": {
+    "has_sugar_cane": {
       "conditions": {
         "items": [
           {
-            "items": "#minecraft:logs"
+            "items": "minecraft:sugar_cane"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:stick"
+        "recipe": "minecraft:paper"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -27,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_logs"
+      "has_sugar_cane"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:stick"
+      "minecraft:paper"
     ]
   }
 }

@@ -50,7 +50,19 @@ public class CarpetTNGSetting {
 
     @RecipeRule
     @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
-    public static boolean woodToStick = false;
+    public static boolean shapelessCraftingBread = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean shapelessCraftingPaper = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean shapelessCraftingShulkerBox = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean quartzBlockToQuartz = false;
 
     // ==================== 高炉烧沙 ====================
 
@@ -161,6 +173,11 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
     public static boolean basaltToBlackstoneConversion = false;
 
+    // ==================== 苦力怕 ====================
+
+    @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
+    public static boolean stopCreeperGriefing = false;
+
     // ==================== 铜氧化 ====================
 
     // 铜接触水时的氧化速度倍率（自由数值，无 options 限制，与 piglinBarterDisabledTime 同模式）。
@@ -168,6 +185,9 @@ public class CarpetTNGSetting {
     // 原版氧化无水下判定，仅当方块接触水（自身被淹没或相邻面有水）时该倍率生效。
     @Rule(categories = {"feature", "TNG", "survival"})
     public static double copperUnderwaterOxidationMultiplier = 1.0;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean splashOxidizeCopper = false;
 
     // ==================== 猪灵 ====================
 
