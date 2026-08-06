@@ -5,18 +5,82 @@ import carpet.api.settings.Rule;
 public class CarpetTNGSetting {
 
     // ==================== 合成配方 ====================
+    // 配方类规则用 @RecipeRule 标记：RecipeRuleRegistry 反射收集，
+    // 规则开关时自动 reloadResources 让带条件配方 (de)注册。
 
+    @RecipeRule
     @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
     public static boolean craftableSaddle = false;
 
+    @RecipeRule
     @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
     public static boolean craftableNameTag = false;
 
+    @RecipeRule
     @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
     public static boolean craftableBell = false;
 
+    @RecipeRule
     @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
     public static boolean craftableStringFromWool = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean craftableCobwebs = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean craftableHorseArmor = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean craftableBlueIce = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean boneToBoneBlock = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean woodToChest = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean dropperAndBowToDispenser = false;
+
+    @RecipeRule
+    @Rule(categories = {"survival", "TNG"}, options = {"true", "false"})
+    public static boolean woodToStick = false;
+
+    // ==================== 高炉烧沙 ====================
+
+    @RecipeRule
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean blastFurnaceGlass = false;
+
+    @RecipeRule
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean blastFurnaceGlazedTerracotta = false;
+
+    @RecipeRule
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean blastFurnaceNetherBrick = false;
+
+    @RecipeRule
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean blastFurnaceSmoothQuartz = false;
+
+    @RecipeRule
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean blastFurnaceStone = false;
+
+    @RecipeRule
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean blastFurnaceSmoothStone = false;
+
+    @RecipeRule
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean smokerGreenDye = false;
 
     // ==================== 炼药锅 ====================
 
@@ -41,6 +105,15 @@ public class CarpetTNGSetting {
 
     @Rule(categories = {"TNG", "survival"}, options = {"true", "false"})
     public static boolean silkTouchSuspiciousBlocks = false;
+
+    @Rule(categories = {"TNG", "survival"}, options = {"true", "false"})
+    public static boolean silkTouchSpawners = false;
+
+    @Rule(categories = {"TNG", "survival"}, options = {"true", "false"})
+    public static boolean silkTouchPathBlocks = false;
+
+    @Rule(categories = {"TNG", "survival"}, options = {"true", "false"})
+    public static boolean silkTouchFarmland = false;
 
     // ==================== 附魔金苹果 ====================
 
@@ -82,6 +155,19 @@ public class CarpetTNGSetting {
 
     @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
     public static boolean reinforcedObsidian = false;
+
+    // ==================== 玄武岩转黑石 ====================
+
+    @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
+    public static boolean basaltToBlackstoneConversion = false;
+
+    // ==================== 铜氧化 ====================
+
+    // 铜接触水时的氧化速度倍率（自由数值，无 options 限制，与 piglinBarterDisabledTime 同模式）。
+    // 1.0 = 原版速率（不加速也不减速）；大于 1 加快，小于 1 减慢。
+    // 原版氧化无水下判定，仅当方块接触水（自身被淹没或相邻面有水）时该倍率生效。
+    @Rule(categories = {"feature", "TNG", "survival"})
+    public static double copperUnderwaterOxidationMultiplier = 1.0;
 
     // ==================== 猪灵 ====================
 

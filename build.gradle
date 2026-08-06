@@ -33,6 +33,10 @@ repositories {
 		name = "Ladysnake Libs"
 		url = 'https://maven.ladysnake.org/releases'
 	}
+	maven {
+		name = "Shedaniel"
+		url = "https://maven.shedaniel.me/"
+	}
 	exclusiveContent {
 		forRepository {
 			maven {
@@ -73,6 +77,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 	modImplementation("maven.modrinth:carpet:${project.carpet_version}")
+	// REI: compileOnly — 只用于编译 compact 包的 mixin 修复，不打包
+	modCompileOnly("me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}")
 
 
 

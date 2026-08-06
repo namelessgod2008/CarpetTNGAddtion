@@ -34,10 +34,15 @@
 		"carpettngaddtion.trialspawner.mixins.json",
 		"carpettngaddtion.potion.mixins.json",
 		"carpettngaddtion.obsidian.mixins.json",
+		"carpettngaddtion.basalt.mixins.json",
 		"carpettngaddtion.piglin.mixins.json",
 		"carpettngaddtion.enderdragon.mixins.json",
 		"carpettngaddtion.anvil.mixins.json",
-		"carpettngaddtion.blazestick.mixins.json"
+		"carpettngaddtion.blazestick.mixins.json",
+		"carpettngaddtion.spawner.mixins.json",
+		"carpettngaddtion.silktouch.mixins.json",
+		"carpettngaddtion.copper.mixins.json",
+		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.3",

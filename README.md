@@ -13,12 +13,28 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `craftableNameTag` | 命名牌合成（铁粒 + 纸，2×2 对角） | survival, TNG |
 | `craftableBell` | 钟合成（3 金锭 + 2 木棍 + 3 平滑石台阶） | survival, TNG |
 | `craftableStringFromWool` | 羊毛合成线（1 羊毛 = 4 线） | survival, TNG |
+| `craftableCobwebs` | 蜘蛛网合成（9 线 → 蜘蛛网） | survival, TNG |
+| `craftableHorseArmor` | 马铠合成（铁/金/钻石，6 材料 + 1 羊毛） | survival, TNG |
+| `craftableBlueIce` | 蓝冰合成（8 冰 + 1 蓝色染料） | survival, TNG |
+| `boneToBoneBlock` | 骨块合成（3 骨头无序） | survival, TNG |
+| `woodToChest` | 箱子合成（2 任意原木无序） | survival, TNG |
+| `dropperAndBowToDispenser` | 投掷器加弓合成发射器（1 投掷器 + 1 弓无序） | survival, TNG |
+| `woodToStick` | 原木合成木棍（1 任意原木 = 8 木棍） | survival, TNG |
+| `blastFurnaceGlass` | 高炉烧沙成玻璃（沙子/红沙 → 玻璃） | feature, TNG, survival |
+| `blastFurnaceGlazedTerracotta` | 高炉烧制带釉陶瓦（16 种染色陶瓦 → 对应带釉陶瓦） | feature, TNG, survival |
+| `blastFurnaceNetherBrick` | 高炉烧制下界砖（下界岩 → 下界砖） | feature, TNG, survival |
+| `blastFurnaceSmoothQuartz` | 高炉烧制平滑石英（石英块 → 平滑石英块） | feature, TNG, survival |
+| `blastFurnaceStone` | 高炉烧制石头（圆石 → 石头） | feature, TNG, survival |
+| `blastFurnaceSmoothStone` | 高炉烧制平滑石头（石头 → 平滑石头） | feature, TNG, survival |
+| `smokerGreenDye` | 烟熏炉烧制绿色染料（仙人掌 → 绿色染料） | feature, TNG, survival |
 | `dispenserPlanting` | 发射器直线喷射种子种田（小麦/甜菜/胡萝卜/马铃薯） | feature, TNG, dispenser |
 | `dispenserPlantingGourds` | 发射器种植西瓜南瓜（种子→瓜藤） | feature, TNG, dispenser |
 | `dispenserPlantingNetherWart` | 发射器种植地狱疣（命中灵魂沙种下） | feature, TNG, dispenser |
 | `bonemealGourdFruit` | 骨粉产瓜（成熟瓜苗按概率结瓜，0 禁用~1 必结） | feature, TNG, survival |
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
+| `basaltToBlackstoneConversion` | 玄武岩转黑石（同时接触熔岩和水） | feature, TNG |
+| `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
 | `neutralPiglins` | 完全中立猪灵（不主动攻击无金甲玩家） | feature, TNG, survival |
 | `constantHighEnderDragonXp` | 持续高经验打龙（重复击杀也掉 12000 经验） | feature, TNG, survival |
@@ -33,6 +49,9 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `legacyEnchantedGoldenApple` | 旧版附魔金苹果再生 V（30 秒） | porting, TNG |
 | `silkTouchBuddingAmethyst` | 精准采集紫水晶母岩 | TNG, survival |
 | `silkTouchSuspiciousBlocks` | 精准采集可疑沙/砂砾 | TNG, survival |
+| `silkTouchSpawners` | 精准采集刷怪笼（掉落自身并保留配置） | TNG, survival |
+| `silkTouchPathBlocks` | 精准采集土径（掉落土径自身而非泥土） | TNG, survival |
+| `silkTouchFarmland` | 精准采集耕地（掉落耕地自身而非泥土） | TNG, survival |
 | `shortenedTrialSpawnerCooldown` | 试炼刷怪笼冷却缩短为 5 分钟 | feature, TNG, survival |
 | `brewableOminousPotion` | 灾厄药水酿造（图腾 + 萤石，I–V 级） | feature, TNG, survival |
 | `blazePowderNetherWartGrowth` | 烈焰粉催熟地狱疣（右键 +1 级） | feature, TNG, survival |
@@ -72,6 +91,9 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `silkTouchBuddingAmethyst`：精准采集工具可采集紫水晶母岩
 - `silkTouchSuspiciousBlocks`：精准采集工具可采集可疑的沙子和砂砾
+- `silkTouchSpawners`：精准采集工具挖掘刷怪笼时掉落刷怪笼自身，并完整保留其刷怪配置（实体类型与刷怪池）；原版刷怪笼掉落表为空，任何工具都不掉落物品
+- `silkTouchPathBlocks`：精准采集工具挖掘土径时掉落土径自身，而非泥土
+- `silkTouchFarmland`：精准采集工具挖掘耕地时掉落耕地自身，而非泥土
 
 ### 试炼刷怪笼冷却
 
@@ -87,6 +109,12 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `blazePowderNetherWartGrowth`：手持烈焰粉右键地狱疣推进一个生长阶段（原版骨粉对地狱疣无效）
 - `dispenserNetherWartGrowth`：发射器正对地狱疣喷射烈焰粉推进一个生长阶段，可与发射器种植联动做自动化农场；需先开启 `blazePowderNetherWartGrowth` 才生效
+
+### 铜水下氧化倍率
+
+- `copperUnderwaterOxidationMultiplier`：铜方块接触水（任一相邻面有水：水方块、流水、含水方块都算）时的氧化速度倍率，自由数值，默认 1.0 = 原版速率；大于 1 加快，小于 1 减慢
+- 原版氧化不受水影响（随机 tick 驱动，无水下判定），本功能新增"接触水加速/减速"机制
+- 实现：注入 7 种铜方块的 `randomTick`（接口 default 方法不可注入，改为逐类注入），接触水时把基础氧化概率 0.05688889F 乘以倍率；保留铜门下半格氧化判定
 
 ### 自定义猪灵受击拒绝交易时间
 
@@ -130,6 +158,13 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - `reinforcedObsidian`：黑曜石免疫凋零的主动方块破坏（凋零受击后的破坏冲击），凋零不再能破坏黑曜石
 - 机制说明：原版爆炸（强度 7）本就破不了黑曜石（抗性 1200），破坏来自凋零每 20 tick 的主动清方块（`canDestroy` 只看 `WITHER_IMMUNE` tag）
 
+### 玄武岩转黑石
+
+- `basaltToBlackstoneConversion`：同时接触到熔岩和水的玄武岩会转化为黑石
+- 触发时机：玄武岩被放置、或相邻方块变化（熔岩/水流到它旁边、液体被放置/移除）时检查
+- 接触判定：玄武岩 6 个方向的相邻方块中，至少一面流体为熔岩、至少一面为水（含水方块/含水状态的流体也计入）
+- 机制说明：Java 版玄武岩是普通方块（无自有逻辑），通过注入基类 `BlockBehaviour` 的 `onPlace`/`neighborChanged` 并过滤玄武岩实现
+
 ### 骨粉产瓜
 
 - `bonemealGourdFruit`：对成熟的西瓜/南瓜瓜苗（AGE 7）使用骨粉时按概率在相邻格结瓜——原版骨粉对成熟瓜苗无效（只能靠随机刻约 1/26 概率/tick 结瓜）
@@ -142,8 +177,40 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - 命名牌：1 铁粒 + 1 纸（2×2 对角）
 - 钟：3 金锭 + 2 木棍 + 3 平滑石台阶
 - 线：1 任意颜色羊毛 = 4 线（无序）
+- 蜘蛛网：9 线（3×3）→ 1 蜘蛛网，基岩版旧版'蜘蛛网拆线'配方的反向
+- 马铠：铁/金/钻石各一条，1.6 时代图案（6 锭/宝石 + 1 任意羊毛，`_ _ X / X W X / X X X`）；皮革马铠原版已有配方不重复
+- 蓝冰：8 冰 + 1 蓝色染料（染色图案 `III / IDI / III`）→ 1 蓝冰，原版需 9 浮冰（=81 冰）合成
+- 骨块：3 骨头（无序）→ 1 骨块，原版需 9 骨粉（先烧 3 骨头）合成
+- 箱子：2 任意原木（无序）→ 1 箱子，原版需 8 木板合成
+- 发射器：1 投掷器 + 1 弓（无序）→ 1 发射器，原版需 7 圆石 + 1 弓 + 1 红石粉
+- 木棍：1 任意原木（无序）= 8 木棍，跳过木板步骤（与原版路径等价）
 
 配方通过 Fabric Datagen 生成，且带条件注册：**规则关闭时配方完全不存在**（REI/JEI、配方书、合成台全部不可见），开启时自动加载并同步客户端。
+
+### 高炉烧沙成玻璃
+
+- `blastFurnaceGlass`：高炉可以将沙子和红沙烧炼为玻璃（原版沙子/红沙只能由熔炉烧成玻璃）
+- 实现方式：添加带条件的高炉烧炼配方（`blasting`，100 tick，经验 0.1，与原版熔炉烧沙一致），无需 mixin
+- 规则关闭时高炉烧沙配方不存在，高炉恢复原版行为（不能烧沙）
+
+### 高炉烧制带釉陶瓦
+
+- `blastFurnaceGlazedTerracotta`：高炉可以将全部 16 种染色陶瓦烧炼为对应颜色的带釉陶瓦（原版染色陶瓦只能由熔炉烧成带釉陶瓦）
+- 实现方式：16 条带条件的高炉烧炼配方（`blasting`，100 tick，经验 0.1，与原版熔炉烧陶瓦一致），每条对应 `X_TERRACOTTA → X_GLAZED_TERRACOTTA`
+- 规则关闭时这些配方不存在，高炉恢复原版行为（不能烧陶瓦）
+
+### 其他高炉烧炼
+
+- `blastFurnaceNetherBrick`：高炉可以将下界岩烧炼为下界砖（原版下界岩只能由熔炉烧成下界砖）
+- `blastFurnaceSmoothQuartz`：高炉可以将石英块烧炼为平滑石英块（原版石英块只能由熔炉烧成平滑石英块）
+- `blastFurnaceStone`：高炉可以将圆石烧炼为石头（原版圆石只能由熔炉烧成石头）
+- `blastFurnaceSmoothStone`：高炉可以将石头烧炼为平滑石头（原版石头只能由熔炉烧成平滑石头）
+- 实现方式：四条带条件的高炉烧炼配方（`blasting`，100 tick，经验 0.1，与原版熔炉对应配方一致），无需 mixin；规则关闭时这些配方不存在，高炉恢复原版行为
+
+### 烟熏炉烧制绿色染料
+
+- `smokerGreenDye`：烟熏炉可以将仙人掌烟熏为绿色染料（原版仙人掌只能由熔炉烧成绿色染料）
+- 实现方式：带条件的 smoking 配方（`smoking`，100 tick，经验 1.0，与原版熔炉一致），配方 ID 用自定义 `green_dye_from_smoking`（避免与原版熔炉 `green_dye_from_smelting` 冲突），无需 mixin
 
 ## 环境要求
 
@@ -171,9 +238,11 @@ com.namelessgod2008
 ├── CarpetTNGAddtion.java          # 主类（ModInitializer）
 ├── CarpetTNGExtension.java        # Carpet 扩展（规则注册 + 翻译）
 ├── CarpetTNGAddtionDataGenerator  # Datagen 入口
-├── setting/                       # @Rule 定义 + 配方条件
+├── setting/                       # @Rule 定义 + @RecipeRule 注解 + 配方条件/规则注册表
 ├── feature/                       # 每功能子包：交互逻辑 + mixin + 独立 mixins.json
 │   ├── cauldron/  dispenser/  recipe/  apple/  amethyst/  suspicious/  trialspawner/  potion/
+│   ├── wart/  gourd/  obsidian/  basalt/  piglin/  enderdragon/  anvil/  blazestick/
+├── compact/                       # 其他 mod 兼容修复（REI 高炉配方显示 bug）
 ├── datagen/                       # 配方、翻译生成器
 └── modmenu/                       # ModMenu 集成
 ```

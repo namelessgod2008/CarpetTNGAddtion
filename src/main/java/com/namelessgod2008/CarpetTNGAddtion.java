@@ -7,6 +7,7 @@ import com.namelessgod2008.feature.cauldron.CauldronArrowHandler;
 import com.namelessgod2008.feature.dispenser.DispenserPlantingHandler;
 import com.namelessgod2008.feature.gourd.BonemealGourdHandler;
 import com.namelessgod2008.feature.wart.NetherWartBlazeHandler;
+import com.namelessgod2008.setting.RecipeRuleRegistry;
 import com.namelessgod2008.setting.RuleEnabledCondition;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.ResourceLocation;
@@ -39,7 +40,7 @@ public class CarpetTNGAddtion implements ModInitializer {
 		// would NPE and is pointless anyway — recipes read rule states when loaded).
 		SettingsManager.registerGlobalRuleObserver((source, rule, userInput) -> {
 			String name = rule.name();
-			if (name.equals("craftableSaddle") || name.equals("craftableNameTag") || name.equals("craftableBell")) {
+			if (RecipeRuleRegistry.isRecipeRule(name)) {
 				MinecraftServer server = source != null ? source.getServer() : null;
 				if (server != null && server.getTickCount() > 0) {
 					server.reloadResources(server.getPackRepository().getSelectedIds())

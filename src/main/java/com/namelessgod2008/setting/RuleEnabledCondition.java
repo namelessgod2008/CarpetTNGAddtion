@@ -42,12 +42,8 @@ public record RuleEnabledCondition(String rule) implements ResourceCondition {
 
     @Override
     public boolean test(RegistryOps.RegistryInfoLookup registryInfo) {
-        return switch (rule) {
-            case "craftableSaddle" -> CarpetTNGSetting.craftableSaddle;
-            case "craftableNameTag" -> CarpetTNGSetting.craftableNameTag;
-            case "craftableBell" -> CarpetTNGSetting.craftableBell;
-            case "craftableStringFromWool" -> CarpetTNGSetting.craftableStringFromWool;
-            default -> false;
-        };
+        // 通过 @RecipeRule 注解 + 反射读取规则值，替代硬编码 switch：
+        // 新增配方规则无需再改本类
+        return RecipeRuleRegistry.isRuleEnabled(rule);
     }
 }

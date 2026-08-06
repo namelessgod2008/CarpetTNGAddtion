@@ -95,3 +95,14 @@ Minecraft 1.21.4 (Fabric) 的 Carpet 附属模组，将基岩版/后续版本机
 ## 5. 不轻易 Mixin
 
 优先使用 Fabric 事件 / API 实现功能，不轻易使用 Mixin；确需 Mixin 时先确认注入点。
+
+## 6. Git 操作限制
+
+不许使用 `git add`、`git commit`、`git push`。git 仅允许用于回滚文件（如 `git checkout` / `git restore`）。
+
+## 7. 运行时调试
+
+- **验证流程**：功能改完 → `runDatagen` → `build` → 需要时 `runServer` 实测（配方加载数、容器烧炼、mixin 日志）或 `runClient` 看渲染
+- **服务器调试**：改 `run/server.properties` 开 RCON + Python socket 发命令；无玩家 60 秒服务器会暂停 tick，用 Carpet `/player <name> spawn` 生成假玩家保持活跃；测试完还原 server.properties
+- **客户端调试**：环境无法交互操作（无 GUI 自动化库），纯客户端渲染问题需用户实际进游戏确认；服务端能验证的部分（mixin 注入/字段替换）看 runServer 日志
+- **完整细节（RCON 协议、诊断命令、两个坑、验证闭环）**：见 `C:\Users\xzx\.claude\projects\D--Programs-MC-1-21-4-CarpetTNGAddition\memory\debugging.md`

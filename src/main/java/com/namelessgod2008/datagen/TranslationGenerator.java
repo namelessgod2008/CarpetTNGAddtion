@@ -45,6 +45,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.reinforcedObsidian.name", "Reinforced Obsidian");
             builder.add("carpet.rule.reinforcedObsidian.desc",
                     "Obsidian becomes immune to the Wither's block-breaking burst (the one it emits after taking damage); the Wither can no longer destroy obsidian. Regular explosions already cannot break obsidian.");
+            builder.add("carpet.rule.basaltToBlackstoneConversion.name", "Basalt to Blackstone Conversion");
+            builder.add("carpet.rule.basaltToBlackstoneConversion.desc",
+                    "Basalt that touches both lava and water at the same time converts to blackstone.");
+            builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "Blast Furnace Glazed Terracotta");
+            builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
+                    "Blast furnaces can smelt all 16 colors of terracotta into the glazed terracotta of the same color. Vanilla only allows smelting these in a furnace.");
+            builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.name", "Copper Underwater Oxidation Multiplier");
+            builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.desc",
+                    "Multiplier for copper oxidation speed when a copper block is in contact with water (a water source, flowing water, or a waterlogged block on any adjacent face). 1.0 is the vanilla rate; values above 1 speed it up, below 1 slow it down. Vanilla oxidation is not affected by water.");
             builder.add("carpet.rule.piglinBarterDisabledTime.name", "Custom Piglin Trade Disabled Time");
             builder.add("carpet.rule.piglinBarterDisabledTime.desc",
                     "Sets how long (in ticks) a piglin refuses to barter after being hit by a player. Vanilla is 400 ticks (20 seconds); 0 disables the refusal.");
@@ -81,6 +90,45 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.craftableStringFromWool.name", "Craftable String From Wool");
             builder.add("carpet.rule.craftableStringFromWool.desc",
                     "Adds a crafting recipe to convert wool back into string (1 wool = 4 string).");
+            builder.add("carpet.rule.craftableCobwebs.name", "Craftable Cobwebs");
+            builder.add("carpet.rule.craftableCobwebs.desc",
+                    "Adds a crafting recipe for cobwebs from 9 string, the reverse of the old Bedrock cobweb-to-string recipe.");
+            builder.add("carpet.rule.craftableHorseArmor.name", "Craftable Horse Armor");
+            builder.add("carpet.rule.craftableHorseArmor.desc",
+                    "Adds crafting recipes for iron, golden and diamond horse armor using the 1.6-era pattern (6 ingots/gems + 1 wool). Leather horse armor already has a vanilla recipe.");
+            builder.add("carpet.rule.craftableBlueIce.name", "Craftable Blue Ice");
+            builder.add("carpet.rule.craftableBlueIce.desc",
+                    "Adds a crafting recipe for blue ice from 8 ice and 1 blue dye (standard dyeing pattern).");
+            builder.add("carpet.rule.boneToBoneBlock.name", "Craftable Bone Block");
+            builder.add("carpet.rule.boneToBoneBlock.desc",
+                    "Adds a crafting recipe for bone blocks from 3 bones (shapeless). Vanilla requires 9 bone meal instead.");
+            builder.add("carpet.rule.woodToChest.name", "Craftable Chest");
+            builder.add("carpet.rule.woodToChest.desc",
+                    "Adds a crafting recipe for a chest from 2 of any log (shapeless). Vanilla requires 8 planks instead.");
+            builder.add("carpet.rule.dropperAndBowToDispenser.name", "Dropper and Bow to Dispenser");
+            builder.add("carpet.rule.dropperAndBowToDispenser.desc",
+                    "Adds a crafting recipe for a dispenser from 1 dropper and 1 bow (shapeless). Vanilla requires 7 cobblestone, 1 bow and 1 redstone.");
+            builder.add("carpet.rule.woodToStick.name", "Wood to Stick");
+            builder.add("carpet.rule.woodToStick.desc",
+                    "Adds a crafting recipe for sticks from any log (shapeless, 1 log = 8 sticks), skipping the planks step.");
+            builder.add("carpet.rule.blastFurnaceGlass.name", "Blast Furnace Glass");
+            builder.add("carpet.rule.blastFurnaceGlass.desc",
+                    "Blast furnaces can smelt sand and red sand into glass. Vanilla only allows smelting these in a furnace.");
+            builder.add("carpet.rule.blastFurnaceNetherBrick.name", "Blast Furnace Nether Brick");
+            builder.add("carpet.rule.blastFurnaceNetherBrick.desc",
+                    "Blast furnaces can smelt netherrack into nether brick. Vanilla only allows smelting netherrack in a furnace.");
+            builder.add("carpet.rule.blastFurnaceSmoothQuartz.name", "Blast Furnace Smooth Quartz");
+            builder.add("carpet.rule.blastFurnaceSmoothQuartz.desc",
+                    "Blast furnaces can smelt quartz blocks into smooth quartz. Vanilla only allows smelting quartz blocks in a furnace.");
+            builder.add("carpet.rule.blastFurnaceStone.name", "Blast Furnace Stone");
+            builder.add("carpet.rule.blastFurnaceStone.desc",
+                    "Blast furnaces can smelt cobblestone into stone. Vanilla only allows smelting cobblestone in a furnace.");
+            builder.add("carpet.rule.blastFurnaceSmoothStone.name", "Blast Furnace Smooth Stone");
+            builder.add("carpet.rule.blastFurnaceSmoothStone.desc",
+                    "Blast furnaces can smelt stone into smooth stone. Vanilla only allows smelting stone in a furnace.");
+            builder.add("carpet.rule.smokerGreenDye.name", "Smoker Green Dye");
+            builder.add("carpet.rule.smokerGreenDye.desc",
+                    "Smokers can smelt cactus into green dye. Vanilla only allows smelting cactus in a furnace.");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.name", "Legacy Enchanted Golden Apple");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.desc",
                     "Restores the pre-1.9 enchanted golden apple Regeneration V (30s) effect, replacing Regeneration II (20s). Other effects stay as in the new version.");
@@ -90,6 +138,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.silkTouchSuspiciousBlocks.name", "Silk Touch Suspicious Blocks");
             builder.add("carpet.rule.silkTouchSuspiciousBlocks.desc",
                     "Allows collecting suspicious sand and gravel with a Silk Touch tool.");
+            builder.add("carpet.rule.silkTouchSpawners.name", "Silk Touch Spawners");
+            builder.add("carpet.rule.silkTouchSpawners.desc",
+                    "Mining a monster spawner with a Silk Touch tool drops the spawner itself, preserving its spawn configuration (entity type and spawn potentials).");
+            builder.add("carpet.rule.silkTouchPathBlocks.name", "Silk Touch Path Blocks");
+            builder.add("carpet.rule.silkTouchPathBlocks.desc",
+                    "Mining a dirt path with a Silk Touch tool drops the path block itself instead of dirt.");
+            builder.add("carpet.rule.silkTouchFarmland.name", "Silk Touch Farmland");
+            builder.add("carpet.rule.silkTouchFarmland.desc",
+                    "Mining farmland with a Silk Touch tool drops the farmland block itself instead of dirt.");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.name", "Shortened Trial Spawner Cooldown");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.desc",
                     "Shortens the trial spawner cooldown to 5 minutes (instead of the vanilla 30 minutes).");
@@ -136,6 +193,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.reinforcedObsidian.name", "坚固黑曜石");
             builder.add("carpet.rule.reinforcedObsidian.desc",
                     "黑曜石免疫凋零的主动方块破坏（凋零受击后的破坏冲击），凋零不再能破坏黑曜石。普通爆炸本就无法破坏黑曜石。");
+            builder.add("carpet.rule.basaltToBlackstoneConversion.name", "玄武岩转黑石");
+            builder.add("carpet.rule.basaltToBlackstoneConversion.desc",
+                    "同时接触到熔岩和水的玄武岩会转化为黑石。");
+            builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "高炉烧制带釉陶瓦");
+            builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
+                    "高炉可以将全部 16 种染色的陶瓦烧炼为对应颜色的带釉陶瓦。原版只能在熔炉中烧制。");
+            builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.name", "铜水下氧化倍率");
+            builder.add("carpet.rule.copperUnderwaterOxidationMultiplier.desc",
+                    "铜方块接触水时的氧化速度倍率（任一相邻面有水：水方块、流水、含水方块都算）。1.0 为原版速率；大于 1 加快，小于 1 减慢。原版氧化不受水影响。");
             builder.add("carpet.rule.piglinBarterDisabledTime.name", "自定义猪灵受击拒绝交易时间");
             builder.add("carpet.rule.piglinBarterDisabledTime.desc",
                     "设置猪灵被玩家攻击后拒绝交易的时间（tick）。原版为 400 tick（20 秒），0 为不拒绝。");
@@ -171,6 +237,44 @@ public final class TranslationGenerator {
                     "手持烈焰棒右键高炉不会打开高炉界面，而是清空高炉积累的所有经验，经验球出现在玩家所在坐标。需先开启烈焰棒调试规则。");
             builder.add("carpet.rule.craftableStringFromWool.name", "羊毛合成线");
             builder.add("carpet.rule.craftableStringFromWool.desc", "添加羊毛合成线的配方（1 羊毛 = 4 线）。");
+            builder.add("carpet.rule.craftableCobwebs.name", "蜘蛛网合成");
+            builder.add("carpet.rule.craftableCobwebs.desc", "添加用 9 根线合成蜘蛛网的配方，是基岩版旧版'蜘蛛网拆线'配方的反向。");
+            builder.add("carpet.rule.craftableHorseArmor.name", "马铠合成");
+            builder.add("carpet.rule.craftableHorseArmor.desc",
+                    "添加铁、金、钻石马铠的合成配方，采用 1.6 时代的图案（6 个锭/宝石 + 1 块羊毛）。皮革马铠原版已有配方。");
+            builder.add("carpet.rule.craftableBlueIce.name", "蓝冰合成");
+            builder.add("carpet.rule.craftableBlueIce.desc",
+                    "添加用 8 个冰和 1 个蓝色染料合成蓝冰的配方（标准染色图案）。");
+            builder.add("carpet.rule.boneToBoneBlock.name", "骨块合成");
+            builder.add("carpet.rule.boneToBoneBlock.desc",
+                    "添加用 3 根骨头（无序）合成骨块的配方。原版需要用 9 个骨粉合成。");
+            builder.add("carpet.rule.woodToChest.name", "箱子合成");
+            builder.add("carpet.rule.woodToChest.desc",
+                    "添加用 2 个任意原木（无序）合成箱子的配方。原版需要用 8 个木板合成。");
+            builder.add("carpet.rule.dropperAndBowToDispenser.name", "投掷器加弓合成发射器");
+            builder.add("carpet.rule.dropperAndBowToDispenser.desc",
+                    "添加用 1 个投掷器和 1 把弓（无序）合成发射器的配方。原版需要 7 个圆石、1 把弓和 1 个红石粉。");
+            builder.add("carpet.rule.woodToStick.name", "原木合成木棍");
+            builder.add("carpet.rule.woodToStick.desc",
+                    "添加用任意原木（无序，1 原木 = 8 木棍）合成木棍的配方，跳过木板步骤。");
+            builder.add("carpet.rule.blastFurnaceGlass.name", "高炉烧沙成玻璃");
+            builder.add("carpet.rule.blastFurnaceGlass.desc",
+                    "高炉可以将沙子和红沙烧炼为玻璃。原版沙子/红沙只能由熔炉烧成玻璃。");
+            builder.add("carpet.rule.blastFurnaceNetherBrick.name", "高炉烧制下界砖");
+            builder.add("carpet.rule.blastFurnaceNetherBrick.desc",
+                    "高炉可以将下界岩烧炼为下界砖。原版下界岩只能由熔炉烧成下界砖。");
+            builder.add("carpet.rule.blastFurnaceSmoothQuartz.name", "高炉烧制平滑石英");
+            builder.add("carpet.rule.blastFurnaceSmoothQuartz.desc",
+                    "高炉可以将石英块烧炼为平滑石英块。原版石英块只能由熔炉烧成平滑石英块。");
+            builder.add("carpet.rule.blastFurnaceStone.name", "高炉烧制石头");
+            builder.add("carpet.rule.blastFurnaceStone.desc",
+                    "高炉可以将圆石烧炼为石头。原版圆石只能由熔炉烧成石头。");
+            builder.add("carpet.rule.blastFurnaceSmoothStone.name", "高炉烧制平滑石头");
+            builder.add("carpet.rule.blastFurnaceSmoothStone.desc",
+                    "高炉可以将石头烧炼为平滑石头。原版石头只能由熔炉烧成平滑石头。");
+            builder.add("carpet.rule.smokerGreenDye.name", "烟熏炉烧制绿色染料");
+            builder.add("carpet.rule.smokerGreenDye.desc",
+                    "烟熏炉可以将仙人掌烟熏为绿色染料。原版仙人掌只能由熔炉烧成绿色染料。");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.name", "旧版附魔金苹果生命恢复");
             builder.add("carpet.rule.legacyEnchantedGoldenApple.desc",
                     "恢复 1.9 前的附魔金苹果再生效果：再生 V（30 秒）替代新版的再生 II（20 秒），其他效果保持新版不变。");
@@ -178,6 +282,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.silkTouchBuddingAmethyst.desc", "允许使用精准采集工具采集紫水晶母岩。");
             builder.add("carpet.rule.silkTouchSuspiciousBlocks.name", "精准采集可疑方块");
             builder.add("carpet.rule.silkTouchSuspiciousBlocks.desc", "允许使用精准采集工具采集可疑的沙子和砂砾。");
+            builder.add("carpet.rule.silkTouchSpawners.name", "精准采集刷怪笼");
+            builder.add("carpet.rule.silkTouchSpawners.desc",
+                    "使用精准采集工具挖掘刷怪笼时，会掉落刷怪笼自身，并完整保留其刷怪配置（实体类型与刷怪池）。");
+            builder.add("carpet.rule.silkTouchPathBlocks.name", "精准采集土径");
+            builder.add("carpet.rule.silkTouchPathBlocks.desc",
+                    "使用精准采集工具挖掘土径时，会掉落土径方块自身，而不是泥土。");
+            builder.add("carpet.rule.silkTouchFarmland.name", "精准采集耕地");
+            builder.add("carpet.rule.silkTouchFarmland.desc",
+                    "使用精准采集工具挖掘耕地时，会掉落耕地方块自身，而不是泥土。");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.name", "缩短试炼刷怪笼冷却");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.desc", "将试炼刷怪笼冷却缩短为 5 分钟（原版为 30 分钟）。");
             builder.add("carpet.rule.brewableOminousPotion.name", "灾厄药水酿造");
