@@ -67,6 +67,8 @@
   "carpet.rule.durableAnvil.name": "耐用的铁砧",
   "carpet.rule.durableFallingAnvil.desc": "铁砧方块从高处掉落落地时不再因摔落而损坏；铁砧仍可被物理破坏。",
   "carpet.rule.durableFallingAnvil.name": "耐摔的铁砧",
+  "carpet.rule.featherFallingProtectsFarmland.desc": "穿着带摔落缓冲附魔的靴子落到耕地上时，不再会把耕地踩成泥土。",
+  "carpet.rule.featherFallingProtectsFarmland.name": "摔落缓冲保护耕地",
   "carpet.rule.legacyEnchantedGoldenApple.desc": "恢复 1.9 前的附魔金苹果再生效果：再生 V（30 秒）替代新版的再生 II（20 秒），其他效果保持新版不变。",
   "carpet.rule.legacyEnchantedGoldenApple.name": "旧版附魔金苹果生命恢复",
   "carpet.rule.neutralPiglins.desc": "猪灵不再主动攻击未穿金护甲的玩家；但群起而攻之的仇恨机制（如攻击猪灵或猪灵蛮兵后）保持原版。",
@@ -103,6 +105,10 @@
   "carpet.rule.splashOxidizeCopper.name": "喷溅水瓶氧化铜",
   "carpet.rule.stopCreeperGriefing.desc": "苦力怕爆炸不再破坏方块，但仍会造成伤害和击退。",
   "carpet.rule.stopCreeperGriefing.name": "阻止苦力怕破坏地形",
+  "carpet.rule.stopGhastGriefing.desc": "恶魂火球爆炸不再破坏方块，但仍会造成伤害。",
+  "carpet.rule.stopGhastGriefing.name": "阻止恶魂破坏地形",
+  "carpet.rule.villagerBedExplosion.desc": "村民在下界和末地使用床时，床会像玩家使用一样爆炸。",
+  "carpet.rule.villagerBedExplosion.name": "村民睡床爆炸",
   "carpet.rule.woodToChest.desc": "添加用 2 个任意原木（无序）合成箱子的配方。原版需要用 8 个木板合成。",
   "carpet.rule.woodToChest.name": "箱子合成"
 }

@@ -1,10 +1,9 @@
 {
 	"required": true,
-	"package": "com.namelessgod2008.feature.creeper.mixin",
+	"package": "com.namelessgod2008.feature.villager.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"CreeperMixin",
-		"GhastMixin"
+		"VillagerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

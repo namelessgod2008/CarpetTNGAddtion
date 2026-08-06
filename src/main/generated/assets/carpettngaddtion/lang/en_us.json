@@ -67,6 +67,8 @@
   "carpet.rule.durableAnvil.name": "Durable Anvil",
   "carpet.rule.durableFallingAnvil.desc": "Falling anvils no longer get damaged when they hit the ground; they can still be broken physically.",
   "carpet.rule.durableFallingAnvil.name": "Durable Falling Anvil",
+  "carpet.rule.featherFallingProtectsFarmland.desc": "Landing on farmland while wearing boots with Feather Falling no longer turns it into dirt.",
+  "carpet.rule.featherFallingProtectsFarmland.name": "Feather Falling Protects Farmland",
   "carpet.rule.legacyEnchantedGoldenApple.desc": "Restores the pre-1.9 enchanted golden apple Regeneration V (30s) effect, replacing Regeneration II (20s). Other effects stay as in the new version.",
   "carpet.rule.legacyEnchantedGoldenApple.name": "Legacy Enchanted Golden Apple",
   "carpet.rule.neutralPiglins.desc": "Piglins no longer proactively attack players who are not wearing gold armor, but the pack-aggression mechanic (e.g. after you attack a piglin or a piglin brute) still works as vanilla.",
@@ -103,6 +105,10 @@
   "carpet.rule.splashOxidizeCopper.name": "Splash Oxidize Copper",
   "carpet.rule.stopCreeperGriefing.desc": "Creeper explosions no longer destroy blocks; they still deal damage and knockback.",
   "carpet.rule.stopCreeperGriefing.name": "Stop Creeper Griefing",
+  "carpet.rule.stopGhastGriefing.desc": "Ghast fireball explosions no longer destroy blocks; they still deal damage.",
+  "carpet.rule.stopGhastGriefing.name": "Stop Ghast Griefing",
+  "carpet.rule.villagerBedExplosion.desc": "Villagers using a bed in the nether or the end cause it to explode, like players do.",
+  "carpet.rule.villagerBedExplosion.name": "Villager Bed Explosion",
   "carpet.rule.woodToChest.desc": "Adds a crafting recipe for a chest from 2 of any log (shapeless). Vanilla requires 8 planks instead.",
   "carpet.rule.woodToChest.name": "Craftable Chest"
 }

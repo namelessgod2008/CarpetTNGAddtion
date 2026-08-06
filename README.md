@@ -38,6 +38,8 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
 | `basaltToBlackstoneConversion` | 玄武岩转黑石（同时接触熔岩和水） | feature, TNG |
 | `stopCreeperGriefing` | 阻止苦力怕破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
+| `stopGhastGriefing` | 阻止恶魂破坏地形（火球爆炸不破坏方块但保留伤害） | feature, TNG |
+| `villagerBedExplosion` | 村民睡床爆炸（下界/末地用床会爆炸） | feature, TNG, survival |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
@@ -57,6 +59,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `silkTouchSpawners` | 精准采集刷怪笼（掉落自身并保留配置） | TNG, survival |
 | `silkTouchPathBlocks` | 精准采集土径（掉落土径自身而非泥土） | TNG, survival |
 | `silkTouchFarmland` | 精准采集耕地（掉落耕地自身而非泥土） | TNG, survival |
+| `featherFallingProtectsFarmland` | 摔落缓冲保护耕地（穿摔落缓冲靴子不踩坏耕地） | feature, TNG, survival |
 | `shortenedTrialSpawnerCooldown` | 试炼刷怪笼冷却缩短为 5 分钟 | feature, TNG, survival |
 | `brewableOminousPotion` | 灾厄药水酿造（图腾 + 萤石，I–V 级） | feature, TNG, survival |
 | `blazePowderNetherWartGrowth` | 烈焰粉催熟地狱疣（右键 +1 级） | feature, TNG, survival |
@@ -97,6 +100,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - `silkTouchBuddingAmethyst`：精准采集工具可采集紫水晶母岩
 - `silkTouchSuspiciousBlocks`：精准采集工具可采集可疑的沙子和砂砾
 - `silkTouchSpawners`：精准采集工具挖掘刷怪笼时掉落刷怪笼自身，并完整保留其刷怪配置（实体类型与刷怪池）；原版刷怪笼掉落表为空，任何工具都不掉落物品
+- `featherFallingProtectsFarmland`：穿着带摔落缓冲附魔的靴子落到耕地上时，不再把耕地踩成泥土；注入 `FarmBlock.fallOn` 的 `turnToDirt` 调用
 - `silkTouchPathBlocks`：精准采集工具挖掘土径时掉落土径自身，而非泥土
 - `silkTouchFarmland`：精准采集工具挖掘耕地时掉落耕地自身，而非泥土
 
@@ -171,10 +175,16 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - 接触判定：玄武岩 6 个方向的相邻方块中，至少一面流体为熔岩、至少一面为水（含水方块/含水状态的流体也计入）
 - 机制说明：Java 版玄武岩是普通方块（无自有逻辑），通过注入基类 `BlockBehaviour` 的 `onPlace`/`neighborChanged` 并过滤玄武岩实现
 
-### 阻止苦力怕破坏地形
+### 阻止苦力怕/恶魂破坏地形
 
 - `stopCreeperGriefing`：苦力怕爆炸不再破坏方块，但仍造成伤害和击退（"能炸但炸不坏"）
-- 机制：`Creeper.explodeCreeper` 用 `Level.ExplosionInteraction.MOB` 调 `Level.explode`，MOB 受 `mobGriefing` 规则控制（开启时破坏方块）；规则开启时 `@ModifyArg` 把该参数改为 `NONE`（映射到 `BlockInteraction.KEEP`），`ServerLevel.explode` 的 switch 直接保留伤害/击退/音效
+- `stopGhastGriefing`：恶魂火球爆炸不再破坏方块，但仍造成伤害
+- 机制：注入 `ServerExplosion.interactWithBlocks`（实体伤害 `interactWithEntities` 与方块破坏分离），规则开启且爆炸间接源是苦力怕（`getIndirectSourceEntity() instanceof Creeper`）或恶魂（`instanceof Ghast`，恶魂火球的 owner）时 cancel，跳过方块破坏、保留伤害/击退/音效
+
+### 村民睡床爆炸
+
+- `villagerBedExplosion`：村民在下界/末地使用床时，床会像玩家使用一样爆炸（移除床 + 半径 5 爆炸 + 引火）
+- 机制：注入 `Villager.startSleeping`（村民入睡专属入口，由 `SleepInBed` 行为调用），维度 `!dimensionType().bedWorks()`（床不起作用的维度）时复刻原版 `BedBlock.useWithoutItem` 的爆炸逻辑并阻止入睡
 
 ### 骨粉产瓜
 

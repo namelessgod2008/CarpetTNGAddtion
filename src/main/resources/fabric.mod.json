@@ -42,6 +42,8 @@
 		"carpettngaddtion.silktouch.mixins.json",
 		"carpettngaddtion.copper.mixins.json",
 		"carpettngaddtion.creeper.mixins.json",
+		"carpettngaddtion.farmland.mixins.json",
+		"carpettngaddtion.villager.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {

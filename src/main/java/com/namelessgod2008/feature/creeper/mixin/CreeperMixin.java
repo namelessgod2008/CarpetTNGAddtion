@@ -12,11 +12,13 @@ import java.util.List;
 
 /**
  * 阻止苦力怕爆炸破坏方块：
- * 苦力怕爆炸仍能造成伤害和击退，但不再破坏方块。
+ * 爆炸仍能造成伤害和击退，但不再破坏方块。
  * <p>
  * {@code ServerExplosion.explode()} 中实体伤害（interactWithEntities）
- * 与方块破坏（interactWithBlocks）分离。规则开启且爆炸间接源是苦力怕时
- * cancel 掉 {@code interactWithBlocks}，跳过方块破坏，保留伤害/击退/音效。
+ * 与方块破坏（interactWithBlocks）分离。规则开启且爆炸间接源是苦力怕
+ * 时 cancel 掉 {@code interactWithBlocks}，跳过方块破坏，保留伤害/击退/音效。
+ * <p>
+ * 恶魂火球由独立的 {@code GhastMixin} 处理（见 creeper 包）。
  */
 @Mixin(ServerExplosion.class)
 public class CreeperMixin {

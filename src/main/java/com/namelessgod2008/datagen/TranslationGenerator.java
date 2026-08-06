@@ -51,6 +51,12 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.stopCreeperGriefing.name", "Stop Creeper Griefing");
             builder.add("carpet.rule.stopCreeperGriefing.desc",
                     "Creeper explosions no longer destroy blocks; they still deal damage and knockback.");
+            builder.add("carpet.rule.stopGhastGriefing.name", "Stop Ghast Griefing");
+            builder.add("carpet.rule.stopGhastGriefing.desc",
+                    "Ghast fireball explosions no longer destroy blocks; they still deal damage.");
+            builder.add("carpet.rule.villagerBedExplosion.name", "Villager Bed Explosion");
+            builder.add("carpet.rule.villagerBedExplosion.desc",
+                    "Villagers using a bed in the nether or the end cause it to explode, like players do.");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "Blast Furnace Glazed Terracotta");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "Blast furnaces can smelt all 16 colors of terracotta into the glazed terracotta of the same color. Vanilla only allows smelting these in a furnace.");
@@ -162,6 +168,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.silkTouchFarmland.name", "Silk Touch Farmland");
             builder.add("carpet.rule.silkTouchFarmland.desc",
                     "Mining farmland with a Silk Touch tool drops the farmland block itself instead of dirt.");
+            builder.add("carpet.rule.featherFallingProtectsFarmland.name", "Feather Falling Protects Farmland");
+            builder.add("carpet.rule.featherFallingProtectsFarmland.desc",
+                    "Landing on farmland while wearing boots with Feather Falling no longer turns it into dirt.");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.name", "Shortened Trial Spawner Cooldown");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.desc",
                     "Shortens the trial spawner cooldown to 5 minutes (instead of the vanilla 30 minutes).");
@@ -214,6 +223,12 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.stopCreeperGriefing.name", "阻止苦力怕破坏地形");
             builder.add("carpet.rule.stopCreeperGriefing.desc",
                     "苦力怕爆炸不再破坏方块，但仍会造成伤害和击退。");
+            builder.add("carpet.rule.stopGhastGriefing.name", "阻止恶魂破坏地形");
+            builder.add("carpet.rule.stopGhastGriefing.desc",
+                    "恶魂火球爆炸不再破坏方块，但仍会造成伤害。");
+            builder.add("carpet.rule.villagerBedExplosion.name", "村民睡床爆炸");
+            builder.add("carpet.rule.villagerBedExplosion.desc",
+                    "村民在下界和末地使用床时，床会像玩家使用一样爆炸。");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "高炉烧制带釉陶瓦");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "高炉可以将全部 16 种染色的陶瓦烧炼为对应颜色的带釉陶瓦。原版只能在熔炉中烧制。");
@@ -321,6 +336,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.silkTouchFarmland.name", "精准采集耕地");
             builder.add("carpet.rule.silkTouchFarmland.desc",
                     "使用精准采集工具挖掘耕地时，会掉落耕地方块自身，而不是泥土。");
+            builder.add("carpet.rule.featherFallingProtectsFarmland.name", "摔落缓冲保护耕地");
+            builder.add("carpet.rule.featherFallingProtectsFarmland.desc",
+                    "穿着带摔落缓冲附魔的靴子落到耕地上时，不再会把耕地踩成泥土。");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.name", "缩短试炼刷怪笼冷却");
             builder.add("carpet.rule.shortenedTrialSpawnerCooldown.desc", "将试炼刷怪笼冷却缩短为 5 分钟（原版为 30 分钟）。");
             builder.add("carpet.rule.brewableOminousPotion.name", "灾厄药水酿造");

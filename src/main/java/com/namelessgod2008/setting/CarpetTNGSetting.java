@@ -127,6 +127,9 @@ public class CarpetTNGSetting {
     @Rule(categories = {"TNG", "survival"}, options = {"true", "false"})
     public static boolean silkTouchFarmland = false;
 
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean featherFallingProtectsFarmland = false;
+
     // ==================== 附魔金苹果 ====================
 
     @Rule(categories = {"porting", "TNG"}, options = {"true", "false"})
@@ -173,10 +176,16 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
     public static boolean basaltToBlackstoneConversion = false;
 
-    // ==================== 苦力怕 ====================
+    // ==================== 苦力怕 / 恶魂 ====================
 
     @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
     public static boolean stopCreeperGriefing = false;
+
+    @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
+    public static boolean stopGhastGriefing = false;
+
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean villagerBedExplosion = false;
 
     // ==================== 铜氧化 ====================
 
