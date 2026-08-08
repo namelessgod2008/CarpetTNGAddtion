@@ -40,6 +40,9 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `stopCreeperGriefing` | 阻止苦力怕破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
 | `stopGhastGriefing` | 阻止恶魂破坏地形（火球爆炸不破坏方块但保留伤害） | feature, TNG |
 | `villagerBedExplosion` | 村民睡床爆炸（下界/末地用床会爆炸） | feature, TNG, survival |
+| `endCrystalPlacementRestriction` | 末地水晶放置限制（默认开=只能放黑曜石/基岩） | feature, TNG, survival |
+| `stopEndCrystalGriefing` | 阻止末地水晶破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
+| `commandMods` | 启用 /mods 命令（列出服务器所有已安装 Mod） | feature, TNG, command |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
@@ -185,6 +188,17 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `villagerBedExplosion`：村民在下界/末地使用床时，床会像玩家使用一样爆炸（移除床 + 半径 5 爆炸 + 引火）
 - 机制：注入 `Villager.startSleeping`（村民入睡专属入口，由 `SleepInBed` 行为调用），维度 `!dimensionType().bedWorks()`（床不起作用的维度）时复刻原版 `BedBlock.useWithoutItem` 的爆炸逻辑并阻止入睡
+
+### 末地水晶放置限制
+
+- `endCrystalPlacementRestriction`：**默认开启**（原版行为）——末地水晶只能放在黑曜石/基岩上；关闭后可在任意方块上放置
+- 机制：原版 `EndCrystalItem.useOn` 检查 `!is(OBSIDIAN) && !is(BEDROCK)` 时 FAIL；规则关闭时 `@Redirect` 让 `is(OBSIDIAN)` 恒 true，使条件不成立、允许放置
+- `stopEndCrystalGriefing`：末地水晶爆炸不再破坏方块，但仍造成伤害；末地水晶爆炸直接源是 EndCrystal 自身（非 LivingEntity，间接源为 null），用 `getDirectSourceEntity() instanceof EndCrystal` 判断
+
+### 命令 /mods
+
+- `commandMods`：启用 `/mods` 命令，列出服务器安装的所有 Mod（名称 + mod id）；规则变化立即生效
+- 机制：`CarpetTNGExtension` override `registerCommands(CommandDispatcher, CommandBuildContext)`，无条件注册 `/mods`、用 `requires(source -> commandMods)` 谓词实时判权（`command` 分类挂 Carpet 的 `Validator$_COMMAND`，规则变化时刷新客户端命令树，命令立即出现）；Mod 列表来自 `FabricLoader.getInstance().getAllMods()`
 
 ### 骨粉产瓜
 

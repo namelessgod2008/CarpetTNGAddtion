@@ -2,8 +2,18 @@ package com.namelessgod2008;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.namelessgod2008.setting.CarpetTNGSetting;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
+import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +60,15 @@ public class CarpetTNGExtension implements CarpetExtension {
                     Map.entry("carpet.rule.villagerBedExplosion.name", "Villager Bed Explosion"),
                     Map.entry("carpet.rule.villagerBedExplosion.desc",
                             "Villagers using a bed in the nether or the end cause it to explode, like players do."),
+                    Map.entry("carpet.rule.endCrystalPlacementRestriction.name", "End Crystal Placement Restriction"),
+                    Map.entry("carpet.rule.endCrystalPlacementRestriction.desc",
+                            "End crystals can only be placed on obsidian or bedrock (vanilla behavior, enabled by default). When disabled, they can be placed on any block."),
+                    Map.entry("carpet.rule.stopEndCrystalGriefing.name", "Stop End Crystal Griefing"),
+                    Map.entry("carpet.rule.stopEndCrystalGriefing.desc",
+                            "End crystal explosions no longer destroy blocks; they still deal damage."),
+                    Map.entry("carpet.rule.commandMods.name", "Command Mods"),
+                    Map.entry("carpet.rule.commandMods.desc",
+                            "Enables the /mods command that lists all installed mods on the server. Takes effect immediately."),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.name", "Blast Furnace Glazed Terracotta"),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                             "Blast furnaces can smelt all 16 colors of terracotta into the glazed terracotta of the same color. Vanilla only allows smelting these in a furnace."),
@@ -214,6 +233,15 @@ public class CarpetTNGExtension implements CarpetExtension {
                     Map.entry("carpet.rule.villagerBedExplosion.name", "村民睡床爆炸"),
                     Map.entry("carpet.rule.villagerBedExplosion.desc",
                             "村民在下界和末地使用床时，床会像玩家使用一样爆炸。"),
+                    Map.entry("carpet.rule.endCrystalPlacementRestriction.name", "末地水晶放置限制"),
+                    Map.entry("carpet.rule.endCrystalPlacementRestriction.desc",
+                            "末地水晶只能放在黑曜石和基岩上（原版行为，默认开启）。关闭后可在任意方块上放置。"),
+                    Map.entry("carpet.rule.stopEndCrystalGriefing.name", "阻止末地水晶破坏地形"),
+                    Map.entry("carpet.rule.stopEndCrystalGriefing.desc",
+                            "末地水晶爆炸不再破坏方块，但仍会造成伤害。"),
+                    Map.entry("carpet.rule.commandMods.name", "命令 /mods"),
+                    Map.entry("carpet.rule.commandMods.desc",
+                            "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。"),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.name", "高炉烧制带釉陶瓦"),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                             "高炉可以将全部 16 种染色的陶瓦烧炼为对应颜色的带釉陶瓦。原版只能在熔炉中烧制。"),
@@ -356,5 +384,53 @@ public class CarpetTNGExtension implements CarpetExtension {
         Map<String, String> result = new HashMap<>(fallback);
         result.putAll(translations);
         return result;
+    }
+
+    @Override
+    public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext commandBuildContext) {
+        // Register unconditionally; the rule gates availability at parse time via requires().
+        // The "command" category attaches Carpet's Validator$_COMMAND, which refreshes the
+        // client command tree when the rule changes, so /mods appears immediately without restart.
+        dispatcher.register(
+                Commands.literal("mods")
+                        .requires(source -> CarpetTNGSetting.commandMods)
+                        .executes(CarpetTNGExtension::listMods)
+        );
+    }
+
+    private static int listMods(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        CommandSourceStack source = context.getSource();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Loading ").append(FabricLoader.getInstance().getAllMods().size()).append(" mods:");
+        for (ModContainer mod : FabricLoader.getInstance().getAllMods()) {
+            appendModTree(sb, mod, 0, null);
+        }
+        source.sendSuccess(() -> Component.literal(sb.toString()), false);
+        return 1;
+    }
+
+    /**
+     * Recursively appends a mod and its contained (nested) mods, mirroring the
+     * Fabric Loader startup log format ("|--" / "\--" tree, 3-space indent per level).
+     */
+    private static void appendModTree(StringBuilder sb, ModContainer mod, int depth, Boolean last) {
+        sb.append('\n');
+        if (depth == 0) {
+            sb.append("- ").append(displayName(mod));
+        } else {
+            sb.append("   ".repeat(depth)).append(last ? "\\-- " : "|-- ").append(displayName(mod));
+        }
+        Collection<ModContainer> contained = mod.getContainedMods();
+        if (contained.isEmpty()) {
+            return;
+        }
+        ModContainer[] children = contained.toArray(new ModContainer[0]);
+        for (int i = 0; i < children.length; i++) {
+            appendModTree(sb, children[i], depth + 1, i == children.length - 1);
+        }
+    }
+
+    private static String displayName(ModContainer mod) {
+        return mod.getMetadata().getName() + " " + mod.getMetadata().getVersion();
     }
 }

@@ -1,11 +1,9 @@
 {
 	"required": true,
-	"package": "com.namelessgod2008.feature.creeper.mixin",
+	"package": "com.namelessgod2008.feature.endcrystal.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"CreeperMixin",
-		"GhastMixin",
-		"EndCrystalExplosionMixin"
+		"EndCrystalItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

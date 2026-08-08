@@ -57,6 +57,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.villagerBedExplosion.name", "Villager Bed Explosion");
             builder.add("carpet.rule.villagerBedExplosion.desc",
                     "Villagers using a bed in the nether or the end cause it to explode, like players do.");
+            builder.add("carpet.rule.endCrystalPlacementRestriction.name", "End Crystal Placement Restriction");
+            builder.add("carpet.rule.endCrystalPlacementRestriction.desc",
+                    "End crystals can only be placed on obsidian or bedrock (vanilla behavior, enabled by default). When disabled, they can be placed on any block.");
+            builder.add("carpet.rule.stopEndCrystalGriefing.name", "Stop End Crystal Griefing");
+            builder.add("carpet.rule.stopEndCrystalGriefing.desc",
+                    "End crystal explosions no longer destroy blocks; they still deal damage.");
+            builder.add("carpet.rule.commandMods.name", "Command Mods");
+            builder.add("carpet.rule.commandMods.desc",
+                    "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "Blast Furnace Glazed Terracotta");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "Blast furnaces can smelt all 16 colors of terracotta into the glazed terracotta of the same color. Vanilla only allows smelting these in a furnace.");
@@ -229,6 +238,15 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.villagerBedExplosion.name", "村民睡床爆炸");
             builder.add("carpet.rule.villagerBedExplosion.desc",
                     "村民在下界和末地使用床时，床会像玩家使用一样爆炸。");
+            builder.add("carpet.rule.endCrystalPlacementRestriction.name", "末地水晶放置限制");
+            builder.add("carpet.rule.endCrystalPlacementRestriction.desc",
+                    "末地水晶只能放在黑曜石和基岩上（原版行为，默认开启）。关闭后可在任意方块上放置。");
+            builder.add("carpet.rule.stopEndCrystalGriefing.name", "阻止末地水晶破坏地形");
+            builder.add("carpet.rule.stopEndCrystalGriefing.desc",
+                    "末地水晶爆炸不再破坏方块，但仍会造成伤害。");
+            builder.add("carpet.rule.commandMods.name", "命令 /mods");
+            builder.add("carpet.rule.commandMods.desc",
+                    "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "高炉烧制带釉陶瓦");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "高炉可以将全部 16 种染色的陶瓦烧炼为对应颜色的带釉陶瓦。原版只能在熔炉中烧制。");

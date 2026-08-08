@@ -187,6 +187,19 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean villagerBedExplosion = false;
 
+    // 默认开启（原版行为）：末地水晶只能在黑曜石/基岩上放置。
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean endCrystalPlacementRestriction = true;
+
+    @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
+    public static boolean stopEndCrystalGriefing = false;
+
+    // ==================== 命令 ====================
+
+    // 启用 /mods 命令：列出服务器安装的所有 Mod（需要服务器重启后生效）
+    @Rule(categories = {"feature", "TNG", "command"}, options = {"true", "false"})
+    public static boolean commandMods = false;
+
     // ==================== 铜氧化 ====================
 
     // 铜接触水时的氧化速度倍率（自由数值，无 options 限制，与 piglinBarterDisabledTime 同模式）。
