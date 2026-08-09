@@ -194,6 +194,18 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG"}, options = {"true", "false"})
     public static boolean stopEndCrystalGriefing = false;
 
+    // ==================== 雪傀儡 ====================
+
+    // 雪傀儡不再因炎热生物群系（沙漠/下界/恶地等）而融化受伤
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean snowGolemNoMelt = false;
+
+    // ==================== 附魔 ====================
+
+    // 不同类型保护魔咒（保护/爆炸保护/火焰保护/弹射物保护）可以叠加在同一件装备上
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean stackableProtection = false;
+
     // ==================== 命令 ====================
 
     // 启用 /mods 命令：列出服务器安装的所有 Mod（需要服务器重启后生效）

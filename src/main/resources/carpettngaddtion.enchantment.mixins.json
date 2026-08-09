@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.namelessgod2008.feature.enchantment.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"EnchantmentMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

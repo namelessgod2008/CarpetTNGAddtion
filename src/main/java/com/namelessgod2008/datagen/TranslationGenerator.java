@@ -63,6 +63,12 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.stopEndCrystalGriefing.name", "Stop End Crystal Griefing");
             builder.add("carpet.rule.stopEndCrystalGriefing.desc",
                     "End crystal explosions no longer destroy blocks; they still deal damage.");
+            builder.add("carpet.rule.snowGolemNoMelt.name", "Snow Golem No Melt");
+            builder.add("carpet.rule.snowGolemNoMelt.desc",
+                    "Snow golems no longer take melting damage in hot biomes (deserts, the nether, badlands, etc.).");
+            builder.add("carpet.rule.stackableProtection.name", "Stackable Protection");
+            builder.add("carpet.rule.stackableProtection.desc",
+                    "Different protection enchantments (protection, blast protection, fire protection, projectile protection) can be applied to the same piece of armor and stack.");
             builder.add("carpet.rule.commandMods.name", "Command Mods");
             builder.add("carpet.rule.commandMods.desc",
                     "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
@@ -244,6 +250,12 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.stopEndCrystalGriefing.name", "阻止末地水晶破坏地形");
             builder.add("carpet.rule.stopEndCrystalGriefing.desc",
                     "末地水晶爆炸不再破坏方块，但仍会造成伤害。");
+            builder.add("carpet.rule.snowGolemNoMelt.name", "雪傀儡不融化");
+            builder.add("carpet.rule.snowGolemNoMelt.desc",
+                    "雪傀儡在炎热生物群系（沙漠、下界、恶地等）不再受到融化伤害。");
+            builder.add("carpet.rule.stackableProtection.name", "保护魔咒可叠加");
+            builder.add("carpet.rule.stackableProtection.desc",
+                    "不同类型保护魔咒（保护、爆炸保护、火焰保护、弹射物保护）可以附在同一件装备上并叠加效果。");
             builder.add("carpet.rule.commandMods.name", "命令 /mods");
             builder.add("carpet.rule.commandMods.desc",
                     "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");

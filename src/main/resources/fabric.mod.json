@@ -45,6 +45,8 @@
 		"carpettngaddtion.farmland.mixins.json",
 		"carpettngaddtion.villager.mixins.json",
 		"carpettngaddtion.endcrystal.mixins.json",
+		"carpettngaddtion.snowgolem.mixins.json",
+		"carpettngaddtion.enchantment.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {

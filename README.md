@@ -43,6 +43,8 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `endCrystalPlacementRestriction` | 末地水晶放置限制（默认开=只能放黑曜石/基岩） | feature, TNG, survival |
 | `stopEndCrystalGriefing` | 阻止末地水晶破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
 | `commandMods` | 启用 /mods 命令（列出服务器所有已安装 Mod） | feature, TNG, command |
+| `snowGolemNoMelt` | 雪傀儡不融化（炎热生物群系不再受伤） | feature, TNG, survival |
+| `stackableProtection` | 保护魔咒可叠加（不同类型保护可附同一装备） | feature, TNG, survival |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
@@ -198,7 +200,17 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 ### 命令 /mods
 
 - `commandMods`：启用 `/mods` 命令，列出服务器安装的所有 Mod（名称 + mod id）；规则变化立即生效
-- 机制：`CarpetTNGExtension` override `registerCommands(CommandDispatcher, CommandBuildContext)`，无条件注册 `/mods`、用 `requires(source -> commandMods)` 谓词实时判权（`command` 分类挂 Carpet 的 `Validator$_COMMAND`，规则变化时刷新客户端命令树，命令立即出现）；Mod 列表来自 `FabricLoader.getInstance().getAllMods()`
+- 机制：`CarpetTNGExtension` override `registerCommands(CommandDispatcher, CommandBuildContext)`，无条件注册 `/mods`、用 `requires(source -> commandMods)` 谓词实时判权（`command` 分类挂 Carpet 的 `Validator$_COMMAND`，规则变化时刷新客户端命令树，命令立即出现）；Mod 列表来自 `FabricLoader.getInstance().getAllMods()`，输出格式复刻 Fabric Loader 启动日志（`|--`/`\--` 层级树）
+
+### 雪傀儡不融化
+
+- `snowGolemNoMelt`：雪傀儡在炎热生物群系（沙漠、下界、恶地等，`SNOW_GOLEM_MELTS` tag）不再受到融化伤害
+- 机制：注入 `SnowGolem.aiStep`，`@Redirect` 掉 `hurtServer` 调用（原版在炎热生物群系每 tick 受到 1 点火焰伤害）；注意原版雪傀儡**下雨本身不受伤害**，伤害只来自炎热生物群系
+
+### 保护魔咒可叠加
+
+- `stackableProtection`：不同类型的保护魔咒（保护、爆炸保护、火焰保护、弹射物保护）可以附在同一件装备上并叠加效果
+- 机制：原版 4 种保护共享 `exclusive_set/armor` tag 互斥（`Enchantment.areCompatible`）；规则开启时注入 `areCompatible` RETURN，两附魔都属该 tag 则视为兼容；伤害减免原版 `getDamageProtection` 已累加不同来源，无需改
 
 ### 骨粉产瓜
 

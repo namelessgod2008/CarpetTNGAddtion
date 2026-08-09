@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.namelessgod2008.feature.snowgolem.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"SnowGolemMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
