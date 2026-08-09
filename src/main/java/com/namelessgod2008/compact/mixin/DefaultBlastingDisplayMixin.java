@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -36,7 +37,11 @@ import java.util.Optional;
  *   <li>反射调用 {@code serializer(Constructor)} 得到正确的 {@code DisplaySerializer}；</li>
  *   <li>反射替换 {@code SERIALIZER} final 字段（运行时对象引用可替换，非编译期常量内联）。</li>
  * </ul>
+ * <p>
+ * {@code @Pseudo}：REI 是 modCompileOnly（运行时可能不存在），加上后 mixin 在 target 类
+ * 缺失时静默跳过、不报错不注入，避免 REI 未安装时加载失败。
  */
+@Pseudo
 @Mixin(DefaultBlastingDisplay.class)
 public abstract class DefaultBlastingDisplayMixin {
 
