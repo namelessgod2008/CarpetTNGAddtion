@@ -69,6 +69,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.stackableProtection.name", "Stackable Protection");
             builder.add("carpet.rule.stackableProtection.desc",
                     "Different protection enchantments (protection, blast protection, fire protection, projectile protection) can be applied to the same piece of armor and stack.");
+            builder.add("carpet.rule.villagerLightningNoWitch.name", "Villager Lightning No Witch");
+            builder.add("carpet.rule.villagerLightningNoWitch.desc",
+                    "Villagers struck by lightning no longer turn into witches.");
             builder.add("carpet.rule.commandMods.name", "Command Mods");
             builder.add("carpet.rule.commandMods.desc",
                     "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
@@ -256,6 +259,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.stackableProtection.name", "保护魔咒可叠加");
             builder.add("carpet.rule.stackableProtection.desc",
                     "不同类型保护魔咒（保护、爆炸保护、火焰保护、弹射物保护）可以附在同一件装备上并叠加效果。");
+            builder.add("carpet.rule.villagerLightningNoWitch.name", "村民雷击不变女巫");
+            builder.add("carpet.rule.villagerLightningNoWitch.desc",
+                    "村民被闪电击中后不再变成女巫。");
             builder.add("carpet.rule.commandMods.name", "命令 /mods");
             builder.add("carpet.rule.commandMods.desc",
                     "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");

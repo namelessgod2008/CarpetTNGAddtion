@@ -119,6 +119,8 @@
   "carpet.rule.stopGhastGriefing.name": "阻止恶魂破坏地形",
   "carpet.rule.villagerBedExplosion.desc": "村民在下界和末地使用床时，床会像玩家使用一样爆炸。",
   "carpet.rule.villagerBedExplosion.name": "村民睡床爆炸",
+  "carpet.rule.villagerLightningNoWitch.desc": "村民被闪电击中后不再变成女巫。",
+  "carpet.rule.villagerLightningNoWitch.name": "村民雷击不变女巫",
   "carpet.rule.woodToChest.desc": "添加用 2 个任意原木（无序）合成箱子的配方。原版需要用 8 个木板合成。",
   "carpet.rule.woodToChest.name": "箱子合成"
 }

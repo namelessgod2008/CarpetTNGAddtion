@@ -206,6 +206,10 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean stackableProtection = false;
 
+    // 村民被闪电击中后不会变成女巫
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean villagerLightningNoWitch = false;
+
     // ==================== 命令 ====================
 
     // 启用 /mods 命令：列出服务器安装的所有 Mod（需要服务器重启后生效）

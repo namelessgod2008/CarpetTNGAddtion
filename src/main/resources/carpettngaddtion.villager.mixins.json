@@ -3,7 +3,8 @@
 	"package": "com.namelessgod2008.feature.villager.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"VillagerMixin"
+		"VillagerMixin",
+		"VillagerLightningMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

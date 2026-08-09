@@ -45,6 +45,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `commandMods` | 启用 /mods 命令（列出服务器所有已安装 Mod） | feature, TNG, command |
 | `snowGolemNoMelt` | 雪傀儡不融化（炎热生物群系不再受伤） | feature, TNG, survival |
 | `stackableProtection` | 保护魔咒可叠加（不同类型保护可附同一装备） | feature, TNG, survival |
+| `villagerLightningNoWitch` | 村民雷击不变女巫（被闪电击中保持村民） | feature, TNG, survival |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
@@ -211,6 +212,11 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `stackableProtection`：不同类型的保护魔咒（保护、爆炸保护、火焰保护、弹射物保护）可以附在同一件装备上并叠加效果
 - 机制：原版 4 种保护共享 `exclusive_set/armor` tag 互斥（`Enchantment.areCompatible`）；规则开启时注入 `areCompatible` RETURN，两附魔都属该 tag 则视为兼容；伤害减免原版 `getDamageProtection` 已累加不同来源，无需改
+
+### 村民雷击不变女巫
+
+- `villagerLightningNoWitch`：村民被闪电击中后不再变成女巫（仍受雷击，保持村民）
+- 机制：注入 `Villager.thunderHit`，`@Redirect` 掉 `convertTo(EntityType.WITCH, ...)` 调用返回 null——原版转化失败时走 `super.thunderHit`（被击中但不变身）
 
 ### 骨粉产瓜
 

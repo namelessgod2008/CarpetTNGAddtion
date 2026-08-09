@@ -119,6 +119,8 @@
   "carpet.rule.stopGhastGriefing.name": "Stop Ghast Griefing",
   "carpet.rule.villagerBedExplosion.desc": "Villagers using a bed in the nether or the end cause it to explode, like players do.",
   "carpet.rule.villagerBedExplosion.name": "Villager Bed Explosion",
+  "carpet.rule.villagerLightningNoWitch.desc": "Villagers struck by lightning no longer turn into witches.",
+  "carpet.rule.villagerLightningNoWitch.name": "Villager Lightning No Witch",
   "carpet.rule.woodToChest.desc": "Adds a crafting recipe for a chest from 2 of any log (shapeless). Vanilla requires 8 planks instead.",
   "carpet.rule.woodToChest.name": "Craftable Chest"
 }
