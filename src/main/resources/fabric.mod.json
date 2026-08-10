@@ -47,6 +47,8 @@
 		"carpettngaddtion.endcrystal.mixins.json",
 		"carpettngaddtion.snowgolem.mixins.json",
 		"carpettngaddtion.enchantment.mixins.json",
+		"carpettngaddtion.vex.mixins.json",
+		"carpettngaddtion.tadpole.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {

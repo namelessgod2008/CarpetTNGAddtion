@@ -41,6 +41,8 @@ public class DependencyWarningValidator extends Validator<Boolean> {
                     : "烈焰棒掏烟熏炉渣需要先启用烈焰棒调试规则（blazeStickDebug）才能生效";
             case "blazeStickBlastFurnaceXp" -> CarpetTNGSetting.blazeStickDebug ? null
                     : "烈焰棒掏高炉渣需要先启用烈焰棒调试规则（blazeStickDebug）才能生效";
+            case "shovelSnowLayerDropSnowball" -> CarpetTNGSetting.shovelSnowLayer ? null
+                    : "锹铲雪掉雪球需要先启用锹铲雪规则（shovelSnowLayer）才能生效";
             default -> null;
         };
     }

@@ -46,6 +46,11 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `snowGolemNoMelt` | 雪傀儡不融化（炎热生物群系不再受伤） | feature, TNG, survival |
 | `stackableProtection` | 保护魔咒可叠加（不同类型保护可附同一装备） | feature, TNG, survival |
 | `villagerLightningNoWitch` | 村民雷击不变女巫（被闪电击中保持村民） | feature, TNG, survival |
+| `grindstoneRemovesCurses` | 砂轮移除诅咒（绑定/消失诅咒可移除） | feature, TNG, survival |
+| `evokerDeathKillsVexes` | 唤魔者死亡恼鬼死亡（恼鬼立即消失） | feature, TNG, survival |
+| `shovelSnowLayer` | 锹铲雪层（右键雪层铲掉一层） | feature, TNG, survival |
+| `shovelSnowLayerDropSnowball` | 锹铲雪掉雪球（每层掉 1 个雪球，依赖铲雪） | feature, TNG, survival |
+| `tadpoleDyeColor` | 蝌蚪喂染料定色（长大后青蛙颜色） | feature, TNG, survival |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
@@ -212,11 +217,29 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `stackableProtection`：不同类型的保护魔咒（保护、爆炸保护、火焰保护、弹射物保护）可以附在同一件装备上并叠加效果
 - 机制：原版 4 种保护共享 `exclusive_set/armor` tag 互斥（`Enchantment.areCompatible`）；规则开启时注入 `areCompatible` RETURN，两附魔都属该 tag 则视为兼容；伤害减免原版 `getDamageProtection` 已累加不同来源，无需改
+- `grindstoneRemovesCurses`：诅咒附魔（绑定诅咒、消失诅咒）可以通过砂轮移除
+- 机制：原版 `GrindstoneMenu.removeNonCursesFrom` 用 `removeIf(!is(EnchantmentTags.CURSE))` 保留诅咒；规则开启时 `@Redirect` 让 `is(CURSE)` 返回 false，使诅咒也被移除
 
 ### 村民雷击不变女巫
 
 - `villagerLightningNoWitch`：村民被闪电击中后不再变成女巫（仍受雷击，保持村民）
 - 机制：注入 `Villager.thunderHit`，`@Redirect` 掉 `convertTo(EntityType.WITCH, ...)` 调用返回 null——原版转化失败时走 `super.thunderHit`（被击中但不变身）
+
+### 唤魔者死亡恼鬼死亡
+
+- `evokerDeathKillsVexes`：唤魔者死亡后，其召唤的恼鬼立即死亡（而非等到生命倒计时结束）
+- 机制：恼鬼由 `Evoker` 召唤时 `setOwner` + `setLimitedLife`（20×(30~120) tick）；注入 `Vex.tick` HEAD，owner（唤魔者）已死时 `discard()`
+
+### 锹铲雪层
+
+- `shovelSnowLayer`：手持锹右键雪层方块可以铲掉一层雪（层数 > 1 减一层，=1 移除方块）
+- `shovelSnowLayerDropSnowball`：锹铲雪时每铲掉一层额外掉落一个雪球（依赖 `shovelSnowLayer`，未开启会有橙色警告提示）
+- 机制：`UseBlockCallback` 事件（Fabric，项目 handler 同模式），规则开启 + 手持锹 + 目标是 `Blocks.SNOW` 时执行并返回 SUCCESS；掉落用 `Block.popResource`
+
+### 蝌蚪喂染料定色
+
+- `tadpoleDyeColor`：手持染料右键蝌蚪会标记它长大后青蛙的颜色；仅接受橙/白/绿三种染料（对应温带/暖/冷三种青蛙变体），每只蝌蚪只能喂一次；喂染料不加快生长，粒子用 `ServerLevel.sendParticles` 发送**该染料颜色**的 DustParticleOptions（数量 10）
+- 机制：注入 `Tadpole`——`mobInteract` HEAD 拦截染料并记录颜色（NBT 持久化），`ageUp` 的 `convertTo` 用 `@ModifyArg` 包裹 AfterConversion lambda 设置 `FrogVariant`
 
 ### 骨粉产瓜
 

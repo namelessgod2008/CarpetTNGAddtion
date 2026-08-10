@@ -6,6 +6,7 @@ import com.namelessgod2008.feature.blazestick.BlazeStickFurnaceXpHandler;
 import com.namelessgod2008.feature.cauldron.CauldronArrowHandler;
 import com.namelessgod2008.feature.dispenser.DispenserPlantingHandler;
 import com.namelessgod2008.feature.gourd.BonemealGourdHandler;
+import com.namelessgod2008.feature.snow.ShovelSnowLayerHandler;
 import com.namelessgod2008.feature.wart.NetherWartBlazeHandler;
 import com.namelessgod2008.setting.RecipeRuleRegistry;
 import com.namelessgod2008.setting.RuleEnabledCondition;
@@ -58,6 +59,7 @@ public class CarpetTNGAddtion implements ModInitializer {
 		NetherWartBlazeHandler.register();
 		BonemealGourdHandler.register();
 		BlazeStickFurnaceXpHandler.register();
+		ShovelSnowLayerHandler.register();
 	}
 
 	public static ResourceLocation id(String path) {

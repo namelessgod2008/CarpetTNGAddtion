@@ -210,6 +210,26 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean villagerLightningNoWitch = false;
 
+    // 诅咒附魔（绑定诅咒/消失诅咒）可以通过砂轮移除
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean grindstoneRemovesCurses = false;
+
+    // 唤魔者死亡后，其召唤的恼鬼立即死亡
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean evokerDeathKillsVexes = false;
+
+    // 手持锹右键雪层方块可以铲掉一层雪
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean shovelSnowLayer = false;
+
+    // 锹铲雪时掉落一个雪球（依赖 shovelSnowLayer）
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"}, validators = DependencyWarningValidator.class)
+    public static boolean shovelSnowLayerDropSnowball = false;
+
+    // 蝌蚪喂食染料标记长大后青蛙的颜色（映射到现有 3 种变体）
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean tadpoleDyeColor = false;
+
     // ==================== 命令 ====================
 
     // 启用 /mods 命令：列出服务器安装的所有 Mod（需要服务器重启后生效）

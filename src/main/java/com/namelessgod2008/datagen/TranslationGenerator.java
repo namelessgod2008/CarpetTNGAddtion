@@ -72,6 +72,21 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.villagerLightningNoWitch.name", "Villager Lightning No Witch");
             builder.add("carpet.rule.villagerLightningNoWitch.desc",
                     "Villagers struck by lightning no longer turn into witches.");
+            builder.add("carpet.rule.grindstoneRemovesCurses.name", "Grindstone Removes Curses");
+            builder.add("carpet.rule.grindstoneRemovesCurses.desc",
+                    "Cursed enchantments (binding curse, vanishing curse) can be removed with a grindstone.");
+            builder.add("carpet.rule.evokerDeathKillsVexes.name", "Evoker Death Kills Vexes");
+            builder.add("carpet.rule.evokerDeathKillsVexes.desc",
+                    "Vexes summoned by an evoker die immediately when the evoker dies.");
+            builder.add("carpet.rule.shovelSnowLayer.name", "Shovel Snow Layer");
+            builder.add("carpet.rule.shovelSnowLayer.desc",
+                    "Right-clicking a snow layer with a shovel removes one layer.");
+            builder.add("carpet.rule.shovelSnowLayerDropSnowball.name", "Shovel Snow Layer Drop Snowball");
+            builder.add("carpet.rule.shovelSnowLayerDropSnowball.desc",
+                    "Shoveling a snow layer drops one snowball per removed layer. Requires shovelSnowLayer.");
+            builder.add("carpet.rule.tadpoleDyeColor.name", "Tadpole Dye Color");
+            builder.add("carpet.rule.tadpoleDyeColor.desc",
+                    "Feeding a tadpole one of the three dyes (orange/white/green) marks the color of the frog it grows into. Each tadpole can be dyed only once; growth is not sped up.");
             builder.add("carpet.rule.commandMods.name", "Command Mods");
             builder.add("carpet.rule.commandMods.desc",
                     "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
@@ -262,6 +277,21 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.villagerLightningNoWitch.name", "村民雷击不变女巫");
             builder.add("carpet.rule.villagerLightningNoWitch.desc",
                     "村民被闪电击中后不再变成女巫。");
+            builder.add("carpet.rule.grindstoneRemovesCurses.name", "砂轮移除诅咒");
+            builder.add("carpet.rule.grindstoneRemovesCurses.desc",
+                    "诅咒附魔（绑定诅咒、消失诅咒）可以通过砂轮移除。");
+            builder.add("carpet.rule.evokerDeathKillsVexes.name", "唤魔者死亡恼鬼死亡");
+            builder.add("carpet.rule.evokerDeathKillsVexes.desc",
+                    "唤魔者死亡后，其召唤的恼鬼立即死亡。");
+            builder.add("carpet.rule.shovelSnowLayer.name", "锹铲雪层");
+            builder.add("carpet.rule.shovelSnowLayer.desc",
+                    "手持锹右键雪层方块可以铲掉一层雪。");
+            builder.add("carpet.rule.shovelSnowLayerDropSnowball.name", "锹铲雪掉雪球");
+            builder.add("carpet.rule.shovelSnowLayerDropSnowball.desc",
+                    "锹铲雪时每铲掉一层掉落一个雪球。依赖锹铲雪规则。");
+            builder.add("carpet.rule.tadpoleDyeColor.name", "蝌蚪喂染料定色");
+            builder.add("carpet.rule.tadpoleDyeColor.desc",
+                    "喂食蝌蚪橙色/白色/绿色三种染料之一，会标记它长大后青蛙的颜色（对应温带/暖/冷变体）。每只蝌蚪只能喂一次染料，不会加快生长。");
             builder.add("carpet.rule.commandMods.name", "命令 /mods");
             builder.add("carpet.rule.commandMods.desc",
                     "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");
