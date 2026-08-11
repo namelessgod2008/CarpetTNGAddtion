@@ -52,6 +52,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `shovelSnowLayer` | 锹铲雪层（右键雪层铲掉一层） | feature, TNG, survival |
 | `shovelSnowLayerDropSnowball` | 锹铲雪掉雪球（每层掉 1 个雪球，依赖铲雪） | feature, TNG, survival |
 | `tadpoleDyeColor` | 蝌蚪喂染料定色（长大后青蛙颜色） | feature, TNG, survival |
+| `lootingSlimeSplit` | 抢夺史莱姆分裂（附抢夺击杀大史莱姆多分裂） | feature, TNG, survival |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
@@ -242,6 +243,11 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `tadpoleDyeColor`：手持染料右键蝌蚪会标记它长大后青蛙的颜色；仅接受橙/白/绿三种染料（对应温带/暖/冷三种青蛙变体），每只蝌蚪只能喂一次；喂染料不加快生长，粒子用 `ServerLevel.sendParticles` 发送**该染料颜色**的 DustParticleOptions（数量 10）
 - 机制：注入 `Tadpole`——`mobInteract` HEAD 拦截染料并记录颜色（NBT 持久化），`ageUp` 的 `convertTo` 用 `@ModifyArg` 包裹 AfterConversion lambda 设置 `FrogVariant`
+
+### 抢夺史莱姆分裂
+
+- `lootingSlimeSplit`：用附有抢夺的武器击杀大史莱姆/岩浆怪时，分裂成更多小史莱姆，每 1 级抢夺多分裂 1 个
+- 机制：原版 `Slime.remove` 分裂数 `k = 2 + random.nextInt(3)`；注入 `Slime.remove`，`@Redirect` 拦截 `random.nextInt(3)` 返回 `nextInt(3) + lootingLevel`；击杀者 `getKillCredit()` 主手武器 Looting 等级；岩浆怪继承 Slime 天然适用
 
 ### 骨粉产瓜
 

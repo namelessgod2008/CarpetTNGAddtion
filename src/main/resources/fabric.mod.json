@@ -49,6 +49,7 @@
 		"carpettngaddtion.enchantment.mixins.json",
 		"carpettngaddtion.vex.mixins.json",
 		"carpettngaddtion.tadpole.mixins.json",
+		"carpettngaddtion.slime.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {

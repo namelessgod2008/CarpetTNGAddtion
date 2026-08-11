@@ -81,6 +81,8 @@
   "carpet.rule.grindstoneRemovesCurses.name": "Grindstone Removes Curses",
   "carpet.rule.legacyEnchantedGoldenApple.desc": "Restores the pre-1.9 enchanted golden apple Regeneration V (30s) effect, replacing Regeneration II (20s). Other effects stay as in the new version.",
   "carpet.rule.legacyEnchantedGoldenApple.name": "Legacy Enchanted Golden Apple",
+  "carpet.rule.lootingSlimeSplit.desc": "Killing a large slime or magma cube with a Looting weapon splits it into more small ones, +1 per Looting level.",
+  "carpet.rule.lootingSlimeSplit.name": "Looting Slime Split",
   "carpet.rule.neutralPiglins.desc": "Piglins no longer proactively attack players who are not wearing gold armor, but the pack-aggression mechanic (e.g. after you attack a piglin or a piglin brute) still works as vanilla.",
   "carpet.rule.neutralPiglins.name": "Neutral Piglins",
   "carpet.rule.piglinBarterDisabledTime.desc": "Sets how long (in ticks) a piglin refuses to barter after being hit by a player. Vanilla is 400 ticks (20 seconds); 0 disables the refusal.",

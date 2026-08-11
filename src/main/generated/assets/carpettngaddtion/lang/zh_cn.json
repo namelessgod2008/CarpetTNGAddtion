@@ -81,6 +81,8 @@
   "carpet.rule.grindstoneRemovesCurses.name": "砂轮移除诅咒",
   "carpet.rule.legacyEnchantedGoldenApple.desc": "恢复 1.9 前的附魔金苹果再生效果：再生 V（30 秒）替代新版的再生 II（20 秒），其他效果保持新版不变。",
   "carpet.rule.legacyEnchantedGoldenApple.name": "旧版附魔金苹果生命恢复",
+  "carpet.rule.lootingSlimeSplit.desc": "用附有抢夺的武器击杀大史莱姆或岩浆怪时，会分裂成更多小史莱姆，每 1 级抢夺多分裂 1 个。",
+  "carpet.rule.lootingSlimeSplit.name": "抢夺史莱姆分裂",
   "carpet.rule.neutralPiglins.desc": "猪灵不再主动攻击未穿金护甲的玩家；但群起而攻之的仇恨机制（如攻击猪灵或猪灵蛮兵后）保持原版。",
   "carpet.rule.neutralPiglins.name": "完全中立猪灵",
   "carpet.rule.piglinBarterDisabledTime.desc": "设置猪灵被玩家攻击后拒绝交易的时间（tick）。原版为 400 tick（20 秒），0 为不拒绝。",

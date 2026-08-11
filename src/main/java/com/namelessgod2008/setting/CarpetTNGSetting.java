@@ -230,6 +230,10 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean tadpoleDyeColor = false;
 
+    // 抢夺附魔击杀大史莱姆/岩浆怪后多分裂小史莱姆（每级多 1 个）
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean lootingSlimeSplit = false;
+
     // ==================== 命令 ====================
 
     // 启用 /mods 命令：列出服务器安装的所有 Mod（需要服务器重启后生效）
