@@ -5,17 +5,30 @@ import carpet.CarpetServer;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.ResourceLocationArgument;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 public class CarpetTNGExtension implements CarpetExtension {
 
@@ -93,6 +106,9 @@ public class CarpetTNGExtension implements CarpetExtension {
                     Map.entry("carpet.rule.commandMods.name", "Command Mods"),
                     Map.entry("carpet.rule.commandMods.desc",
                             "Enables the /mods command that lists all installed mods on the server. Takes effect immediately."),
+                    Map.entry("carpet.rule.commandAddEnchantment.name", "Command Add Enchantment"),
+                    Map.entry("carpet.rule.commandAddEnchantment.desc",
+                            "Enables /addEnchantment <enchantment> <level> to add an enchantment to the item in your main hand. Takes effect immediately."),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.name", "Blast Furnace Glazed Terracotta"),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                             "Blast furnaces can smelt all 16 colors of terracotta into the glazed terracotta of the same color. Vanilla only allows smelting these in a furnace."),
@@ -290,6 +306,9 @@ public class CarpetTNGExtension implements CarpetExtension {
                     Map.entry("carpet.rule.commandMods.name", "命令 /mods"),
                     Map.entry("carpet.rule.commandMods.desc",
                             "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。"),
+                    Map.entry("carpet.rule.commandAddEnchantment.name", "命令 /addEnchantment"),
+                    Map.entry("carpet.rule.commandAddEnchantment.desc",
+                            "启用 /addEnchantment <附魔> <等级>，给主手物品添加对应附魔。立即生效。"),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.name", "高炉烧制带釉陶瓦"),
                     Map.entry("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                             "高炉可以将全部 16 种染色的陶瓦烧炼为对应颜色的带釉陶瓦。原版只能在熔炉中烧制。"),
@@ -438,12 +457,62 @@ public class CarpetTNGExtension implements CarpetExtension {
     public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext commandBuildContext) {
         // Register unconditionally; the rule gates availability at parse time via requires().
         // The "command" category attaches Carpet's Validator$_COMMAND, which refreshes the
-        // client command tree when the rule changes, so /mods appears immediately without restart.
+        // client command tree when the rule changes, so commands appear immediately without restart.
         dispatcher.register(
                 Commands.literal("mods")
                         .requires(source -> CarpetTNGSetting.commandMods)
                         .executes(CarpetTNGExtension::listMods)
         );
+        dispatcher.register(
+                Commands.literal("addEnchantment")
+                        .requires(source -> CarpetTNGSetting.commandAddEnchantment)
+                        .then(Commands.argument("enchantment", ResourceLocationArgument.id())
+                                .suggests(CarpetTNGExtension::suggestEnchantments)
+                                .then(Commands.argument("level", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1))
+                                        .executes(CarpetTNGExtension::addEnchantment)))
+        );
+    }
+
+    private static CompletableFuture<Suggestions> suggestEnchantments(CommandContext<CommandSourceStack> context, SuggestionsBuilder builder) {
+        // Same filtering as vanilla /enchant: prefix-match against what the user typed,
+        // so other enchantments disappear once minecraft:sharpness is matched.
+        return SharedSuggestionProvider.suggestResource(
+                context.getSource().registryAccess()
+                        .lookupOrThrow(Registries.ENCHANTMENT)
+                        .listElementIds()
+                        .map(net.minecraft.resources.ResourceKey::location),
+                builder
+        );
+    }
+
+    private static int addEnchantment(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        CommandSourceStack source = context.getSource();
+        ResourceLocation enchantmentId = ResourceLocationArgument.getId(context, "enchantment");
+        int level = com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(context, "level");
+
+        Holder<Enchantment> holder = source.registryAccess()
+                .lookupOrThrow(Registries.ENCHANTMENT).get(enchantmentId).orElse(null);
+        if (holder == null) {
+            source.sendFailure(Component.literal("Unknown enchantment: " + enchantmentId));
+            return 0;
+        }
+
+        if (!(source.getEntity() instanceof ServerPlayer player)) {
+            source.sendFailure(Component.literal("This command can only be used by a player."));
+            return 0;
+        }
+        ItemStack stack = player.getMainHandItem();
+        if (stack.isEmpty()) {
+            source.sendFailure(Component.literal("You need to hold an item in your main hand."));
+            return 0;
+        }
+
+        EnchantmentHelper.updateEnchantments(stack, mutable -> mutable.upgrade(holder, level));
+        // Localized message: enchantment name is translated and the level uses the vanilla
+        // formatting (Roman numerals up to X, Arabic above), via enchantment.level.N keys.
+        source.sendSuccess(() -> Component.translatable("carpettngaddtion.command.addEnchantment.success",
+                Enchantment.getFullname(holder, level)), false);
+        return 1;
     }
 
     private static int listMods(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {

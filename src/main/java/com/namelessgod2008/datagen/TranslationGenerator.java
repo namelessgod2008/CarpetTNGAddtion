@@ -90,6 +90,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.commandMods.name", "Command Mods");
             builder.add("carpet.rule.commandMods.desc",
                     "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
+            builder.add("carpet.rule.commandAddEnchantment.name", "Command Add Enchantment");
+            builder.add("carpet.rule.commandAddEnchantment.desc",
+                    "Enables /addEnchantment <enchantment> <level> to add an enchantment to the item in your main hand. Takes effect immediately.");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "Blast Furnace Glazed Terracotta");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "Blast furnaces can smelt all 16 colors of terracotta into the glazed terracotta of the same color. Vanilla only allows smelting these in a furnace.");
@@ -216,6 +219,8 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dispenserNetherWartGrowth.name", "Dispenser Nether Wart Growth");
             builder.add("carpet.rule.dispenserNetherWartGrowth.desc",
                     "Dispensers facing nether wart fertilize it with blaze powder, advancing one growth stage per use. Requires the Blaze Powder Nether Wart Growth rule.");
+            builder.add("carpettngaddtion.command.addEnchantment.success",
+                    "Added %s to your held item.");
         }
     }
 
@@ -295,6 +300,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.commandMods.name", "命令 /mods");
             builder.add("carpet.rule.commandMods.desc",
                     "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");
+            builder.add("carpet.rule.commandAddEnchantment.name", "命令 /addEnchantment");
+            builder.add("carpet.rule.commandAddEnchantment.desc",
+                    "启用 /addEnchantment <附魔> <等级>，给主手物品添加对应附魔。立即生效。");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.name", "高炉烧制带釉陶瓦");
             builder.add("carpet.rule.blastFurnaceGlazedTerracotta.desc",
                     "高炉可以将全部 16 种染色的陶瓦烧炼为对应颜色的带釉陶瓦。原版只能在熔炉中烧制。");
@@ -416,6 +424,8 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dispenserNetherWartGrowth.name", "发射器催熟地狱疣");
             builder.add("carpet.rule.dispenserNetherWartGrowth.desc",
                     "发射器正对地狱疣喷射烈焰粉可推进一个生长阶段，每次消耗 1 个烈焰粉。需先开启烈焰粉催熟地狱疣规则。");
+            builder.add("carpettngaddtion.command.addEnchantment.success",
+                    "已给你的手持物品添加 %s。");
         }
     }
 }

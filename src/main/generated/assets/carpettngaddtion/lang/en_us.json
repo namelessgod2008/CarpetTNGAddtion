@@ -33,6 +33,8 @@
   "carpet.rule.brewableOminousPotion.name": "Brewable Ominous Potion",
   "carpet.rule.cheapAnvilRename.desc": "Renaming an item in the anvil always costs only 1 experience level, and cannot be blocked by 'Too Expensive'.",
   "carpet.rule.cheapAnvilRename.name": "Cheap Anvil Rename",
+  "carpet.rule.commandAddEnchantment.desc": "Enables /addEnchantment <enchantment> <level> to add an enchantment to the item in your main hand. Takes effect immediately.",
+  "carpet.rule.commandAddEnchantment.name": "Command Add Enchantment",
   "carpet.rule.commandMods.desc": "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.",
   "carpet.rule.commandMods.name": "Command Mods",
   "carpet.rule.constantHighEnderDragonXp.desc": "Killing the ender dragon always drops the first-kill experience amount (12000) instead of the reduced 500 on repeat kills.",
@@ -132,5 +134,6 @@
   "carpet.rule.villagerLightningNoWitch.desc": "Villagers struck by lightning no longer turn into witches.",
   "carpet.rule.villagerLightningNoWitch.name": "Villager Lightning No Witch",
   "carpet.rule.woodToChest.desc": "Adds a crafting recipe for a chest from 2 of any log (shapeless). Vanilla requires 8 planks instead.",
-  "carpet.rule.woodToChest.name": "Craftable Chest"
+  "carpet.rule.woodToChest.name": "Craftable Chest",
+  "carpettngaddtion.command.addEnchantment.success": "Added %s to your held item."
 }

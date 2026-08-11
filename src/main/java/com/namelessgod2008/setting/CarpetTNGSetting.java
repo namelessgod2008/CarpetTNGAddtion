@@ -236,6 +236,10 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "command"}, options = {"true", "false"})
     public static boolean commandMods = false;
 
+    // 启用 /addEnchantment 命令：给手上物品添加附魔（<附魔> <等级>）
+    @Rule(categories = {"feature", "TNG", "command"}, options = {"true", "false"})
+    public static boolean commandAddEnchantment = false;
+
     // ==================== 铜氧化 ====================
 
     // 铜接触水时的氧化速度倍率（自由数值，无 options 限制，与 piglinBarterDisabledTime 同模式）。

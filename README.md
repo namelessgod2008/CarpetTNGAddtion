@@ -43,6 +43,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `endCrystalPlacementRestriction` | 末地水晶放置限制（默认开=只能放黑曜石/基岩） | feature, TNG, survival |
 | `stopEndCrystalGriefing` | 阻止末地水晶破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
 | `commandMods` | 启用 /mods 命令（列出服务器所有已安装 Mod） | feature, TNG, command |
+| `commandAddEnchantment` | 启用 /addEnchantment 命令（给主手物品加附魔） | feature, TNG, command |
 | `snowGolemNoMelt` | 雪傀儡不融化（炎热生物群系不再受伤） | feature, TNG, survival |
 | `stackableProtection` | 保护魔咒可叠加（不同类型保护可附同一装备） | feature, TNG, survival |
 | `villagerLightningNoWitch` | 村民雷击不变女巫（被闪电击中保持村民） | feature, TNG, survival |
@@ -206,7 +207,8 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 ### 命令 /mods
 
 - `commandMods`：启用 `/mods` 命令，列出服务器安装的所有 Mod（名称 + mod id）；规则变化立即生效
-- 机制：`CarpetTNGExtension` override `registerCommands(CommandDispatcher, CommandBuildContext)`，无条件注册 `/mods`、用 `requires(source -> commandMods)` 谓词实时判权（`command` 分类挂 Carpet 的 `Validator$_COMMAND`，规则变化时刷新客户端命令树，命令立即出现）；Mod 列表来自 `FabricLoader.getInstance().getAllMods()`，输出格式复刻 Fabric Loader 启动日志（`|--`/`\--` 层级树）
+- `commandAddEnchantment`：启用 `/addEnchantment <附魔> <等级>`，给主手物品添加对应附魔
+- 机制：`CarpetTNGExtension` override `registerCommands(CommandDispatcher, CommandBuildContext)`，无条件注册命令、用 `requires(source -> 规则)` 谓词实时判权（`command` 分类挂 Carpet 的 `Validator$_COMMAND`，规则变化时刷新客户端命令树，命令立即出现）；`/mods` 的 Mod 列表来自 `FabricLoader.getInstance().getAllMods()`（复刻 Fabric 启动日志层级树）；`/addEnchantment` 用 `StringArgumentType.word` + `IntegerArgumentType.integer` 参数，`source.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(id)` 解析附魔，`EnchantmentHelper.updateEnchantments(stack, m -> m.upgrade(holder, level))` 添加
 
 ### 雪傀儡不融化
 
