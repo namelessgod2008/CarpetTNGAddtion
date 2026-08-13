@@ -35,6 +35,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `dispenserPlantingNetherWart` | 发射器种植地狱疣（命中灵魂沙种下） | feature, TNG, dispenser |
 | `bonemealGourdFruit` | 骨粉产瓜（成熟瓜苗按概率结瓜，0 禁用~1 必结） | feature, TNG, survival |
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
+| `dispenserIronGolemRepair` | 发射器用铁锭修复铁傀儡（每锭 +25 血，回复至满血） | feature, TNG, dispenser |
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
 | `basaltToBlackstoneConversion` | 玄武岩转黑石（同时接触熔岩和水） | feature, TNG |
 | `stopCreeperGriefing` | 阻止苦力怕破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
@@ -53,6 +54,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `shovelSnowLayerDropSnowball` | 锹铲雪掉雪球（每层掉 1 个雪球，依赖铲雪） | feature, TNG, survival |
 | `tadpoleDyeColor` | 蝌蚪喂染料定色（长大后青蛙颜色） | feature, TNG, survival |
 | `lootingSlimeSplit` | 抢夺史莱姆分裂（附抢夺击杀大史莱姆多分裂） | feature, TNG, survival |
+| `endermanNoTakeBlocks` | 末影人禁止搬方块（方块 id 黑名单） | feature, TNG, survival |
 | `copperUnderwaterOxidationMultiplier` | 铜水下氧化倍率（接触水时氧化速度倍率，默认 1.0=原版） | feature, TNG, survival |
 | `splashOxidizeCopper` | 喷溅水瓶氧化铜（投掷水瓶使铜氧化到下一阶段） | feature, TNG, survival |
 | `piglinBarterDisabledTime` | 自定义猪灵受击拒绝交易时间（tick，默认 400） | feature, TNG, survival |
@@ -102,6 +104,10 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 - `dispenserPlantingGourds`：发射器喷射西瓜、南瓜种子，命中耕地时变为瓜藤
 - `dispenserPlantingNetherWart`：发射器喷射地狱疣，命中灵魂沙时种下，可与其他下界功能联动做自动化农场
 - 种子飞行数据存于实体字段，不污染物品 NBT（不同发射器喷出的种子可正常堆叠）
+
+### 发射器修复铁傀儡
+
+- `dispenserIronGolemRepair`：发射器朝向前方 1 格内的受伤铁傀儡使用铁锭，每锭恢复 25 点生命值（回复至满血为止），语义同手持铁锭右键铁傀儡；铁傀儡满血时发射器不消耗铁锭
 
 ### 旧版附魔金苹果
 
@@ -248,6 +254,11 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 
 - `lootingSlimeSplit`：用附有抢夺的武器击杀大史莱姆/岩浆怪时，分裂成更多小史莱姆，每 1 级抢夺多分裂 1 个
 - 机制：原版 `Slime.remove` 分裂数 `k = 2 + random.nextInt(3)`；注入 `Slime.remove`，`@Redirect` 拦截 `random.nextInt(3)` 返回 `nextInt(3) + lootingLevel`；击杀者 `getKillCredit()` 主手武器 Looting 等级；岩浆怪继承 Slime 天然适用
+
+### 末影人禁止搬方块
+
+- `endermanNoTakeBlocks`：逗号分隔的方块 id 黑名单，末影人不能搬起这些方块（如 `minecraft:dirt,minecraft:grass_block`）；空值=不限制（原版行为）
+- 机制：注入 `EnderMan.EndermanTakeBlockGoal`（内部类），`@Redirect` 拦截 `blockState.is(ENDERMAN_HOLDABLE)`——黑名单命中返回 false（不搬）；方块注册名用 `BuiltInRegistries.BLOCK.getKey(block)`
 
 ### 骨粉产瓜
 

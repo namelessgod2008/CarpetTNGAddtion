@@ -50,10 +50,11 @@
 		"carpettngaddtion.vex.mixins.json",
 		"carpettngaddtion.tadpole.mixins.json",
 		"carpettngaddtion.slime.mixins.json",
+		"carpettngaddtion.enderman.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.19.3",
+		"fabricloader": ">=0.16.14",
 		"minecraft": "~1.21.4",
 		"java": ">=21",
 		"fabric-api": "*",

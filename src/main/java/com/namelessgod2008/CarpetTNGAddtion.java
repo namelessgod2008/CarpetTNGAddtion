@@ -4,6 +4,7 @@ import carpet.CarpetServer;
 import carpet.api.settings.SettingsManager;
 import com.namelessgod2008.feature.blazestick.BlazeStickFurnaceXpHandler;
 import com.namelessgod2008.feature.cauldron.CauldronArrowHandler;
+import com.namelessgod2008.feature.dispenser.DispenserIronGolemRepairHandler;
 import com.namelessgod2008.feature.dispenser.DispenserPlantingHandler;
 import com.namelessgod2008.feature.gourd.BonemealGourdHandler;
 import com.namelessgod2008.feature.snow.ShovelSnowLayerHandler;
@@ -56,6 +57,7 @@ public class CarpetTNGAddtion implements ModInitializer {
 		CarpetServer.manageExtension(new CarpetTNGExtension());
 		CauldronArrowHandler.register();
 		DispenserPlantingHandler.register();
+		DispenserIronGolemRepairHandler.register();
 		NetherWartBlazeHandler.register();
 		BonemealGourdHandler.register();
 		BlazeStickFurnaceXpHandler.register();

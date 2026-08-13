@@ -110,6 +110,9 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "dispenser"}, options = {"true", "false"})
     public static boolean dispenserPlantingNetherWart = false;
 
+    @Rule(categories = {"feature", "TNG", "dispenser"}, options = {"true", "false"})
+    public static boolean dispenserIronGolemRepair = false;
+
     // ==================== 精准采集 ====================
 
     @Rule(categories = {"TNG", "survival"}, options = {"true", "false"})
@@ -233,6 +236,10 @@ public class CarpetTNGSetting {
     // 抢夺附魔击杀大史莱姆/岩浆怪后多分裂小史莱姆（每级多 1 个）
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean lootingSlimeSplit = false;
+
+    // 末影人禁止搬起的方块黑名单（逗号分隔的方块 id，如 "minecraft:dirt,minecraft:grass_block"；空=不限制）
+    @Rule(categories = {"feature", "TNG", "survival"})
+    public static String endermanNoTakeBlocks = "";
 
     // ==================== 命令 ====================
 
