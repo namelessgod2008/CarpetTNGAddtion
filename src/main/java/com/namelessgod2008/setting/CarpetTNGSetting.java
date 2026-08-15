@@ -241,6 +241,11 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "survival"})
     public static String endermanNoTakeBlocks = "";
 
+    // 可获取的强化深板岩：开启后强化深板岩挖掘时间=黑曜石（hardness 50），
+    // 仅钻石/下界合金镐能挖掉并掉落自身
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean collectableReinforcedDeepslate = false;
+
     // ==================== 命令 ====================
 
     // 启用 /mods 命令：列出服务器安装的所有 Mod（需要服务器重启后生效）

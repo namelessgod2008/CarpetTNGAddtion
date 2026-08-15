@@ -96,6 +96,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dispenserIronGolemRepair.name", "Dispenser Iron Golem Repair");
             builder.add("carpet.rule.dispenserIronGolemRepair.desc",
                     "Dispensers use an iron ingot to repair an injured iron golem standing in front of them, restoring 25 HP per ingot (up to full health, like right-clicking with an ingot).");
+            builder.add("carpet.rule.collectableReinforcedDeepslate.name", "Collectable Reinforced Deepslate");
+            builder.add("carpet.rule.collectableReinforcedDeepslate.desc",
+                    "Reinforced deepslate becomes collectable: its mining time is set to match obsidian (hardness 50), it drops itself when mined, and only a diamond or netherite pickaxe can mine it.");
             builder.add("carpet.rule.commandMods.name", "Command Mods");
             builder.add("carpet.rule.commandMods.desc",
                     "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
@@ -315,6 +318,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.dispenserIronGolemRepair.name", "发射器修复铁傀儡");
             builder.add("carpet.rule.dispenserIronGolemRepair.desc",
                     "发射器朝向前方 1 格内的受伤铁傀儡使用铁锭，每锭恢复 25 点生命值（回复至满血为止，语义同手持铁锭右键修复）。");
+            builder.add("carpet.rule.collectableReinforcedDeepslate.name", "可获取的强化深板岩");
+            builder.add("carpet.rule.collectableReinforcedDeepslate.desc",
+                    "强化深板岩变为可获取：挖掘时间设置为与黑曜石相同（硬度 50），挖掘后掉落自身，且只有钻石镐或下界合金镐才能挖掉。");
             builder.add("carpet.rule.commandMods.name", "命令 /mods");
             builder.add("carpet.rule.commandMods.desc",
                     "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");

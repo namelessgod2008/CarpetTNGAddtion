@@ -33,6 +33,8 @@
   "carpet.rule.brewableOminousPotion.name": "Brewable Ominous Potion",
   "carpet.rule.cheapAnvilRename.desc": "Renaming an item in the anvil always costs only 1 experience level, and cannot be blocked by 'Too Expensive'.",
   "carpet.rule.cheapAnvilRename.name": "Cheap Anvil Rename",
+  "carpet.rule.collectableReinforcedDeepslate.desc": "Reinforced deepslate becomes collectable: its mining time is set to match obsidian (hardness 50), it drops itself when mined, and only a diamond or netherite pickaxe can mine it.",
+  "carpet.rule.collectableReinforcedDeepslate.name": "Collectable Reinforced Deepslate",
   "carpet.rule.commandAddEnchantment.desc": "Enables /addEnchantment <enchantment> <level> to add an enchantment to the item in your main hand. Takes effect immediately.",
   "carpet.rule.commandAddEnchantment.name": "Command Add Enchantment",
   "carpet.rule.commandMods.desc": "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.",

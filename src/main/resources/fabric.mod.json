@@ -51,6 +51,7 @@
 		"carpettngaddtion.tadpole.mixins.json",
 		"carpettngaddtion.slime.mixins.json",
 		"carpettngaddtion.enderman.mixins.json",
+		"carpettngaddtion.reinforceddeepslate.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {

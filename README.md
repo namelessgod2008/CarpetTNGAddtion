@@ -36,6 +36,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `bonemealGourdFruit` | 骨粉产瓜（成熟瓜苗按概率结瓜，0 禁用~1 必结） | feature, TNG, survival |
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
 | `dispenserIronGolemRepair` | 发射器用铁锭修复铁傀儡（每锭 +25 血，回复至满血） | feature, TNG, dispenser |
+| `collectableReinforcedDeepslate` | 可获取的强化深板岩（挖掘时间=黑曜石，仅钻石/下界合金镐可挖，掉落自身） | feature, TNG, survival |
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
 | `basaltToBlackstoneConversion` | 玄武岩转黑石（同时接触熔岩和水） | feature, TNG |
 | `stopCreeperGriefing` | 阻止苦力怕破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
@@ -108,6 +109,10 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 ### 发射器修复铁傀儡
 
 - `dispenserIronGolemRepair`：发射器朝向前方 1 格内的受伤铁傀儡使用铁锭，每锭恢复 25 点生命值（回复至满血为止），语义同手持铁锭右键铁傀儡；铁傀儡满血时发射器不消耗铁锭
+
+### 可获取的强化深板岩
+
+- `collectableReinforcedDeepslate`：强化深板岩（原版仅用于要塞尽头传送门框架，无法获取）变为可获取——挖掘时间设置为与黑曜石相同（硬度 50），只有钻石镐或下界合金镐才能挖掉，挖掘后掉落自身
 
 ### 旧版附魔金苹果
 

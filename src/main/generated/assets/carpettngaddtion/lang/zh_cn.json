@@ -33,6 +33,8 @@
   "carpet.rule.brewableOminousPotion.name": "灾厄药水酿造",
   "carpet.rule.cheapAnvilRename.desc": "在铁砧中修改物品名称始终只消耗 1 级经验，且不会被'过于昂贵'拦截。",
   "carpet.rule.cheapAnvilRename.name": "铁砧低价改名",
+  "carpet.rule.collectableReinforcedDeepslate.desc": "强化深板岩变为可获取：挖掘时间设置为与黑曜石相同（硬度 50），挖掘后掉落自身，且只有钻石镐或下界合金镐才能挖掉。",
+  "carpet.rule.collectableReinforcedDeepslate.name": "可获取的强化深板岩",
   "carpet.rule.commandAddEnchantment.desc": "启用 /addEnchantment <附魔> <等级>，给主手物品添加对应附魔。立即生效。",
   "carpet.rule.commandAddEnchantment.name": "命令 /addEnchantment",
   "carpet.rule.commandMods.desc": "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。",
