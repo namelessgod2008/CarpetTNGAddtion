@@ -37,6 +37,8 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `dispenserGourdFruit` | 发射器骨粉催瓜产果（复用骨粉产瓜概率） | feature, TNG, dispenser |
 | `dispenserIronGolemRepair` | 发射器用铁锭修复铁傀儡（每锭 +25 血，回复至满血） | feature, TNG, dispenser |
 | `collectableReinforcedDeepslate` | 可获取的强化深板岩（挖掘时间=黑曜石，仅钻石/下界合金镐可挖，掉落自身） | feature, TNG, survival |
+| `itemNeverDespawn` | 掉落物永不消失（不再因 5 分钟时限而消失） | feature, TNG, survival |
+| `weakVindicator` | 弱化卫道士（攻击伤害锁定为 1，不论难度） | feature, TNG, survival |
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
 | `basaltToBlackstoneConversion` | 玄武岩转黑石（同时接触熔岩和水） | feature, TNG |
 | `stopCreeperGriefing` | 阻止苦力怕破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
@@ -113,6 +115,14 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 ### 可获取的强化深板岩
 
 - `collectableReinforcedDeepslate`：强化深板岩（原版仅用于要塞尽头传送门框架，无法获取）变为可获取——挖掘时间设置为与黑曜石相同（硬度 50），只有钻石镐或下界合金镐才能挖掉，挖掘后掉落自身
+
+### 掉落物永不消失
+
+- `itemNeverDespawn`：掉落物不再因达到 6000 tick（5 分钟）而消失，可长时间留在地面上
+
+### 弱化卫道士
+
+- `weakVindicator`：卫道士（Vindicator）的攻击伤害锁定为 1，不论游戏难度；原版基础伤害 5.0（含武器/附魔加成）
 
 ### 旧版附魔金苹果
 

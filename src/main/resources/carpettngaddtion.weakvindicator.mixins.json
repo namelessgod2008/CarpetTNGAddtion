@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.namelessgod2008.feature.weakvindicator.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"MobMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

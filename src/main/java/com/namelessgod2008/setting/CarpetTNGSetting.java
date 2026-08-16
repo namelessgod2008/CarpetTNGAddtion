@@ -246,6 +246,14 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean collectableReinforcedDeepslate = false;
 
+    // 掉落物永不消失：开启后物品实体不会因 age 达到 6000 tick（5 分钟）而消失
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean itemNeverDespawn = false;
+
+    // 弱化卫道士：开启后卫道士的攻击伤害锁定为 1（不论难度，原版基础 5.0 + 附魔/武器加成）
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean weakVindicator = false;
+
     // ==================== 命令 ====================
 
     // 启用 /mods 命令：列出服务器安装的所有 Mod（需要服务器重启后生效）

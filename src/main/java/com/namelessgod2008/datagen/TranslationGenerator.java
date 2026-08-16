@@ -99,6 +99,12 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.collectableReinforcedDeepslate.name", "Collectable Reinforced Deepslate");
             builder.add("carpet.rule.collectableReinforcedDeepslate.desc",
                     "Reinforced deepslate becomes collectable: its mining time is set to match obsidian (hardness 50), it drops itself when mined, and only a diamond or netherite pickaxe can mine it.");
+            builder.add("carpet.rule.itemNeverDespawn.name", "Item Never Despawn");
+            builder.add("carpet.rule.itemNeverDespawn.desc",
+                    "Dropped items never despawn: item entities are no longer removed after 6000 ticks (5 minutes).");
+            builder.add("carpet.rule.weakVindicator.name", "Weak Vindicator");
+            builder.add("carpet.rule.weakVindicator.desc",
+                    "Vindicator attack damage is locked to 1 (regardless of difficulty; vanilla base is 5.0 plus weapon/enchantment bonuses).");
             builder.add("carpet.rule.commandMods.name", "Command Mods");
             builder.add("carpet.rule.commandMods.desc",
                     "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
@@ -321,6 +327,12 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.collectableReinforcedDeepslate.name", "可获取的强化深板岩");
             builder.add("carpet.rule.collectableReinforcedDeepslate.desc",
                     "强化深板岩变为可获取：挖掘时间设置为与黑曜石相同（硬度 50），挖掘后掉落自身，且只有钻石镐或下界合金镐才能挖掉。");
+            builder.add("carpet.rule.itemNeverDespawn.name", "掉落物永不消失");
+            builder.add("carpet.rule.itemNeverDespawn.desc",
+                    "掉落物永不消失：物品实体不再因达到 6000 tick（5 分钟）而消失。");
+            builder.add("carpet.rule.weakVindicator.name", "弱化卫道士");
+            builder.add("carpet.rule.weakVindicator.desc",
+                    "卫道士的攻击伤害锁定为 1（不论难度；原版基础 5.0 加武器/附魔加成）。");
             builder.add("carpet.rule.commandMods.name", "命令 /mods");
             builder.add("carpet.rule.commandMods.desc",
                     "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");

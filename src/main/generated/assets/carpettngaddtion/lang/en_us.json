@@ -85,6 +85,8 @@
   "carpet.rule.featherFallingProtectsFarmland.name": "Feather Falling Protects Farmland",
   "carpet.rule.grindstoneRemovesCurses.desc": "Cursed enchantments (binding curse, vanishing curse) can be removed with a grindstone.",
   "carpet.rule.grindstoneRemovesCurses.name": "Grindstone Removes Curses",
+  "carpet.rule.itemNeverDespawn.desc": "Dropped items never despawn: item entities are no longer removed after 6000 ticks (5 minutes).",
+  "carpet.rule.itemNeverDespawn.name": "Item Never Despawn",
   "carpet.rule.legacyEnchantedGoldenApple.desc": "Restores the pre-1.9 enchanted golden apple Regeneration V (30s) effect, replacing Regeneration II (20s). Other effects stay as in the new version.",
   "carpet.rule.legacyEnchantedGoldenApple.name": "Legacy Enchanted Golden Apple",
   "carpet.rule.lootingSlimeSplit.desc": "Killing a large slime or magma cube with a Looting weapon splits it into more small ones, +1 per Looting level.",
@@ -141,6 +143,8 @@
   "carpet.rule.villagerBedExplosion.name": "Villager Bed Explosion",
   "carpet.rule.villagerLightningNoWitch.desc": "Villagers struck by lightning no longer turn into witches.",
   "carpet.rule.villagerLightningNoWitch.name": "Villager Lightning No Witch",
+  "carpet.rule.weakVindicator.desc": "Vindicator attack damage is locked to 1 (regardless of difficulty; vanilla base is 5.0 plus weapon/enchantment bonuses).",
+  "carpet.rule.weakVindicator.name": "Weak Vindicator",
   "carpet.rule.woodToChest.desc": "Adds a crafting recipe for a chest from 2 of any log (shapeless). Vanilla requires 8 planks instead.",
   "carpet.rule.woodToChest.name": "Craftable Chest",
   "carpettngaddtion.command.addEnchantment.success": "Added %s to your held item."
