@@ -1,12 +1,11 @@
 package com.namelessgod2008.feature.potion.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * GUI 药水槽放入检查：放行不祥之瓶。
@@ -16,10 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(targets = "net.minecraft.world.inventory.BrewingStandMenu$PotionSlot")
 public class BrewingStandMenuMixin {
 
-    @Inject(method = "mayPlaceItem", at = @At("RETURN"), cancellable = true)
-    private static void allowOminousBottle(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+    @WrapMethod(method = "mayPlaceItem")
+    private static boolean allowOminousBottle(ItemStack stack, Operation<Boolean> original) {
         if (CarpetTNGSetting.brewableOminousPotion && stack.is(Items.OMINOUS_BOTTLE)) {
-            cir.setReturnValue(true);
+            return true;
         }
+        return original.call(stack);
     }
 }

@@ -106,3 +106,7 @@ Minecraft 1.21.4 (Fabric) 的 Carpet 附属模组，将基岩版/后续版本机
 - **服务器调试**：改 `run/server.properties` 开 RCON + Python socket 发命令；无玩家 60 秒服务器会暂停 tick，用 Carpet `/player <name> spawn` 生成假玩家保持活跃；测试完还原 server.properties
 - **客户端调试**：环境无法交互操作（无 GUI 自动化库），纯客户端渲染问题需用户实际进游戏确认；服务端能验证的部分（mixin 注入/字段替换）看 runServer 日志
 - **完整细节（RCON 协议、诊断命令、两个坑、验证闭环）**：见 `C:\Users\xzx\.claude\projects\D--Programs-MC-1-21-4-CarpetTNGAddition\memory\debugging.md`
+
+## 8. Changelog 生成
+
+发布前更新 `changelog/`：版本号改 `gradle.properties` 的 `mod_version`（fabric.mod.json 用 `${version}` 自动展开）；`changelog/vX.Y.Z.md` 记录本版改动（mixin 重构/新增功能，双语：英文在前、中文在后，`---` 分隔）；同内容纯文本版（去 Markdown 符号）放 `changelog/txt/vX.Y.Z.txt`。

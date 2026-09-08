@@ -1,5 +1,7 @@
 package com.namelessgod2008.feature.endcrystal.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.world.item.EndCrystalItem;
 import net.minecraft.world.level.block.Block;
@@ -7,7 +9,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
  * 末地水晶放置限制：
@@ -22,17 +23,17 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(EndCrystalItem.class)
 public class EndCrystalItemMixin {
 
-    @Redirect(
+    @WrapOperation(
             method = "useOn",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/level/block/state/BlockState;is(Lnet/minecraft/world/level/block/Block;)Z"
             )
     )
-    private boolean allowPlacementWithoutRestriction(BlockState state, Block block) {
+    private boolean allowPlacementWithoutRestriction(BlockState state, Block block, Operation<Boolean> original) {
         if (!CarpetTNGSetting.endCrystalPlacementRestriction && block == Blocks.OBSIDIAN) {
             return true;
         }
-        return state.is(block);
+        return original.call(state, block);
     }
 }

@@ -1,8 +1,11 @@
 package com.namelessgod2008.feature.piglin.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
@@ -10,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
@@ -27,13 +29,13 @@ import java.util.Optional;
 @Mixin(PiglinAi.class)
 public abstract class PiglinAiMixin {
 
-    @ModifyArg(method = "wasHurtBy",
-               at = @At(value = "INVOKE",
-                        target = "Lnet/minecraft/world/entity/ai/Brain;setMemoryWithExpiry(Lnet/minecraft/world/entity/ai/memory/MemoryModuleType;Ljava/lang/Object;J)V",
-                        ordinal = 0), // ordinal 0 = ADMIRING_DISABLED（400L），ordinal 1 = AVOID_TARGET
-               index = 2)
-    private static long customTradeDisabledTime(long expiry) {
-        return CarpetTNGSetting.piglinBarterDisabledTime;
+    @WrapOperation(method = "wasHurtBy",
+                   at = @At(value = "INVOKE",
+                            target = "Lnet/minecraft/world/entity/ai/Brain;setMemoryWithExpiry(Lnet/minecraft/world/entity/ai/memory/MemoryModuleType;Ljava/lang/Object;J)V",
+                            ordinal = 0)) // ordinal 0 = ADMIRING_DISABLED（400L），ordinal 1 = AVOID_TARGET
+    private static void customTradeDisabledTime(Brain<?> brain, MemoryModuleType<?> type, Object value, long expiry,
+                                                Operation<Void> original) {
+        original.call(brain, type, value, CarpetTNGSetting.piglinBarterDisabledTime);
     }
 
     @Inject(method = "findNearestValidAttackTarget", at = @At("RETURN"), cancellable = true)

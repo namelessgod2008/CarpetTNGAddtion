@@ -1,12 +1,11 @@
 package com.namelessgod2008.feature.creeper.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.level.ServerExplosion;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
@@ -16,17 +15,18 @@ import java.util.List;
  * <p>
  * 末地水晶爆炸由 {@code EndCrystal.hurtServer} 用 {@code ExplosionInteraction.BLOCK}
  * 触发，其直接源是 EndCrystal 自身（非 LivingEntity，间接源为 null）。
- * 规则开启且爆炸直接源是 EndCrystal 时 cancel 掉 {@code ServerExplosion.interactWithBlocks}，
- * 跳过方块破坏，保留伤害/击退/音效。
+ * 规则开启且爆炸直接源是 EndCrystal 时跳过 {@code ServerExplosion.interactWithBlocks}，
+ * 保留伤害/击退/音效。
  */
 @Mixin(ServerExplosion.class)
 public class EndCrystalExplosionMixin {
 
-    @Inject(method = "interactWithBlocks", at = @At("HEAD"), cancellable = true)
-    private void stopEndCrystalBlockDamage(List<?> blocks, CallbackInfo ci) {
-        if (!CarpetTNGSetting.stopEndCrystalGriefing) return;
-        if (((ServerExplosion) (Object) this).getDirectSourceEntity() instanceof EndCrystal) {
-            ci.cancel();
+    @WrapMethod(method = "interactWithBlocks")
+    private void stopEndCrystalBlockDamage(List<?> blocks, Operation<Void> original) {
+        if (CarpetTNGSetting.stopEndCrystalGriefing
+                && ((ServerExplosion) (Object) this).getDirectSourceEntity() instanceof EndCrystal) {
+            return; // 不破坏方块
         }
+        original.call(blocks);
     }
 }

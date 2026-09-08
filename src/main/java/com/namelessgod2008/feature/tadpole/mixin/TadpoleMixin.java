@@ -1,5 +1,7 @@
 package com.namelessgod2008.feature.tadpole.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -25,7 +27,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -37,7 +38,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * 一只蝌蚪只能被喂一次染料（喂过后再喂无效）。
  * <p>
  * 注入：mobInteract HEAD 拦截染料；addAdditionalSaveData/readAdditionalSaveData
- * 持久化颜色；ageUp 的 convertTo 用 {@code @ModifyArg} 包裹 AfterConversion
+ * 持久化颜色；ageUp 的 convertTo 用 {@code @WrapOperation} 包裹 AfterConversion
  * lambda 设置变体。
  */
 @Mixin(Tadpole.class)
@@ -88,25 +89,26 @@ public abstract class TadpoleMixin {
         }
     }
 
-    @ModifyArg(
+    @WrapOperation(
             method = "ageUp()V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/entity/animal/frog/Tadpole;convertTo(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/ConversionParams;Lnet/minecraft/world/entity/ConversionParams$AfterConversion;)Lnet/minecraft/world/entity/Mob;"
-            ),
-            index = 2
+            )
     )
-    private ConversionParams.AfterConversion<Mob> colorAfterConversion(ConversionParams.AfterConversion<Mob> original) {
+    private Mob colorAfterConversion(Tadpole tadpole, EntityType<?> entityType, ConversionParams params,
+                                     ConversionParams.AfterConversion<Mob> afterConversion, Operation<Mob> original) {
         if (!CarpetTNGSetting.tadpoleDyeColor || this.carpettng$dyeColor == null) {
-            return original;
+            return original.call(tadpole, entityType, params, afterConversion);
         }
         ResourceKey<FrogVariant> variantKey = mapVariant(this.carpettng$dyeColor);
-        return frog -> {
-            original.finalizeConversion(frog);
+        ConversionParams.AfterConversion<Mob> wrapped = frog -> {
+            afterConversion.finalizeConversion(frog);
             if (frog instanceof Frog frogEntity && variantKey != null) {
                 frogEntity.setVariant(BuiltInRegistries.FROG_VARIANT.getOrThrow(variantKey));
             }
         };
+        return original.call(tadpole, entityType, params, wrapped);
     }
 
     /** 染料颜色 1:1 映射到青蛙变体（橙→温带、白→暖、绿→冷）。 */

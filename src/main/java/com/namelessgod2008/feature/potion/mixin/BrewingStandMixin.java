@@ -1,5 +1,7 @@
 package com.namelessgod2008.feature.potion.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -52,12 +54,15 @@ public class BrewingStandMixin {
         }
     }
 
-    @Inject(method = "isBrewable", at = @At("RETURN"), cancellable = true)
-    private static void allowOminousBrewing(PotionBrewing potionBrewing, NonNullList<ItemStack> items,
-                                            CallbackInfoReturnable<Boolean> cir) {
-        if (!CarpetTNGSetting.brewableOminousPotion) return;
-        if (cir.getReturnValue()) return; // 原版配方已可行
-        cir.setReturnValue(hasOminousRecipe(items));
+    @WrapMethod(method = "isBrewable")
+    private static boolean allowOminousBrewing(PotionBrewing potionBrewing, NonNullList<ItemStack> items,
+                                               Operation<Boolean> original) {
+        if (!CarpetTNGSetting.brewableOminousPotion) {
+            return original.call(potionBrewing, items);
+        }
+        boolean vanilla = original.call(potionBrewing, items);
+        if (vanilla) return true; // 原版配方已可行
+        return hasOminousRecipe(items);
     }
 
     @Inject(method = "doBrew", at = @At("HEAD"), cancellable = true)

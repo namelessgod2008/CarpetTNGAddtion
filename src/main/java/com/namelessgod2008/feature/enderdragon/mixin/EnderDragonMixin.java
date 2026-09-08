@@ -1,11 +1,12 @@
 package com.namelessgod2008.feature.enderdragon.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.level.dimension.end.EndDragonFight;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
  * 持续高经验打龙：末影龙死亡时（{@code EnderDragon.tickDeath}），
@@ -16,11 +17,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(EnderDragon.class)
 public abstract class EnderDragonMixin {
 
-    @Redirect(method = "tickDeath",
+    @WrapOperation(method = "tickDeath",
               at = @At(value = "INVOKE",
                        target = "Lnet/minecraft/world/level/dimension/end/EndDragonFight;hasPreviouslyKilledDragon()Z"))
-    private boolean constantHighXp(EndDragonFight fight) {
+    private boolean constantHighXp(EndDragonFight fight, Operation<Boolean> original) {
         // 规则开启：视为首次击杀（12000 经验）；否则返回原值
-        return CarpetTNGSetting.constantHighEnderDragonXp ? false : fight.hasPreviouslyKilledDragon();
+        return CarpetTNGSetting.constantHighEnderDragonXp ? false : original.call(fight);
     }
 }

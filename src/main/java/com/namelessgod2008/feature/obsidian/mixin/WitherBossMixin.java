@@ -1,13 +1,12 @@
 package com.namelessgod2008.feature.obsidian.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * 坚固黑曜石：黑曜石免疫凋零的主动方块破坏。
@@ -21,10 +20,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(WitherBoss.class)
 public abstract class WitherBossMixin {
 
-    @Inject(method = "canDestroy", at = @At("RETURN"), cancellable = true)
-    private static void protectObsidianFromWither(BlockState state, CallbackInfoReturnable<Boolean> cir) {
-        if (CarpetTNGSetting.reinforcedObsidian && cir.getReturnValue() && state.is(Blocks.OBSIDIAN)) {
-            cir.setReturnValue(false);
+    @WrapMethod(method = "canDestroy")
+    private static boolean protectObsidianFromWither(BlockState state, Operation<Boolean> original) {
+        boolean canDestroy = original.call(state);
+        if (CarpetTNGSetting.reinforcedObsidian && canDestroy && state.is(Blocks.OBSIDIAN)) {
+            return false;
         }
+        return canDestroy;
     }
 }

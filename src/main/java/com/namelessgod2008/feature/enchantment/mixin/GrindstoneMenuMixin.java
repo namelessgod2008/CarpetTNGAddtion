@@ -1,5 +1,7 @@
 package com.namelessgod2008.feature.enchantment.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.EnchantmentTags;
@@ -7,7 +9,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.inventory.GrindstoneMenu;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
  * 诅咒附魔可移除（放在砂轮上）：
@@ -19,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(GrindstoneMenu.class)
 public class GrindstoneMenuMixin {
 
-    @Redirect(
+    @WrapOperation(
             // removeIf predicate lambda of removeNonCursesFrom; method name is a stable
             // synthetic lambda name in both dev and prod (see anvil method_24922 precedent).
             method = "method_58073",
@@ -28,10 +29,10 @@ public class GrindstoneMenuMixin {
                     target = "Lnet/minecraft/core/Holder;is(Lnet/minecraft/tags/TagKey;)Z"
             )
     )
-    private static boolean removeCursesOnGrindstone(Holder<Enchantment> holder, net.minecraft.tags.TagKey<Enchantment> tag) {
+    private static boolean removeCursesOnGrindstone(Holder<Enchantment> holder, net.minecraft.tags.TagKey<Enchantment> tag, Operation<Boolean> original) {
         if (CarpetTNGSetting.grindstoneRemovesCurses && tag == EnchantmentTags.CURSE) {
             return false; // curses are treated as removable -> removeIf keeps them out
         }
-        return holder.is(tag);
+        return original.call(holder, tag);
     }
 }

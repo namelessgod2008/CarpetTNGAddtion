@@ -1,13 +1,12 @@
 package com.namelessgod2008.feature.enchantment.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.item.enchantment.Enchantment;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * 不同类型保护魔咒可以叠加：
@@ -21,13 +20,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Enchantment.class)
 public class EnchantmentMixin {
 
-    @Inject(method = "areCompatible", at = @At("RETURN"), cancellable = true)
-    private static void allowStackableProtection(Holder<Enchantment> first, Holder<Enchantment> second,
-                                                 CallbackInfoReturnable<Boolean> cir) {
-        if (!CarpetTNGSetting.stackableProtection) return;
+    @WrapMethod(method = "areCompatible")
+    private static boolean allowStackableProtection(Holder<Enchantment> first, Holder<Enchantment> second,
+                                                    Operation<Boolean> original) {
         // Both are armor protection types (share the exclusive_set/armor tag): allow stacking.
-        if (first.is(EnchantmentTags.ARMOR_EXCLUSIVE) && second.is(EnchantmentTags.ARMOR_EXCLUSIVE)) {
-            cir.setReturnValue(true);
+        if (CarpetTNGSetting.stackableProtection
+                && first.is(EnchantmentTags.ARMOR_EXCLUSIVE) && second.is(EnchantmentTags.ARMOR_EXCLUSIVE)) {
+            return true;
         }
+        return original.call(first, second);
     }
 }

@@ -1,5 +1,7 @@
 package com.namelessgod2008.feature.slime.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -10,7 +12,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
  * 抢夺附魔击杀大史莱姆/岩浆怪后分裂更多小史莱姆：
@@ -21,21 +22,21 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(Slime.class)
 public class SlimeMixin {
 
-    @Redirect(
+    @WrapOperation(
             method = "remove",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"
             )
     )
-    private int moreSplitsWithLooting(RandomSource random, int bound) {
+    private int moreSplitsWithLooting(RandomSource random, int bound, Operation<Integer> original) {
         if (CarpetTNGSetting.lootingSlimeSplit) {
             int looting = getLootingLevel((Slime) (Object) this);
             if (looting > 0) {
-                return random.nextInt(bound) + looting;
+                return original.call(random, bound) + looting;
             }
         }
-        return random.nextInt(bound);
+        return original.call(random, bound);
     }
 
     private static int getLootingLevel(Slime slime) {

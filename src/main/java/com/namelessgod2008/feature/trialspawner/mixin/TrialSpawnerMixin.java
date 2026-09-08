@@ -1,11 +1,10 @@
 package com.namelessgod2008.feature.trialspawner.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.world.level.block.entity.trialspawner.TrialSpawner;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * 缩短试炼刷怪笼冷却：
@@ -17,10 +16,8 @@ public class TrialSpawnerMixin {
 
     private static final int COOLDOWN_5_MIN = 6000;
 
-    @Inject(method = "getTargetCooldownLength", at = @At("RETURN"), cancellable = true)
-    private void shortenCooldown(CallbackInfoReturnable<Integer> cir) {
-        if (CarpetTNGSetting.shortenedTrialSpawnerCooldown) {
-            cir.setReturnValue(COOLDOWN_5_MIN);
-        }
+    @WrapMethod(method = "getTargetCooldownLength")
+    private int shortenCooldown(Operation<Integer> original) {
+        return CarpetTNGSetting.shortenedTrialSpawnerCooldown ? COOLDOWN_5_MIN : original.call();
     }
 }

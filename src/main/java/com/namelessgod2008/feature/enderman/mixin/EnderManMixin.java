@@ -1,5 +1,7 @@
 package com.namelessgod2008.feature.enderman.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -9,7 +11,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
  * 阻止末影人搬起黑名单中的方块：
@@ -21,19 +22,19 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(targets = "net.minecraft.world.entity.monster.EnderMan$EndermanTakeBlockGoal")
 public class EnderManMixin {
 
-    @Redirect(
+    @WrapOperation(
             method = "tick",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/level/block/state/BlockState;is(Lnet/minecraft/tags/TagKey;)Z"
             )
     )
-    private boolean blockBlacklisted(BlockState state, TagKey<Block> tag) {
+    private boolean blockBlacklisted(BlockState state, TagKey<Block> tag, Operation<Boolean> original) {
         String blacklist = CarpetTNGSetting.endermanNoTakeBlocks;
         if (!blacklist.isBlank() && state.getBlock() != null && isBlacklisted(state.getBlock(), blacklist)) {
             return false;
         }
-        return state.is(tag);
+        return original.call(state, tag);
     }
 
     private static boolean isBlacklisted(Block block, String blacklist) {

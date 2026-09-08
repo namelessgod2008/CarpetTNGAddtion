@@ -1,5 +1,7 @@
 package com.namelessgod2008.feature.anvil.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.inventory.AnvilMenu;
@@ -10,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
@@ -33,10 +34,10 @@ public abstract class AnvilMenuMixin {
     @Final
     private DataSlot cost;
 
-    @Redirect(method = "createResult",
+    @WrapOperation(method = "createResult",
               at = @At(value = "INVOKE", target = "Lnet/minecraft/world/inventory/DataSlot;get()I", ordinal = 1))
-    private int removeTooExpensive(@NotNull DataSlot slot) {
-        int cost = slot.get();
+    private int removeTooExpensive(@NotNull DataSlot slot, Operation<Integer> original) {
+        int cost = original.call(slot);
         // 规则开启：让"费用 >= 40"判定不成立（结果保留，费用按真实值收取）；否则原样
         return CarpetTNGSetting.removeAnvilTooExpensive ? Math.min(cost, 39) : cost;
     }
@@ -50,10 +51,10 @@ public abstract class AnvilMenuMixin {
         }
     }
 
-    @Redirect(method = "method_24922", // onTake 里 access.execute 的 lambda 方法（static，混淆名开发/生产一致；损坏判定在其中）
+    @WrapOperation(method = "method_24922", // onTake 里 access.execute 的 lambda 方法（static，混淆名开发/生产一致；损坏判定在其中）
               at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextFloat()F"))
-    private static float durableAnvil(RandomSource random) {
+    private static float durableAnvil(RandomSource random, Operation<Float> original) {
         // 规则开启：让 12% 铁砧损坏判定（nextFloat() < 0.12F）不成立（走 else 音效分支）；否则原样
-        return CarpetTNGSetting.durableAnvil ? 1.0f : random.nextFloat();
+        return CarpetTNGSetting.durableAnvil ? 1.0f : original.call(random);
     }
 }

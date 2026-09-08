@@ -1,14 +1,13 @@
 package com.namelessgod2008.feature.reinforceddeepslate.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.namelessgod2008.setting.CarpetTNGSetting;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * 强化深板岩"仅钻石/下界合金镐可挖"：
@@ -23,14 +22,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Player.class)
 public class ReinforcedDeepslatePlayerMixin {
 
-    @Inject(method = "hasCorrectToolForDrops", at = @At("RETURN"), cancellable = true)
-    private void deepslateCorrectTool(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+    @WrapMethod(method = "hasCorrectToolForDrops")
+    private boolean deepslateCorrectTool(BlockState state, Operation<Boolean> original) {
+        boolean hasTool = original.call(state);
         if (!CarpetTNGSetting.collectableReinforcedDeepslate
                 || !state.is(Blocks.REINFORCED_DEEPSLATE)) {
-            return;
+            return hasTool;
         }
         Player self = (Player) (Object) this;
         var hand = self.getMainHandItem();
-        cir.setReturnValue(hand.is(Items.DIAMOND_PICKAXE) || hand.is(Items.NETHERITE_PICKAXE));
+        return hand.is(Items.DIAMOND_PICKAXE) || hand.is(Items.NETHERITE_PICKAXE);
     }
 }
