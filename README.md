@@ -39,6 +39,7 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 | `collectableReinforcedDeepslate` | 可获取的强化深板岩（挖掘时间=黑曜石，仅钻石/下界合金镐可挖，掉落自身） | feature, TNG, survival |
 | `itemNeverDespawn` | 掉落物永不消失（不再因 5 分钟时限而消失） | feature, TNG, survival |
 | `weakVindicator` | 弱化卫道士（攻击伤害锁定为 1，不论难度） | feature, TNG, survival |
+| `zombifiedPiglinNoGoldenSwordDrop` | 禁止僵尸猪灵掉落金剑（原版 8.5% 概率） | feature, TNG, survival |
 | `reinforcedObsidian` | 坚固黑曜石（免疫凋零的方块破坏） | feature, TNG |
 | `basaltToBlackstoneConversion` | 玄武岩转黑石（同时接触熔岩和水） | feature, TNG |
 | `stopCreeperGriefing` | 阻止苦力怕破坏地形（爆炸不破坏方块但保留伤害） | feature, TNG |
@@ -123,6 +124,10 @@ Minecraft 1.21.4 (Fabric) 的 [Carpet](https://github.com/gnembon/fabric-carpet)
 ### 弱化卫道士
 
 - `weakVindicator`：卫道士（Vindicator）的攻击伤害锁定为 1，不论游戏难度；原版基础伤害 5.0（含武器/附魔加成）
+
+### 禁止僵尸猪灵掉落金剑
+
+- `zombifiedPiglinNoGoldenSwordDrop`：僵尸猪灵死亡时不再掉落手中的金剑（原版有 8.5% 概率掉落）；其他生物的金剑掉落不受影响
 
 ### 旧版附魔金苹果
 

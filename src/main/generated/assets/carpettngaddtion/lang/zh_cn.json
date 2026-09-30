@@ -147,5 +147,7 @@
   "carpet.rule.weakVindicator.name": "弱化卫道士",
   "carpet.rule.woodToChest.desc": "添加用 2 个任意原木（无序）合成箱子的配方。原版需要用 8 个木板合成。",
   "carpet.rule.woodToChest.name": "箱子合成",
+  "carpet.rule.zombifiedPiglinNoGoldenSwordDrop.desc": "僵尸猪灵死亡时不再掉落手中的金剑（原版有 8.5% 概率掉落）。其他生物的金剑掉落不受影响。",
+  "carpet.rule.zombifiedPiglinNoGoldenSwordDrop.name": "禁止僵尸猪灵掉落金剑",
   "carpettngaddtion.command.addEnchantment.success": "已给你的手持物品添加 %s。"
 }

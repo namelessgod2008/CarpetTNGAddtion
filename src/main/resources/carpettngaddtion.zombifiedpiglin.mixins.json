@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.namelessgod2008.feature.zombifiedpiglin.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"ZombifiedPiglinMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

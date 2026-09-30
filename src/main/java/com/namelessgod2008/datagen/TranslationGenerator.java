@@ -105,6 +105,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.weakVindicator.name", "Weak Vindicator");
             builder.add("carpet.rule.weakVindicator.desc",
                     "Vindicator attack damage is locked to 1 (regardless of difficulty; vanilla base is 5.0 plus weapon/enchantment bonuses).");
+            builder.add("carpet.rule.zombifiedPiglinNoGoldenSwordDrop.name", "Zombified Piglin No Golden Sword Drop");
+            builder.add("carpet.rule.zombifiedPiglinNoGoldenSwordDrop.desc",
+                    "Zombified piglins no longer drop their golden sword on death (vanilla has an 8.5% chance). The sword still drops normally for other mobs.");
             builder.add("carpet.rule.commandMods.name", "Command Mods");
             builder.add("carpet.rule.commandMods.desc",
                     "Enables the /mods command that lists all installed mods on the server. Takes effect immediately.");
@@ -333,6 +336,9 @@ public final class TranslationGenerator {
             builder.add("carpet.rule.weakVindicator.name", "弱化卫道士");
             builder.add("carpet.rule.weakVindicator.desc",
                     "卫道士的攻击伤害锁定为 1（不论难度；原版基础 5.0 加武器/附魔加成）。");
+            builder.add("carpet.rule.zombifiedPiglinNoGoldenSwordDrop.name", "禁止僵尸猪灵掉落金剑");
+            builder.add("carpet.rule.zombifiedPiglinNoGoldenSwordDrop.desc",
+                    "僵尸猪灵死亡时不再掉落手中的金剑（原版有 8.5% 概率掉落）。其他生物的金剑掉落不受影响。");
             builder.add("carpet.rule.commandMods.name", "命令 /mods");
             builder.add("carpet.rule.commandMods.desc",
                     "启用 /mods 命令，列出服务器安装的所有 Mod。立即生效。");

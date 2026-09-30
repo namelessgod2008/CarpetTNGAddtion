@@ -147,5 +147,7 @@
   "carpet.rule.weakVindicator.name": "Weak Vindicator",
   "carpet.rule.woodToChest.desc": "Adds a crafting recipe for a chest from 2 of any log (shapeless). Vanilla requires 8 planks instead.",
   "carpet.rule.woodToChest.name": "Craftable Chest",
+  "carpet.rule.zombifiedPiglinNoGoldenSwordDrop.desc": "Zombified piglins no longer drop their golden sword on death (vanilla has an 8.5% chance). The sword still drops normally for other mobs.",
+  "carpet.rule.zombifiedPiglinNoGoldenSwordDrop.name": "Zombified Piglin No Golden Sword Drop",
   "carpettngaddtion.command.addEnchantment.success": "Added %s to your held item."
 }

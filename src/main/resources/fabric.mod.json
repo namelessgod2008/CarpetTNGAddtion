@@ -54,6 +54,7 @@
 		"carpettngaddtion.reinforceddeepslate.mixins.json",
 		"carpettngaddtion.itemneverdespawn.mixins.json",
 		"carpettngaddtion.weakvindicator.mixins.json",
+		"carpettngaddtion.zombifiedpiglin.mixins.json",
 		"carpettngaddtion.compact.mixins.json"
 	],
 	"depends": {

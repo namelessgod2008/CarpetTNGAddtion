@@ -284,6 +284,10 @@ public class CarpetTNGSetting {
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
     public static boolean neutralPiglins = false;
 
+    // 禁止僵尸猪灵掉落金剑（原版主手金剑 8.5% 概率掉落，开启后恒不掉落）
+    @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
+    public static boolean zombifiedPiglinNoGoldenSwordDrop = false;
+
     // ==================== 末影龙 ====================
 
     @Rule(categories = {"feature", "TNG", "survival"}, options = {"true", "false"})
